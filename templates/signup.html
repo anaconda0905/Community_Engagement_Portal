@@ -12,6 +12,9 @@
           <form method="post" novalidate>
             {% csrf_token %}
             {% include 'includes/form.html' %}
+            <label class="checkbox">
+              <input type="checkbox" name="checkbox" value="true" name="remember_me"> Keep me logged in</input>
+            </label>
             <button type="submit" class="btn btn-primary btn-block">Create an account</button>
           </form>
         </div>
