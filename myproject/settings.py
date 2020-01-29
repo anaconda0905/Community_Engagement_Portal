@@ -166,3 +166,9 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FQdT5OZN1yfxcpcLVSHUnXl0'
 
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30 # One month
+
+
+# # myproject/settings.py
+# EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+# EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
