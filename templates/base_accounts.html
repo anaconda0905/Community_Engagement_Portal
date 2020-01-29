@@ -3,24 +3,24 @@
 {% load static %}
 
 {% block stylesheet %}
-  <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
-  <script>
-    addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+<script>
+  addEventListener("load", function () {
+    setTimeout(hideURLbar, 0);
+  }, false);
 
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    }
-  </script>
+  function hideURLbar() {
+    window.scrollTo(0, 1);
+  }
+</script>
 {% endblock %}
 
 {% block body %}
-  <div class="container">
-    <h1 class="welcome">
-      <a href="{% url 'home' %}"></a>
-    </h1>
-    {% block content %}
-    {% endblock %}
-  </div>
+<div class="container">
+  <h1 class="welcome">
+    <a href="{% url 'home' %}"></a>
+  </h1>
+  {% block content %}
+  {% endblock %}
+</div>
 {% endblock %}
