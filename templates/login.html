@@ -12,6 +12,9 @@
         <form method="post" novalidate>
           {% csrf_token %}
           {% include 'includes/form.html' %}
+          <label class="checkbox">
+            <input type="checkbox" name="checkbox" value="true" name="remember_me"> Keep me logged in</input>
+          </label>
           <button type="submit" class="btn btn-primary btn-block">Log in</button>
         </form>
       </div>
@@ -22,10 +25,8 @@
       <div class="social">
         <ul>
           <li>or login using : </li>
-          <li><a href="{% url 'social:begin' 'facebook' %}" class="facebook"><span class="fa fa-facebook"></span></a>
-          </li>
-          <li><a href="{% url 'social:begin' 'google-oauth2'%}" class="google"><span
-                class="fa fa-google-plus"></span></a></li>
+          <li><a href="{% url 'social:begin' 'facebook' %}" class="facebook"><span class="fa fa-facebook"></span></a></li>
+          <li><a href="{% url 'social:begin' 'google-oauth2'%}" class="google"><span class="fa fa-google-plus"></span></a></li>
         </ul>
       </div>
 

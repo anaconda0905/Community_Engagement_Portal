@@ -1,8 +1,14 @@
 from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
+from django.contrib.auth import views as auth_views
 from .forms import SignUpForm
 
+def login_user(request, *args, **kwargs): 
+    if request.method == 'POST':
+        if not request.POST.get('remember_me', None):
+            request.session.set_expiry(60 * 60 * 24 * 30)
+    return auth_views.login(request, *args, **kwargs)    
 
 def signup(request):
     if request.method == 'POST':

@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.contrib.auth.models import User
+from datetime import timedelta, date
 
 class EmailOrUsernameModelBackend(object):
     def authenticate(self, username=None, password=None):
