@@ -11,19 +11,23 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
-
+from django.urls import reverse_lazy
+from django.views.generic import UpdateView
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 def login_user(request, *args, **kwargs): 
     if request.method == 'POST':
         if not request.POST.get('remember_me', None):
-            request.session.set_expiry(60 * 60 * 24 * 30)
+            print("un_checked")
+            # 60 second
+            request.session.set_expiry(60 * 5)
     return auth_views.login(request, *args, **kwargs)    
 
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-        if not request.POST.get('remember_me', None):
-            request.session.set_expiry(60 * 60 * 24 * 30)
+        
         if form.is_valid():
             # username = request.POST.get('username')
             # password = request.POST.get('password')
@@ -31,8 +35,12 @@ def signup(request):
             # user = form.save()
             # auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             # return redirect('home')
-            user = form.save(commit=False)
+            
+            user = form.save()
+            user.refresh_from_db()  # load the profile instance created by the signal
+            user.profile.birth_date = form.cleaned_data.get('birth_date')
             user.is_active = False
+            
             user.save()
             current_site = get_current_site(request)
             message = render_to_string('acc_active_email.html', {
@@ -40,12 +48,13 @@ def signup(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
-            # Sending activation link in terminal
-            # user.email_user(subject, message)
-            mail_subject = 'Activate your blog account.'
+            
+            mail_subject = 'Activate your account.'
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
+            # Sending activation link in terminal
+            # user.email_user(mail_subject, message)
             # return HttpResponse('Please confirm your email address to complete the registration.')
             return render(request, 'acc_active_sent.html')
     else:
@@ -67,3 +76,22 @@ def activate(request, uidb64, token):
         return redirect('home')
     else:
         return HttpResponse('Activation link is invalid!')
+        
+        
+@method_decorator(login_required, name='dispatch')
+class UserUpdateView(UpdateView):
+    model = User
+    fields = ('username', 'email', )
+    template_name = 'my_account.html'
+    success_url = reverse_lazy('my_account_done')
+
+    def get_object(self):
+        return self.request.user
+
+        
+def my_account_done(request):
+    return render(request, 'my_account_done.html')
+    
+def home(request):
+    return render(request, 'home.html')
+    

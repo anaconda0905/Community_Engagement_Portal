@@ -3,10 +3,9 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 from accounts import views as accounts_views
-from boards import views
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
+    url(r'^$', accounts_views.home, name='home'),
     url(r'^signup/$', accounts_views.signup, name='signup'),
     # url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^login/$', accounts_views.login_user, {'template_name':'login.html'}, name='login'),
@@ -33,9 +32,9 @@ urlpatterns = [
         name='password_change'),
     url(r'^settings/password/done/$', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
         name='password_change_done'),
-
-    url(r'^boards/(?P<pk>\d+)/$', views.board_topics, name='board_topics'),
-    url(r'^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
+    url(r'^settings/account/$', accounts_views.UserUpdateView.as_view(), name='my_account'),
+    url(r'^settings/account/done', accounts_views.my_account_done, name='my_account_done'),
+    
     url(r'^admin/', admin.site.urls),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', accounts_views.activate, name='activate'),

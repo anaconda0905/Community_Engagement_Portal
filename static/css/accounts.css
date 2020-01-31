@@ -35,7 +35,7 @@ body{
 
 .bg-layer {
   background: rgba(0, 0, 0, 0.7);
-  min-height: 100vh;
+  min-height: 130vh;
 }
 /*-- //slide --*/
 
@@ -141,3 +141,4 @@ ul {
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
+
