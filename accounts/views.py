@@ -16,7 +16,7 @@ from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 
-def login_user(request, *args, **kwargs): 
+def login_user(request, *args, **kwargs):
     if request.method == 'POST':
         if not request.POST.get('remember_me', None):
             print("un_checked")
