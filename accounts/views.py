@@ -102,8 +102,8 @@ def edit_user(request):
  
     ProfileInlineFormset = inlineformset_factory(User, Profile, form=ProfileForm, can_delete = False)
     formset = ProfileInlineFormset(instance=user)
-    print(user_form)
-    print(formset)
+    # print(user_form)
+    # print(formset)
  
     if request.user.is_authenticated() and request.user.id == user.id:
         if request.method == "POST":
