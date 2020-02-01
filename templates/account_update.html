@@ -10,8 +10,9 @@
           <h3 class="card-title">Edit Profile</h3>
           <form method="post" novalidate>
             {% csrf_token %}
-            {% include 'includes/form.html' %}
-            
+            {% include 'includes/user_form.html' %}
+            {% include 'includes/profile_form.html' %}
+            {#{profile_form.as_p}#}
             <button type="submit" class="btn btn-primary btn-block">Save changes</button>
           </form>
         </div>

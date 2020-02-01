@@ -32,7 +32,8 @@ urlpatterns = [
         name='password_change'),
     url(r'^settings/password/done/$', auth_views.PasswordChangeDoneView.as_view(template_name='password_change_done.html'),
         name='password_change_done'),
-    url(r'^settings/account/$', accounts_views.UserUpdateView.as_view(), name='my_account'),
+    # url(r'^settings/account/$', accounts_views.UserUpdateView.as_view(), name='my_account'),
+    url(r'^settings/account/$', accounts_views.edit_user, name='my_account'),
     url(r'^settings/account/done', accounts_views.my_account_done, name='my_account_done'),
     
     url(r'^admin/', admin.site.urls),

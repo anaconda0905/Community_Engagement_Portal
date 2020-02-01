@@ -3,18 +3,22 @@ from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth import views as auth_views
-from .forms import SignUpForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
+from accounts.models import Profile
 from django.core.mail import EmailMessage
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
+from django.forms.models import inlineformset_factory, formset_factory
+from .forms import SignUpForm, UserProfileForm, ProfileForm
+from .models import Profile
 
 def login_user(request, *args, **kwargs):
     if request.method == 'POST':
@@ -29,12 +33,6 @@ def signup(request):
         form = SignUpForm(request.POST)
         
         if form.is_valid():
-            # username = request.POST.get('username')
-            # password = request.POST.get('password')
-            # user = authenticate(username=username, password=password)
-            # user = form.save()
-            # auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-            # return redirect('home')
             
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
@@ -78,15 +76,16 @@ def activate(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')
         
         
-@method_decorator(login_required, name='dispatch')
-class UserUpdateView(UpdateView):
-    model = User
-    fields = ('username', 'email', )
-    template_name = 'my_account.html'
-    success_url = reverse_lazy('my_account_done')
+# @method_decorator(login_required, name='dispatch')
+# class UserUpdateView(UpdateView):
+    
+#     model = User
+#     fields = ('username', 'email',)
+#     template_name = 'my_account.html'
+#     success_url = reverse_lazy('my_account_done')
 
-    def get_object(self):
-        return self.request.user
+#     def get_object(self):
+#         return self.request.user
 
         
 def my_account_done(request):
@@ -95,3 +94,35 @@ def my_account_done(request):
 def home(request):
     return render(request, 'home.html')
     
+@login_required
+def edit_user(request):
+    # print(request.user)
+    user = request.user
+    user_form = UserProfileForm(instance=user)
+ 
+    ProfileInlineFormset = inlineformset_factory(User, Profile, form=ProfileForm, can_delete = False)
+    formset = ProfileInlineFormset(instance=user)
+    print(user_form)
+    print(formset)
+ 
+    if request.user.is_authenticated() and request.user.id == user.id:
+        if request.method == "POST":
+            user_form = UserProfileForm(request.POST, request.FILES, instance=user)
+            formset = ProfileInlineFormset(request.POST, request.FILES, instance=user)
+ 
+            if user_form.is_valid():
+                created_user = user_form.save(commit=False)
+                formset = ProfileInlineFormset(request.POST, request.FILES, instance=created_user)
+ 
+                if formset.is_valid():
+                    created_user.save()
+                    formset.save()
+                    return redirect('my_account_done')
+ 
+        return render(request, "account_update.html", {
+            "user_form": user_form,
+            "profile_form": formset,
+        })
+    else:
+        raise PermissionDenied
+        
