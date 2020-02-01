@@ -8,13 +8,11 @@
   </div>
 {% endif %}
 
-{% for field in profile_form.empty_form.hidden_fields %}
-{{ hidden }}
-{% endfor %}
-{% for field in profile_form.empty_form.visible_fields %}
+
+{% for field in profile_form %}
   <div class="form-group">
     {{ field.label_tag }}
-    
+    {{ profile_form.management_form }}
     {% render_field field %}
     {% for error in field.errors %}
       <div class="invalid-feedback">

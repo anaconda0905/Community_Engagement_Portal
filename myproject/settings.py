@@ -25,7 +25,7 @@ SECRET_KEY = 'rqr_cjv4igscyu8&&(0%e(=sy=f2)p=f_wn&@0xsp7m$@!kp=d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','lb.mineproxy.club', 'ec2-3-8-146-73.eu-west-2.compute.amazonaws.com', 'superfast.hmaresistance.live']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost','lb.mineproxy.club','52.56.167.32', 'ec2-52-56-167-32.eu-west-2.compute.amazonaws.com', 'superfast.hmaresistance.live']
 
 # Application definition
 

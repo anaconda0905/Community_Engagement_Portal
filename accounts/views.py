@@ -33,7 +33,7 @@ def signup(request):
         form = SignUpForm(request.POST)
         
         if form.is_valid():
-            
+            print("yes")
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
             user.profile.birth_date = form.cleaned_data.get('birth_date')
@@ -113,11 +113,13 @@ def edit_user(request):
             if user_form.is_valid():
                 created_user = user_form.save(commit=False)
                 formset = ProfileInlineFormset(request.POST, request.FILES, instance=created_user)
+                
+                print(request.POST)
  
                 if formset.is_valid():
                     created_user.save()
                     formset.save()
-                    return redirect('my_account_done')
+                return redirect('my_account_done')
  
         return render(request, "account_update.html", {
             "user_form": user_form,

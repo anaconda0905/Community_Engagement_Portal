@@ -8,7 +8,8 @@ class UserProfileForm(forms.ModelForm):
     email = forms.CharField(max_length=254, required=True, widget=forms.EmailInput(attrs={'readonly':'readonly'}))
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'email')
+        # fields = ('first_name', 'last_name', 'email')
+        fields = ('email',)
 
 class ProfileForm(forms.ModelForm):
     birth_date = forms.DateField(
