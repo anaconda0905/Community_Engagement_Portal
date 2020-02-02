@@ -2,3 +2,6 @@ Django==1.11.4
 django-widget-tweaks==1.4.1
 social-auth-app-django==1.1.0
 python-decouple==3.3
+django-phone-field
+django-phonenumber-field==4.0.0
+phonenumbers

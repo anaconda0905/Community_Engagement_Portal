@@ -19,7 +19,7 @@ from django.core.exceptions import PermissionDenied
 from django.forms.models import inlineformset_factory, formset_factory
 from .forms import SignUpForm, UserProfileForm, ProfileForm
 from .models import Profile
-
+from django.forms import *
 def login_user(request, *args, **kwargs):
     if request.method == 'POST':
         if not request.POST.get('remember_me', None):
@@ -31,12 +31,19 @@ def login_user(request, *args, **kwargs):
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-        
+        if not request.POST.get('check_policy', None):
+            
+            # raise ValidationError("Sorry, that login was invalid. Please try again.")
+            # raise PermissionDenied
+            
+            return render(request, 'signup.html', {'form': form, 'check_policy':'required'})
         if form.is_valid():
-            print("yes")
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
+            user.profile.fullname = form.cleaned_data.get('fullname')
+            user.profile.nric = form.cleaned_data.get('nric')
             user.profile.birth_date = form.cleaned_data.get('birth_date')
+            user.profile.phone = form.cleaned_data.get('phone')
             user.is_active = False
             
             user.save()
@@ -114,7 +121,7 @@ def edit_user(request):
                 created_user = user_form.save(commit=False)
                 formset = ProfileInlineFormset(request.POST, request.FILES, instance=created_user)
                 
-                print(request.POST)
+                # print(request.POST)
  
                 if formset.is_valid():
                     created_user.save()
