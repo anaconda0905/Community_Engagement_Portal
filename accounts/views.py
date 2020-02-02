@@ -20,6 +20,11 @@ from django.forms.models import inlineformset_factory, formset_factory
 from .forms import SignUpForm, UserProfileForm, ProfileForm
 from .models import Profile
 from django.forms import *
+from django.http import JsonResponse
+from json import dumps
+import json
+
+
 def login_user(request, *args, **kwargs):
     if request.method == 'POST':
         if not request.POST.get('remember_me', None):
@@ -97,6 +102,14 @@ def activate(request, uidb64, token):
         
 def my_account_done(request):
     return render(request, 'my_account_done.html')
+
+def data_survey(request):
+    if request.method == 'POST':
+        # on python 3
+        temp = str(request.body, 'utf-8')
+        # json_data = json.loads(temp)
+        print(temp)    
+    return render(request, 'account_data_survey.html')
     
 def home(request):
     return render(request, 'home.html')

@@ -15,7 +15,7 @@ class Profile(models.Model):
     nric = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(default=datetime.date.today, blank=True)
     phone = PhoneNumberField(blank=True, help_text='Contact phone number')
- 
+    
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:

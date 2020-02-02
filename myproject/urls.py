@@ -34,7 +34,8 @@ urlpatterns = [
         name='password_change_done'),
     # url(r'^settings/account/$', accounts_views.UserUpdateView.as_view(), name='my_account'),
     url(r'^settings/account/$', accounts_views.edit_user, name='my_account'),
-    url(r'^settings/account/done', accounts_views.my_account_done, name='my_account_done'),
+    url(r'^settings/account/done/$', accounts_views.my_account_done, name='my_account_done'),
+    url(r'^settings/account/survey/$', accounts_views.data_survey, name='data_survey'),
     
     url(r'^admin/', admin.site.urls),
     url(r'^oauth/', include('social_django.urls', namespace='social')),

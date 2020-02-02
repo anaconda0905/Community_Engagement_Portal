@@ -1,0 +1,59 @@
+{% extends 'base_accounts.html' %}
+
+{% block title %}Survey Question{% endblock %}
+
+{% block content %}
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-sm-8">
+      <div class="cardnew">
+        <div class="card-body-new">
+          <h3 class="card-title" style="text-align:center;">Survey Question</h3>
+          
+          <form method="POST">
+            {% csrf_token %}
+            <div><hr></div>
+            <div class="row">
+              <div class="col-6">
+                <p>*How safe is Public Transport?</p>
+              </div>
+              <div class="col-6">
+                <input type="radio" name="gender" value="male"> High<br>
+                <input type="radio" name="gender" value="female"> Medium<br>
+                <input type="radio" name="gender" value="unknown"> Low<br>
+              </div>
+            </div>
+            <div><hr class="hrnew"></div>
+            <div class="row">
+              <div class="col-6">
+                <p>*How safe is Public Transport?</p>
+              </div>
+              <div class="col-6">
+                <input type="radio" name="gender1" value="male"> High<br>
+                <input type="radio" name="gender1" value="female"> Medium<br>
+                <input type="radio" name="gender1" value="unknown"> Low<br>
+              </div>
+            </div>            
+            <input type="button" class="btn btn-primary btn-block" name="submit" id="submit" value="submit">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block js %}
+<script>
+  $("input#submit").on('click', function () {
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: '{% url "data_survey" %}',
+        data : { x: "1", y: "2" , z: "3" },
+        // data: JSON.stringify(myObj),
+        dataType: "json"
+    });
+  });
+
+</script>
+{% endblock js %}

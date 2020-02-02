@@ -14,11 +14,12 @@
             {% include 'includes/form.html' %}
             <div class="login-check">
 						  <label class="checkbox">
-						    <input type="checkbox" value="true" name="check_policy"><i> </i> Read & Agree To Our Privacy Policy
+						    <input type="checkbox" value="true" name="check_policy">
+						      <i> </i> Read & Agree To Our Privacy Policy
 						  </label>
 					  </div>
 					  {% if check_policy %}
-					  <p style="color:red;">* This fiedl required.</p>
+					  <p style="color:red;">* This field is required.</a></p>
 					  {% endif%}
             
             <button type="submit" class="btn btn-primary btn-block">Create an account</button>

@@ -142,3 +142,7 @@ ul {
   -o-border-radius: 50%;
 }
 
+
+.hrnew{
+  border-top: 1px solid rgba(255,255,255,1) !important
+}
