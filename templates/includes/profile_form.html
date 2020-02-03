@@ -10,7 +10,7 @@
 
 
 {% for field in profile_form %}
-  <div class="form-group">
+  
     {{ field.label_tag }}
     {{ profile_form.management_form }}
     {% render_field field %}
@@ -20,5 +20,4 @@
       </div>
     {% endfor %}
     
-  </div>
 {% endfor %}

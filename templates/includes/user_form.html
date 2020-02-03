@@ -9,7 +9,7 @@
 {% endif %}
 
 {% for field in user_form %}
-  <div class="form-group">
+  
     {{ field.label_tag }}
     {% render_field field class=field|input_class %}
     {% for error in field.errors %}
@@ -18,5 +18,4 @@
       </div>
     {% endfor %}
     
-  </div>
 {% endfor %}
