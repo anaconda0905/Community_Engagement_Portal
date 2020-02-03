@@ -44,14 +44,27 @@
 
 {% block js %}
 <script>
+  var myObj={
+    "Field1":{
+      "c1":null,
+      "c2":false
+    },
+    "Field2":{
+      "c12":null,
+      "c22":false
+    },
+  }
   $("input#submit").on('click', function () {
     $.ajax({
         type: "POST",
         contentType: "application/json",
         url: '{% url "data_survey" %}',
-        data : { x: "1", y: "2" , z: "3" },
-        // data: JSON.stringify(myObj),
-        dataType: "json"
+        // data : { x: "1", y: "2" , z: "3" },
+        data: JSON.stringify(myObj),
+        dataType: "json",
+        success: function(data){
+          window.location.href = "{% url 'home' %}";
+        }
     });
   });
 

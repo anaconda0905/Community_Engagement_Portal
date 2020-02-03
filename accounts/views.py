@@ -103,12 +103,18 @@ def activate(request, uidb64, token):
 def my_account_done(request):
     return render(request, 'my_account_done.html')
 
+@login_required
 def data_survey(request):
     if request.method == 'POST':
         # on python 3
         temp = str(request.body, 'utf-8')
-        # json_data = json.loads(temp)
-        print(temp)    
+        
+        json_data = json.loads(temp)
+        data = json.dumps({'url':'/settings/account/survey'})
+        # print(data)
+        # print(json_data)  
+        return HttpResponse(data)
+    
     return render(request, 'account_data_survey.html')
     
 def home(request):
