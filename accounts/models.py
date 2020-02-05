@@ -15,7 +15,7 @@ class Profile(models.Model):
     nric = models.CharField(max_length=30, blank=True)
     birth_date = models.DateField(default=datetime.date.today, blank=True, null=True)
     phone = PhoneNumberField(blank=True, help_text='Contact phone number')
-    # avatar = models.FileField(upload_to='avatars', default='avatars/default_avatar.png', blank=True, null=True)
+    image = models.ImageField(upload_to='profile_image', blank=True, null=True)
 
 class Survey(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="survey")

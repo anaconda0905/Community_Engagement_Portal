@@ -46,9 +46,9 @@ def signup(request):
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
             user.profile.fullname = form.cleaned_data.get('fullname')
-            user.profile.nric = form.cleaned_data.get('nric')
-            user.profile.birth_date = form.cleaned_data.get('birth_date')
-            user.profile.phone = form.cleaned_data.get('phone')
+            # user.profile.nric = form.cleaned_data.get('nric')
+            # user.profile.birth_date = form.cleaned_data.get('birth_date')
+            # user.profile.phone = form.cleaned_data.get('phone')
             # if(request.FILES['avatar']):
             #     user.profile.avatar = request.FILES['avatar']
             user.is_active = False
@@ -152,7 +152,7 @@ def edit_user(request):
                 created_user = user_form.save(commit=False)
                 formset = ProfileInlineFormset(request.POST, request.FILES, instance=created_user)
                 
-                # print(request.POST)
+                print(formset)
  
                 if formset.is_valid():
                     created_user.save()

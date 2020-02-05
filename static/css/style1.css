@@ -1587,3 +1587,7 @@ a.move-top span {
 @media screen and (max-width:320px) {}
 
 /*-- //Responsive design --*/
+
+.profile_image{
+    border-radius: 50%;
+}

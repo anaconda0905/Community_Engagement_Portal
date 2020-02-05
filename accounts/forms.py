@@ -23,29 +23,30 @@ class ProfileForm(forms.ModelForm):
         )
     )
     phone = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'(xxx)xxx-xxxx', 'class': 'form-control'}), required=False)
+    image = forms.ImageField(required=False)
     class Meta:
         model = Profile
-        fields = ('fullname','nric', 'birth_date', 'phone', )
+        fields = ('fullname','nric', 'birth_date', 'phone', 'image')
 
         
 class SignUpForm(UserCreationForm):
     fullname = forms.CharField(max_length=254, required=True,label="Full Name as NRIC")
-    nric = forms.CharField(max_length=254, required=False, label="NRIC")
-    birth_date = forms.DateField(
-        help_text='Required. Format: mm/dd/yyyy', 
-        required=False,
-        label = "Date Of Birth",
-        widget=forms.DateInput(
-            attrs={'type': 'date', 'class': 'form-control'}
-        )
-    )
-    phone = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'(xxx)xxx-xxxx'}), required=False)
+    # nric = forms.CharField(max_length=254, required=False, label="NRIC")
+    # birth_date = forms.DateField(
+    #     help_text='Required. Format: mm/dd/yyyy', 
+    #     required=False,
+    #     label = "Date Of Birth",
+    #     widget=forms.DateInput(
+    #         attrs={'type': 'date', 'class': 'form-control'}
+    #     )
+    # )
+    # phone = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'(xxx)xxx-xxxx'}), required=False)
     email = forms.CharField(max_length=254, required=True, widget=forms.EmailInput(attrs={'placeholder':'Enter valid email'}))
-    # avatar = forms.ImageField(required=False)
+    # image = forms.ImageField(upload_to ="profile_image", blank=True,)
 
     class Meta:
         model = User
-        fields = ('fullname', 'nric', 'birth_date', 'username', 'email', 'password1', 'password2', 'phone')
+        fields = ('fullname', 'username', 'email', 'password1', 'password2',)
         
     def clean_email(self):
         """

@@ -46,10 +46,23 @@
                                 {% if user.is_authenticated %}
                                 <li>
                                     <!-- First Tier Drop Down -->
-                                    <label for="drop-2" class="toggle">{{ user.username }} <span
-                                            class="fa fa-angle-down" aria-hidden="true"></span> </label>
-                                    <a href="#">{{ user.username }} <span class="fa fa-angle-down"
-                                            aria-hidden="true"></span></a>
+                                    <label for="drop-2" class="toggle">{{ user.username }}
+                                        {% if user.profile.image %}
+                                        <img class="profile_image" src="{{user.profile.image.url}}" width="30"> 
+                                        {% else %}
+                                        <img class="profile_image" src="/media/profile_image/default.png" width="30"> 
+                                        {% endif %}
+                                        <span class="fa fa-angle-down" aria-hidden="true"></span> 
+                                    </label>
+                                    <a href="#">
+                                        {{ user.username }}
+                                        {% if user.profile.image %}
+                                        <img class="profile_image" src="{{user.profile.image.url}}" width="30"> 
+                                        {% else %}
+                                        <img class="profile_image" src="/media/profile_image/default.png" width="30"> 
+                                        {% endif %}
+                                        <span class="fa fa-angle-down" aria-hidden="true"></span>
+                                    </a>
                                     <input type="checkbox" id="drop-2">
                                     <ul class="inner-ul">
                                         <li><a class="scroll" href="{% url 'my_account' %}">My account</a></li>
