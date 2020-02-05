@@ -17,7 +17,7 @@ urlpatterns = [
             template_name='password_reset.html',
             email_template_name='password_reset_email.html',
             subject_template_name='password_reset_subject.txt'
-        ),
+        ), 
         name='password_reset'),
     url(r'^reset/done/$',
         auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'),

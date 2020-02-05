@@ -11,8 +11,8 @@
           <form method="post" novalidate enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-              {% include 'includes/profile_form.html' %}
               {% include 'includes/user_form.html' %}
+              {% include 'includes/profile_form.html' %}
               {#{profile_form.as_p}#}
             </div>
 

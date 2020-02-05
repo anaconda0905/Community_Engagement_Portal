@@ -108,25 +108,34 @@ def my_account_done(request):
 @login_required
 def data_survey(request):
     if request.method == 'POST':
-        # on python 3
-        temp = str(request.body, 'utf-8')
-        json_data = json.loads(temp)
-
-        survey = Survey.objects.create(user=request.user, 
-            q1=json_data["q1"], 
-            q2=json_data["q2"],
-            q3=json_data["q2"],
-            q4=json_data["q2"],
-            q5=json_data["q2"],
-            q6=json_data["q2"],
-            times=json_data["times"],
-            reason_q2=json_data["reason_q2"],
-            reason_q3=json_data["reason_q3"],
-        )
-        survey.save()
-
-        data = json.dumps({'url':'/settings/account/survey'})
-        return HttpResponse(data)
+        error_occured = False
+        try:
+            # on python 3
+            temp = str(request.body, 'utf-8')
+            json_data = json.loads(temp)
+            if not Survey.objects.get(user=request.user):
+                survey = Survey.objects.create(user=request.user, 
+                    q1=json_data["q1"], 
+                    q2=json_data["q2"],
+                    q3=json_data["q2"],
+                    q4=json_data["q2"],
+                    q5=json_data["q2"],
+                    q6=json_data["q2"],
+                    times=json_data["times"],
+                    reason_q2=json_data["reason_q2"],
+                    reason_q3=json_data["reason_q3"],
+                )
+                survey.save()
+            
+        except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+            error_occured = True
+        if error_occured != True:
+            
+            data = json.dumps({'url':'/settings/account/survey'})
+            return HttpResponse(data)
+        else:
+            return HttpResponse('Error occured.')
+        
     return render(request, 'account_data_survey.html')
     
 def home(request):
@@ -152,7 +161,7 @@ def edit_user(request):
                 created_user = user_form.save(commit=False)
                 formset = ProfileInlineFormset(request.POST, request.FILES, instance=created_user)
                 
-                print(formset)
+                # print(formset)
  
                 if formset.is_valid():
                     created_user.save()
