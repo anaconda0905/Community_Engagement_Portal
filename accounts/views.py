@@ -9,7 +9,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
-from accounts.models import Profile
+from accounts.models import Profile, Survey
 from django.core.mail import EmailMessage
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
@@ -49,6 +49,8 @@ def signup(request):
             user.profile.nric = form.cleaned_data.get('nric')
             user.profile.birth_date = form.cleaned_data.get('birth_date')
             user.profile.phone = form.cleaned_data.get('phone')
+            # if(request.FILES['avatar']):
+            #     user.profile.avatar = request.FILES['avatar']
             user.is_active = False
             
             user.save()
@@ -83,7 +85,7 @@ def activate(request, uidb64, token):
         user.save()
         auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
-        return redirect('home')
+        return redirect('data_survey')
     else:
         return HttpResponse('Activation link is invalid!')
         
@@ -108,13 +110,23 @@ def data_survey(request):
     if request.method == 'POST':
         # on python 3
         temp = str(request.body, 'utf-8')
-        
         json_data = json.loads(temp)
+
+        survey = Survey.objects.create(user=request.user, 
+            q1=json_data["q1"], 
+            q2=json_data["q2"],
+            q3=json_data["q2"],
+            q4=json_data["q2"],
+            q5=json_data["q2"],
+            q6=json_data["q2"],
+            times=json_data["times"],
+            reason_q2=json_data["reason_q2"],
+            reason_q3=json_data["reason_q3"],
+        )
+        survey.save()
+
         data = json.dumps({'url':'/settings/account/survey'})
-        # print(data)
-        # print(json_data)  
         return HttpResponse(data)
-    
     return render(request, 'account_data_survey.html')
     
 def home(request):

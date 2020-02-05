@@ -13,9 +13,22 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     fullname = models.CharField(max_length=30, blank=True)
     nric = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField(default=datetime.date.today, blank=True)
+    birth_date = models.DateField(default=datetime.date.today, blank=True, null=True)
     phone = PhoneNumberField(blank=True, help_text='Contact phone number')
-    
+    # avatar = models.FileField(upload_to='avatars', default='avatars/default_avatar.png', blank=True, null=True)
+
+class Survey(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="survey")
+    q1 = models.CharField(max_length=30, blank=True, null=True)
+    q2 = models.CharField(max_length=30, blank=True, null=True)
+    q3 = models.CharField(max_length=30, blank=True, null=True)
+    q4 = models.CharField(max_length=30, blank=True, null=True)
+    q5 = models.CharField(max_length=30, blank=True, null=True)
+    q6 = models.CharField(max_length=30, blank=True, null=True)
+    times = models.CharField(max_length=30, blank=True, null=True)
+    reason_q2 = models.CharField(max_length=30, blank=True, null=True)
+    reason_q3 = models.CharField(max_length=30, blank=True, null=True)
+
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:

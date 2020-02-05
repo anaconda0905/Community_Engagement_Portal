@@ -40,8 +40,9 @@ class SignUpForm(UserCreationForm):
         )
     )
     phone = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'(xxx)xxx-xxxx'}), required=False)
-    email = forms.CharField(max_length=254, required=True, widget=forms.EmailInput(attrs={'placeholder':'valid email'}))
-    
+    email = forms.CharField(max_length=254, required=True, widget=forms.EmailInput(attrs={'placeholder':'Enter valid email'}))
+    # avatar = forms.ImageField(required=False)
+
     class Meta:
         model = User
         fields = ('fullname', 'nric', 'birth_date', 'username', 'email', 'password1', 'password2', 'phone')

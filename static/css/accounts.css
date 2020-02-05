@@ -146,3 +146,17 @@ ul {
 .hrnew{
   border-top: 1px solid rgba(255,255,255,1) !important
 }
+
+
+.form-controlnew{
+    width: 15%;
+    padding: .5rem .75rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #495057;
+    background-color: #fff;
+    background-image: none;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}

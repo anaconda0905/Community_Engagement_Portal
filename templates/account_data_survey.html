@@ -4,7 +4,7 @@
 
 {% block content %}
   <div class="row justify-content-center">
-    <div class="col-lg-4 col-md-6 col-sm-8">
+    <div class="col-lg-8 col-md-10 col-sm-12">
       <div class="cardnew">
         <div class="card-body-new">
           <h3 class="card-title" style="text-align:center;">Survey Question</h3>
@@ -13,26 +13,62 @@
             {% csrf_token %}
             <div><hr></div>
             <div class="row">
-              <div class="col-6">
-                <p>*How safe is Public Transport?</p>
+              <div class="col-12"><p>*How often do you take Public Transport?</p></div>
+              <div class="col-3">
+                <input type="radio" name="q1"> Everyday
+              </div>
+              <div class="col-3">
+                <input type="radio" name="q1"> Seldom<br>
               </div>
               <div class="col-6">
-                <input type="radio" name="gender" value="male"> High<br>
-                <input type="radio" name="gender" value="female"> Medium<br>
-                <input type="radio" name="gender" value="unknown"> Low<br>
+                <input type="text" class="form-controlnew" name="q1"> times a day/week/moth
               </div>
             </div>
             <div><hr class="hrnew"></div>
+
+            <div class="row">
+              <div class="col-12"><p>*Bus Tracking & Estimate Time Arrival Important to you?</p></div>
+              <div class="col-3"><input type="radio" name="q2"> Yes</div>
+              <div class="col-3"><input type="radio" name="q2"> No</div>
+              <div class="col-6" ><input type="text" name="q2" class="form-control" placeholder="Reason"></div>
+            </div>
+            <div><hr class="hrnew"></div>
+
+            <div class="row">
+              <div class="col-12"><p>*Is it difficult to get around using only public transportation?</p></div>
+              <div class="col-3"><input type="radio" name="q3"> Yes</div>
+              <div class="col-3"><input type="radio" name="q3"> No</div>
+              <div class="col-6" ><input type="text" name="q3" class="form-control" placeholder="Reason"></div>
+            </div>
+            <div><hr class="hrnew"></div>
+
             <div class="row">
               <div class="col-6">
                 <p>*How safe is Public Transport?</p>
               </div>
+              <div class="col-2"><input type="radio" name="q4"> High</div>
+              <div class="col-2"><input type="radio" name="q4"> Medium</div>
+              <div class="col-2"><input type="radio" name="q4"> Low</div>
+            </div>      
+            <div><hr class="hrnew"></div>
+
+            <div class="row">
               <div class="col-6">
-                <input type="radio" name="gender1" value="male"> High<br>
-                <input type="radio" name="gender1" value="female"> Medium<br>
-                <input type="radio" name="gender1" value="unknown"> Low<br>
+                <p>*Do you know the Student/Senior Citizen/OKU Special Fare?</p>
               </div>
-            </div>            
+              <div class="col-2"><input type="radio" name="q5"> Yes</div>
+              <div class="col-2"><input type="radio" name="q5"> No</div>
+            </div>      
+            
+            <div><hr class="hrnew"></div>
+            <div class="row">
+              <div class="col-6">
+                <p>*Do you know the Student/Senior Citizen/OKU Special Fare?</p>
+              </div>
+              <div class="col-2"><input type="radio" name="q6"> Yes</div>
+              <div class="col-2"><input type="radio" name="q6"> No</div>
+            </div>
+
             <input type="button" class="btn btn-primary btn-block" name="submit" id="submit" value="submit">
           </form>
         </div>
@@ -44,17 +80,41 @@
 
 {% block js %}
 <script>
-  var myObj={
-    "Field1":{
-      "c1":null,
-      "c2":false
-    },
-    "Field2":{
-      "c12":null,
-      "c22":false
-    },
-  }
+
+
   $("input#submit").on('click', function () {
+    var myObj={
+      "q1":null,
+      "q2":null,
+      "q3":null,
+      "q4":null,
+      "q5":null,
+      "q6":null,
+      "times":null,
+      "reason_q2":null,
+      "reason_q3":null,
+    };
+    if(document.getElementsByName('q1')[0].checked) myObj.q1 = "Everyday";
+    if(document.getElementsByName('q1')[1].checked) myObj.q1 = "Seldom";
+    myObj.times = document.getElementsByName('q1')[2].value;
+    
+    if(document.getElementsByName('q2')[0].checked) myObj.q2 = "Yes";
+    if(document.getElementsByName('q2')[1].checked) myObj.q2 = "No";
+    myObj.reason_q2 = document.getElementsByName('q2')[2].value;
+    
+    if(document.getElementsByName('q3')[0].checked) myObj.q3 = "Yes";
+    if(document.getElementsByName('q3')[1].checked) myObj.q3 = "No";
+    myObj.reason_q3 = document.getElementsByName('q3')[2].value;
+
+    if(document.getElementsByName('q4')[0].checked) myObj.q4 = "HIgh";
+    if(document.getElementsByName('q4')[1].checked) myObj.q4 = "Medium";
+    if(document.getElementsByName('q4')[2].checked) myObj.q4 = "Low";
+    
+    if(document.getElementsByName('q5')[0].checked) myObj.q5 = "Yes";
+    if(document.getElementsByName('q5')[1].checked) myObj.q5 = "No";
+    
+    if(document.getElementsByName('q6')[0].checked) myObj.q6 = "Yes";
+    if(document.getElementsByName('q6')[1].checked) myObj.q6 = "No";
     $.ajax({
         type: "POST",
         contentType: "application/json",
