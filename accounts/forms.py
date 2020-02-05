@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
+from django.db import models as db_models
 from .models import Profile
 
 # forms.py
@@ -22,12 +23,17 @@ class ProfileForm(forms.ModelForm):
             attrs={'type': 'date', 'class': 'form-control'}
         )
     )
+    
+    image = forms.ImageField(required=False,widget= forms.FileInput(attrs={'class': 'form-control', }))
     phone = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'(xxx)xxx-xxxx', 'class': 'form-control'}), required=False)
-    image = forms.ImageField(required=False)
+
     class Meta:
         model = Profile
         fields = ('fullname','nric', 'birth_date', 'phone', 'image')
 
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        self.fields['image'].widget.attrs['style'] = 'class: form-control;'
         
 class SignUpForm(UserCreationForm):
     fullname = forms.CharField(max_length=254, required=True,label="Full Name as NRIC")
