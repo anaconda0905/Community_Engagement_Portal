@@ -25,7 +25,7 @@ SECRET_KEY = 'rqr_cjv4igscyu8&&(0%e(=sy=f2)p=f_wn&@0xsp7m$@!kp=d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost','lb.mineproxy.club','ec2-52-56-36-118.eu-west-2.compute.amazonaws.com', 'superfast.hmaresistance.live']
+ALLOWED_HOSTS = ['127.0.0.1', '108.161.151.70']
 
 # Application definition
 
@@ -179,9 +179,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'conda0905@gmail.com'
-DEFAULT_FROM_EMAIL = 'conda0905@gmail.com'
-SERVER_EMAIL = 'conda0905@gmail.com'
+EMAIL_HOST_USER = 'deliciousdelivery420@gmail.com'
+DEFAULT_FROM_EMAIL = 'deliciousdelivery420@gmail.com'
+SERVER_EMAIL = 'deliciousdelivery420@gmail.com'
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 
 PHONENUMBER_DEFAULT_REGION = 'US'
