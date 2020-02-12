@@ -173,7 +173,8 @@ def edit_user(request):
             if user_form.is_valid():
                 created_user = user_form.save(commit=False)
                 formset = ProfileInlineFormset(request.POST, request.FILES, instance=created_user)                
-                # print(formset) 
+                # print(formset)
+
                 if formset.is_valid():
                     created_user.save()
                     formset.save()
@@ -185,4 +186,9 @@ def edit_user(request):
         })
     else:
         raise PermissionDenied
-        
+
+def contactus(request):
+    return render(request, 'contactus.html')
+
+def feedback(request):
+    return render(request, 'feedback.html')

@@ -25,7 +25,7 @@ SECRET_KEY = 'rqr_cjv4igscyu8&&(0%e(=sy=f2)p=f_wn&@0xsp7m$@!kp=d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '108.161.151.70']
+ALLOWED_HOSTS = ['127.0.0.1', '108.161.151.70', '123.125.114.144']
 
 # Application definition
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     
     'social_django',
-    
+
     'phonenumber_field',
 
     'django.contrib.gis',

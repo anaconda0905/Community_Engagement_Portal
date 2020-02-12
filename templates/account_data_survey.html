@@ -3,124 +3,210 @@
 {% block title %}Survey Question{% endblock %}
 
 {% block content %}
-  <div class="row justify-content-center">
+<div class="row justify-content-center">
     <div class="col-lg-4 col-md-6 col-sm-8">
-      <div class="cardnew">
-        <div class="card-body-new">
-          <h3 class="card-title" style="text-align:center;">Survey Question</h3>
-          
-          <form method="POST">
-            {% csrf_token %}
-            <div><hr></div>
-            <div class="row">
-              <div class="col-12"><b>Q1. How often do you take Public Transport?</b></div>
-              <div class="col-6"><input type="radio" name="q1"> Everyday</div>
-              <div class="col-6"><input type="radio" name="q1"> Seldom</div>
-              <div class="col-12"><input type="text" class="form-controlnew" name="q1"> times a day/week/moth</div>
+        <div class="cardnew">
+            <div class="card-body-new">
+                <h3 class="card-title" style="text-align:center;">Survey Question</h3>
+
+                <div class="steps" id="onboardingSteps">
+                    <div id="stp1" class="step-item is-active" data-step-id="0"></div>
+                    <div id="stp2" class="step-item" data-step-id="1"></div>
+
+                    <div id="stp3" class="step-item" data-step-id="2"></div>
+                    <div id="stp4" class="step-item" data-step-id="3"></div>
+                    <div id="stp5" class="step-item" data-step-id="4"></div>
+                    <div id="stp6" class="step-item" data-step-id="5"></div>
+                    <div class="steps-content is-marginless pt-5">
+                        <div class="step-content is-active">
+                            <div class="row">
+                                <div class="col-12"><b>Q1. How often do you take Public Transport?</b></div>
+                                <br><br><br>
+                                <div class="col-6"><input type="radio" name="q1"> Everyday</div>
+                                <div class="col-6"><input type="radio" name="q1"> Seldom</div>
+                                <div class="col-12"><input type="text" class="form-controlnew" name="q1"> times a
+                                    day/week/moth
+                                </div>
+                            </div>
+                            <div>
+                                <hr class="hrnew">
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <div class="row">
+                                <div class="col-12"><b>Q2. Bus Tracking & Estimate Time Arrival Important to you?</b>
+                                </div><br><br><br>
+                                <div class="col-6"><input type="radio" name="q2"> Yes</div>
+                                <div class="col-6"><input type="radio" name="q2"> No</div>
+                                <div class="col-12">Reason:<input type="text" name="q2" class="form-controlother"></div>
+                            </div>
+                            <div>
+                                <hr class="hrnew">
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <div class="row">
+                                <div class="col-12"><b>Q3. Is it difficult to get around using only public
+                                    transportation?</b>
+                                </div><br><br><br>
+                                <div class="col-6"><input type="radio" name="q3"> Yes</div>
+                                <div class="col-6"><input type="radio" name="q3"> No</div>
+                                <div class="col-12">Reason:<input type="text" name="q3" class="form-controlother"></div>
+                            </div>
+                            <div>
+                                <hr class="hrnew">
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <div class="row">
+                                <div class="col-12">
+                                    <b>Q4. How safe is Public Transport?</b>
+                                </div><br><br>
+                                <div class="col-12"><input type="radio" name="q4"> High</div>
+                                <div class="col-12"><input type="radio" name="q4"> Medium</div>
+                                <div class="col-12"><input type="radio" name="q4"> Low</div>
+                            </div>
+                            <div>
+                                <hr class="hrnew">
+                            </div>
+
+                        </div>
+                        <div class="step-content">
+                            <div class="row">
+                                <div class="col-12">
+                                    <b>Q5. Do you know the Student/Senior Citizen/OKU Special Fare?</b>
+                                </div><br><br><br>
+                                <div class="col-12"><input type="radio" name="q5"> Yes</div>
+                                <div class="col-12"><input type="radio" name="q5"> No</div>
+                            </div>
+
+                            <div>
+                                <hr class="hrnew">
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <div class="row">
+                                <div class="col-12">
+                                    <b>Q6. Do you know the Student/Senior Citizen/OKU Special Fare?</b>
+                                </div><br><br><br>
+                                <div class="col-12"><input type="radio" name="q6"> Yes</div>
+                                <div class="col-12"><input type="radio" name="q6"> No</div>
+                            </div>
+                            <div>
+                                <hr class="hrnew">
+                            </div>
+                        </div>
+                        <div class="steps-actions pl-4 pr-4 pt-4 pb-2">
+                            <div class="steps-action">
+                                <a href="#" data-nav="previous" class="button is-light is-pulled-left is-marginless"
+                                   disabled="disabled">Previous</a>
+                            </div>
+                            <div class="steps-action">
+                                <a href="#" data-nav="next" class="button blue is-right is-marginless">Next</a>
+
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <!-- <input class="button green is-marginless" id="submit" name="submit" type="button" value="Submit" onclick="collect_data()" disabled="disabled"> -->
+<!--                                    <input type="button" class="btn btn-primary btn-block" name="submit" id="submit" value="submit">-->
+                                    <input class="button green is-marginless" id="submit" name="submit"
+                                           type="button"
+                                           value="Submit" disabled="disabled">
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div><hr class="hrnew"></div>
-
-            <div class="row">
-              <div class="col-12"><b>Q2. Bus Tracking & Estimate Time Arrival Important to you?</b></div>
-              <div class="col-6"><input type="radio" name="q2"> Yes</div>
-              <div class="col-6"><input type="radio" name="q2"> No</div>
-              <div class="col-12" >Reason:<input type="text" name="q2" class="form-controlother" ></div>
-            </div>
-            <div><hr class="hrnew"></div>
-
-            <div class="row">
-              <div class="col-12"><b>Q3. Is it difficult to get around using only public transportation?</b></div>
-              <div class="col-6"><input type="radio" name="q3"> Yes</div>
-              <div class="col-6"><input type="radio" name="q3"> No</div>
-              <div class="col-12">Reason:<input type="text" name="q3" class="form-controlother"></div>
-            </div>
-            <div><hr class="hrnew"></div>
-
-            <div class="row">
-              <div class="col-12">
-                <b>Q4. How safe is Public Transport?</b>
-              </div>
-              <div class="col-12"><input type="radio" name="q4"> High</div>
-              <div class="col-12"><input type="radio" name="q4"> Medium</div>
-              <div class="col-12"><input type="radio" name="q4"> Low</div>
-            </div>      
-            <div><hr class="hrnew"></div>
-
-            <div class="row">
-              <div class="col-12">
-                <b>Q5. Do you know the Student/Senior Citizen/OKU Special Fare?</b>
-              </div>
-              <div class="col-12"><input type="radio" name="q5"> Yes</div>
-              <div class="col-12"><input type="radio" name="q5"> No</div>
-            </div>      
-            
-            <div><hr class="hrnew"></div>
-            <div class="row">
-              <div class="col-12">
-                <b>Q6. Do you know the Student/Senior Citizen/OKU Special Fare?</b>
-              </div>
-              <div class="col-12"><input type="radio" name="q6"> Yes</div>
-              <div class="col-12"><input type="radio" name="q6"> No</div>
-            </div>
-
-            <input type="button" class="btn btn-primary btn-block" name="submit" id="submit" value="submit">
-          </form>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 {% endblock %}
 
 
 {% block js %}
+
+<script>
+    (function () {
+        new bulmaSteps(document.getElementById('onboardingSteps'), {
+            onShow: (id) => testActualStep(id)
+        })
+
+        function testActualStep(id) {
+            if (id === 5) {
+                $("#submit").removeAttr("disabled")
+            }
+            if (id === 4) {
+                $("#submit").attr("disabled", "disabled");
+            }
+            if (id === 3) {
+                $("#submit").attr("disabled", "disabled");
+            }
+            if (id === 2) {
+                $("#submit").attr("disabled", "disabled");
+            }
+            if (id === 1) {
+                $("#submit").attr("disabled", "disabled");
+            }
+
+        }
+
+        $('.checkbox').change(function () {
+            if ($("#" + this.id + "_block").length) {
+                $("#" + this.id + "_block").toggleClass("disabled");
+            }
+        });
+    })();
+</script>
+
 <script>
 
 
-  $("input#submit").on('click', function () {
-    var myObj={
-      "q1":null,
-      "q2":null,
-      "q3":null,
-      "q4":null,
-      "q5":null,
-      "q6":null,
-      "times":null,
-      "reason_q2":null,
-      "reason_q3":null,
-    };
-    if(document.getElementsByName('q1')[0].checked) myObj.q1 = "Everyday";
-    if(document.getElementsByName('q1')[1].checked) myObj.q1 = "Seldom";
-    myObj.times = document.getElementsByName('q1')[2].value;
-    
-    if(document.getElementsByName('q2')[0].checked) myObj.q2 = "Yes";
-    if(document.getElementsByName('q2')[1].checked) myObj.q2 = "No";
-    myObj.reason_q2 = document.getElementsByName('q2')[2].value;
-    
-    if(document.getElementsByName('q3')[0].checked) myObj.q3 = "Yes";
-    if(document.getElementsByName('q3')[1].checked) myObj.q3 = "No";
-    myObj.reason_q3 = document.getElementsByName('q3')[2].value;
+    $("input#submit").on('click', function () {
+        var myObj = {
+            "q1": null,
+            "q2": null,
+            "q3": null,
+            "q4": null,
+            "q5": null,
+            "q6": null,
+            "times": null,
+            "reason_q2": null,
+            "reason_q3": null,
+        };
+        if (document.getElementsByName('q1')[0].checked) myObj.q1 = "Everyday";
+        if (document.getElementsByName('q1')[1].checked) myObj.q1 = "Seldom";
+        myObj.times = document.getElementsByName('q1')[2].value;
 
-    if(document.getElementsByName('q4')[0].checked) myObj.q4 = "HIgh";
-    if(document.getElementsByName('q4')[1].checked) myObj.q4 = "Medium";
-    if(document.getElementsByName('q4')[2].checked) myObj.q4 = "Low";
-    
-    if(document.getElementsByName('q5')[0].checked) myObj.q5 = "Yes";
-    if(document.getElementsByName('q5')[1].checked) myObj.q5 = "No";
-    
-    if(document.getElementsByName('q6')[0].checked) myObj.q6 = "Yes";
-    if(document.getElementsByName('q6')[1].checked) myObj.q6 = "No";
-    $.ajax({
-        type: "POST",
-        contentType: "application/json",
-        url: '{% url "data_survey" %}',
-        // data : { x: "1", y: "2" , z: "3" },
-        data: JSON.stringify(myObj),
-        dataType: "json",
-        success: function(data){
-          window.location.href = "{% url 'my_account' %}";
-        }
+        if (document.getElementsByName('q2')[0].checked) myObj.q2 = "Yes";
+        if (document.getElementsByName('q2')[1].checked) myObj.q2 = "No";
+        myObj.reason_q2 = document.getElementsByName('q2')[2].value;
+
+        if (document.getElementsByName('q3')[0].checked) myObj.q3 = "Yes";
+        if (document.getElementsByName('q3')[1].checked) myObj.q3 = "No";
+        myObj.reason_q3 = document.getElementsByName('q3')[2].value;
+
+        if (document.getElementsByName('q4')[0].checked) myObj.q4 = "HIgh";
+        if (document.getElementsByName('q4')[1].checked) myObj.q4 = "Medium";
+        if (document.getElementsByName('q4')[2].checked) myObj.q4 = "Low";
+
+        if (document.getElementsByName('q5')[0].checked) myObj.q5 = "Yes";
+        if (document.getElementsByName('q5')[1].checked) myObj.q5 = "No";
+
+        if (document.getElementsByName('q6')[0].checked) myObj.q6 = "Yes";
+        if (document.getElementsByName('q6')[1].checked) myObj.q6 = "No";
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: '{% url "data_survey" %}',
+            // data : { x: "1", y: "2" , z: "3" },
+            data: JSON.stringify(myObj),
+            dataType: "json",
+            success: function (data) {
+                window.location.href = "{% url 'my_account' %}";
+            }
+        });
     });
-  });
 
 </script>
 {% endblock js %}

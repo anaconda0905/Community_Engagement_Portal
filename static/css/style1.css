@@ -697,6 +697,7 @@ span.title {
 }
 
 .benifit-icon {
+    margin:auto;
     background: #212529;
     width: 70px;
     height: 70px;
@@ -1408,7 +1409,8 @@ a.move-top span {
 
     .benifit-icon {
         text-align: center;
-        margin: 0 auto;
+
+        margin: auto;
     }
 
     h5.gal-info {
@@ -1590,4 +1592,19 @@ a.move-top span {
 
 .profile_image{
     border-radius: 50%;
+}
+
+#header{
+    position:fixed;
+    background-color: rgba(0, 0, 0, 0.89);
+}
+
+#footernew{
+    background-color: #1b1e21;
+}
+
+
+.emoji-center{
+    width: 80px;
+    margin: auto;
 }
