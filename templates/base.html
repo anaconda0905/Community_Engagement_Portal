@@ -8,148 +8,153 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="keywords"
-          content="Asap Cab Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}" media="all">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700" >
 
-    <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}" media="all">
-    <link rel="stylesheet" href="{% static 'css/bulma.css' %}" type="text/css" media="all"/>
-
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" media="all">
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Hind:300,400,500,600,700">
-
-    <link rel="stylesheet" href="{% static 'css/app.css' %}" media="all">
-    <link rel="stylesheet" href="{% static 'css/style1.css' %}" media="all">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" media="all">
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap-slider.css' %}" media="all">
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}" type="text/css" media="all"/>
+    <!-- Owl Carousel -->
+    <link href="{% static 'plugins/slick-carousel/slick/slick.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/slick-carousel/slick/slick-theme.css' %}" rel="stylesheet">
+    <!-- Fancy Box -->
+    <link href="{% static 'plugins/fancybox/jquery.fancybox.pack.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/jquery-nice-select/css/nice-select.css' %}" rel="stylesheet">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" media="all">
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}" media="all">
 
     {% block stylesheet %}{% endblock %}
 </head>
 
-<body>
-<div class="bg-layer">
-    {% block body %}
-    <!-- header -->
-    <header>
-        <div class="container-fluid px-lg-5" id="header">
-            <!-- nav -->
-            <nav class="py-4 d-lg-flex">
-                <div id="logo">
-                    <h1><a href="{% url 'home' %}">Logo</a></h1>
-                </div>
-                <label for="drop" class="toggle">Menu</label>
-                <input type="checkbox" id="drop">
-                <ul class="menu mt-2 ml-auto">
-                    <li class="active"><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'feedback' %}" class="scroll">Feedback</a></li>
+<body class="body-wrapper">
 
-                    <li><a href="#testimonials" class="scroll">Forum</a></li>
-                    <li><a href="#testimonials" class="scroll">Maas Ideation</a></li>
-                    <li><a href="{% url 'contactus' %}" class="scroll">Contact</a></li>
-                    {% if user.is_authenticated %}
-                    <li>
-                        <!-- First Tier Drop Down -->
-                        <label for="drop-2" class="toggle">{{ user.username }}
-                            {% if user.profile.image %}
-                            <img class="profile_image" src="{{user.profile.image.url}}" width="30">
-                            {% else %}
-                            <img class="profile_image" src="/media/profile_image/default.png" width="30">
-                            {% endif %}
-                            <span class="fa fa-angle-down" aria-hidden="true"></span>
-                        </label>
-                        <a href="#">
-                            {{ user.username }}
-                            {% if user.profile.image %}
-                            <img class="profile_image" src="{{user.profile.image.url}}" width="30">
-                            {% else %}
-                            <img class="profile_image" src="/media/profile_image/default.png" width="30">
-                            {% endif %}
-                            <span class="fa fa-angle-down" aria-hidden="true"></span>
+    {% block body %}
+    <section id="topbar_section">
+        <div class="ww-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-expand-lg navbar-light navigation">
+                        <a class="navbar-brand" href="{% url 'home' %}">
+                            <img src="{% static 'images/logo.png' %}" alt="">
                         </a>
-                        <input type="checkbox" id="drop-2">
-                        <ul class="inner-ul">
-                            <li><a class="scroll" href="{% url 'my_account' %}">My account</a></li>
-                            <li><a href="{% url 'password_change' %}" class="scroll">Change password</a>
-                            </li>
-                            <li><a href="{% url 'logout' %}" class="scroll">Log out</a></li>
-                        </ul>
-                    </li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}" class="scroll">Sign in</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-            <!-- //nav -->
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto main-nav ">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{% url 'data_survey_update' %}">
+                                        <img class="ww-nav-img" src="{% static '/images/survey.png' %}"/>
+                                    </a>
+                                    <h4 class="mt-10">Survey</h4>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">
+                                        <img class="ww-nav-img" src="{% static '/images/add.png' %}"/>
+                                    </a>
+                                    <h4 class="mt-10">Review</h4>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">
+                                        <img class="ww-nav-img" src="{% static '/images/heart.png' %}"/>
+                                    </a>
+                                    <h4 class="mt-10">Popular</h4>
+                                </li>
+                                <li class="nav-item active" style="padding-left: 10px;">
+                                    <a class="nav-link" href="index.html">
+                                        <img class="ww-nav-img" src="{% static '/images/bell.png' %}"/>
+                                    </a>
+                                    <h4 class="mt-10">Notification</h4>
+                                </li>
+                                {% if user.is_authenticated %}
+                                <li class="nav-item dropdown dropdown-slide">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">
+                                        {% if user.profile.image %}
+                                        <img class="ww-nav-img" src="{{user.profile.image.url}}" style="border-radius: 50%;" width="50"/>
+                                        {% else %}
+                                        <img class="ww-nav-img" src="{% static '/images/user.png' %}"/>
+                                        {% endif %}
+                                        <span><i class="fa fa-angle-down"></i></span>
+                                    </a>
+
+                                    <!-- Dropdown list -->
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{% url 'my_account' %}">My Profile</a>
+                                        <a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a>
+
+                                    </div>
+
+                                    <h4 class="mt-10">{{ user.username }}</h4>
+                                </li>
+
+                                {% else %}
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.html">
+                                        <img class="ww-nav-img" src="{% static '/images/user.png' %}"/>
+                                    </a>
+                                    <h4 class="mt-10">Profile</h4>
+                                </li>
+                                {% endif %}
+                            </ul>
+
+                            <ul class="navbar-nav ml-30 extra-nav">
+                                {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link login-button ww-login-btn" href="{% url 'logout' %}">Sign out</a>
+                                </li>
+                                {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link login-button ww-login-btn" href="{% url 'login' %}">Sign in</a>
+                                </li>
+                                {% endif %}
+                                <li class="nav-item active">
+                                    <a class="nav-link text-white add-button" href="ad-listing.html">
+                                        <img class="ww-nav-img" src="{% static '/images/settings.png' %}"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
         </div>
-    </header>
-    <!-- //header -->
+    </section>
 
     {% block content %}
     {% endblock %}
 
 
-    <div class="asap-lavi-footer-sec py-5" id="footernew">
-        <div class="container py-lg-3">
-            <div class="row">
-                <div class="col-lg-5 asap-w3pvt-footer-logo">
-                    <!-- footer logo -->
-                    <a class="navbar-brand" href="{% url 'home' %}">LOGO</a>
-                    <!-- //footer logo -->
-                </div>
-                <!-- button -->
-                <div class="col-lg-5 asap-w3pvt-footer text-lg-right text-center mt-3">
-                    <ul class="list-unstyled footer-nav-lavi">
-                        <li>
-                            <a href="{% url 'home' %}" class="scroll active">Home</a>
-                        </li>
-                        <li>
-                            <a class="scroll" href="{% url 'feedback' %}">Feedback</a>
-                        </li>
-                        <li>
-                            <a class="scroll" href="#menu">Forum</a>
-                        </li>
-                        <li>
-                            <a class=" scroll" href="#gallery">Maas Ideation</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- //button -->
-                <div class="col-lg-2 mt-lg-0 mt-3">
-                    <div class="button-asap-w3pvts mt-0 text-lg-right text-center">
-                        <a href="{% url 'contactus' %}" class="btn btn-sm thar-four scroll">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row copy-right-sec mt-4 pt-lg-4 pt-3 text-lg-left text-center">
-                <!-- copyright -->
-                <p class="col-lg-8 copy-right-grids mt-lg-1">
-                    Copyright ©
-                    <script> var CurrentYear = new Date().getFullYear()
-                    document.write(CurrentYear) </script>
-                    . All Rights Reserved |
-                    <a>
-                        Privacy Policy |
-                    </a>
-                    <a>
-                        Website Terms
-                    </a>
-                </p>
-                <!-- //copyright -->
-            </div>
-            <div class="move-top text-right"><a href="#home" class="move-top">
-                <span class="fa fa-angle-up  mb-3" aria-hidden="true"></span></a>
-            </div>
-        </div>
-    </div>
-
     {% endblock body %}
-</div>
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'js/bulma-steps.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/django_ajax.js' %}"></script>
-{% block js %}
+    <!-- JAVASCRIPTS -->
+    <script src="{% static 'plugins/jQuery/jquery.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap-slider.js' %}"></script>
 
-{% endblock js %}
+    <!-- tether js -->
+    <script src="{% static 'plugins/tether/js/tether.min.js' %}"></script>
+    <script src="{% static 'plugins/raty/jquery.raty-fa.js' %}"></script>
+    <script src="{% static 'plugins/slick-carousel/slick/slick.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery-nice-select/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'plugins/fancybox/jquery.fancybox.pack.js' %}"></script>
+    <script src="{% static 'plugins/smoothscroll/SmoothScroll.min.js' %}"></script>
+
+    <!-- google map -->
+<!--    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>-->
+    <script src="{% static 'plugins/google-map/gmap.js' %}"></script>
+
+    <!--bulma-->
+    <script src="{% static 'plugins/bulma/js/bulma-steps.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/django_ajax.js' %}"></script>
+
+    {% block js %}
+
+    {% endblock js %}
 
 </body>
 

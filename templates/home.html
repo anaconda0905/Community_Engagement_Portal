@@ -4,174 +4,224 @@
 
 {% block content %}
 
-<div class="main-content" id="home">
-    <div class="layer">
-        <div class="container">
-            <!-- /banner -->
-            <div class="banner-info-w3ls text-left">
-                <h3>Let's improve the Public Transport better together.</h3>
-                <div class="read-more">
-                    <a href="#about" class="read-more scroll btn">Read More </a></div>
-            </div>
-            <div class="row order-info">
-                <div class="middle mt-md-3 col-sm-6 text-left"></div>
-                <div class="middle-right mt-md-3 col-sm-6 text-sm-right">
-                    <h6><span class="fa fa-phone"></span> Call Now : +6016-402-2146</h6>
-                </div>
-            </div>
-            <div class="row order-info"></div>
-        </div>
-        <!-- //banner -->
-    </div>
-</div>
+<section id="topbackground_section" class="hero-area bg-1 text-center overly">
+	<!-- Container Start -->
+	<div class="row">
+		<div class="col-lg-1 col-md-1 col-sm-1"></div>
+		<div class="col-lg-10 col-md-10 col-sm-10">
+			<!-- Header Contetnt -->
+			<div class="content-block">
+				<h1 class="ww-contentblock-title">Vote Your Best Route</h1>
+			</div>
+			<!-- Advance Search -->
+			<div class="advance-search">
+				<div>
+					<div class="row justify-content-center">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="{% url 'feedback' %}">
+								<img src="{% static 'images/bus.png' %}"/>
+								<h4>Stage Bus</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/express-bus-coach.png' %}"/>
+								<h4>Express Bus</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/Campus-shuttle.png' %}"/>
+								<h4>Bus Rapid Transit</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/shopping-mall-shuttle.png' %}"/>
+								<h4>Mall Shuttle</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/airport-shuttle.png' %}"/>
+								<h4>Airport Shuttle</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/tourism-van.png' %}"/>
+								<h4>Tourism Shuttle</h4>
+							</a>
+						</div>
+					</div>
 
-<!--/testimonials-->
-{% if user.is_authenticated %}
-<section class="testimonials" id="testimonials">
-    <div class="layer test">
-        <div class="container">
-            <div class="test-info text-center">
-                <h3 class="my-md-2 my-3">Jenifer Burns</h3>
+					<div class="row justify-content-center">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/School-bus.png' %}"/>
+								<h4>School Bus</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/Campus-shuttle.png' %}"/>
+								<h4>Campus Shuttle</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/bus-terminal.png' %}"/>
+								<h4>Bus Terminal</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/taxi-cab-ride-hailing.png' %}"/>
+								<h4>Taxicab &<br/>Ride-hailing</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/train.png' %}"/>
+								<h4>Train & Rail</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/cycle&walk.png' %}"/>
+								<h4>Cycle & Walk</h4>
+							</a>
+						</div>
+					</div>
 
-                <ul class="list-unstyled w3pvt-icons clients mb-md-4">
-                    <li>
-                        <a href="#">
-                            <span class="fa fa-star"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="fa fa-star"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="fa fa-star"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="fa fa-star-half-o"></span>
-                        </a>
-                    </li>
-                </ul>
-                <p><span class="fa fa-quote-left"></span> Lorem Ipsum has been the industry's standard since the 1500s.
-                    Praesent ullamcorper dui turpis.Nulla pellentesque mi non laoreet eleifend. Integer porttitor
-                    mollisar lorem, at molestie arcu pulvinar ut. <span class="fa fa-quote-right"></span></p>
+					<div class="row justify-content-center">
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/ridesharing-carpool-vanpool.png' %}"/>
+								<h4>Ride Sharing<br/>Carpool</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/Ferry.png' %}"/>
+								<h4>Ferry</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/lost-and-found.png' %}"/>
+								<h4>Lost & Found</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/MaaS.png' %}"/>
+								<h4>MaaS &<br/>Technology</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/forum.png' %}"/>
+								<h4>Forum</h4>
+							</a>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
+							<a href="#">
+								<img src="{% static 'images/More.png' %}"/>
+								<h4>More</h4>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-            </div>
-        </div>
-    </div>
+		</div>
+		<div class="col-lg-1 col-md-1 col-sm-1"/></div>
+	</div>
+
+	<!-- Container End -->
+</section>
+
+<section id="popular_deals_section" class="popular-deals section bg-gray">
+	<div>
+
+		<div class="row">
+			<div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+			<div class="col-lg-10 col-md-10 col-sm-12 col-12">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-12 col-12 ww-left-summary">
+						<div class="product-item bg-light">
+							<div class="card">
+								<div class="row left-avatar-group">
+
+									<img class="sm-round-symbol-1" src="{% static 'images/ayo-ogunseinde-6W4F62sN_yI-unsplash.jpg' %}" />
+									<img class="lg-round-symbol" src="{% static 'images/michael-dam-mEZ3PoFGs_k-unsplash.jpg' %}" />
+									<img class="sm-round-symbol-2" src="{% static 'images/joseph-pearson-ifCxnFLQnh0-unsplash.jpg' %}" />
+
+								</div>
+								<h4>Get the best of MassTransitAdvisor</h4>
+								<ul class="left-list-style">
+									<li>
+										<p>Your feedback and vote are treated seriousely</p>
+									</li>
+									<li>
+										<p>Get travel tips and earn badges to become Advisor</p>
+									</li>
+									<li>
+										<p>Compare travel time and expenses between driving and taking public transport</p>
+									</li>
+								</ul>
+								<a href="#">Sign Up</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-12 col-12">
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-12 col-12">
+						<div class="product-item bg-light">
+							<div class="card">
+								<div class="row right-avatar-group">
+
+									<img class="round-avatar" src="{% static 'images/alex-knight-2EJCSULRwC8-unsplash.jpg' %}" />
+
+									<img class="round-avatar" src="{% static 'images/stephen-dawson-qwtCeJ5cLYs-unsplash.jpg' %}" />
+
+								</div>
+								<h4>Transform your stage bus business</h4>
+								<ul class="right-list-style">
+									<li>
+										<p>a. we reward your drivers with real cash</p>
+									</li>
+									<li>
+										<p>b. gain monetizable insights for service improvement and non-fare revenue</p>
+									</li>
+									<li>
+										<p>c. deep integration into your operation for fast turnaround time;</p>
+									</li>
+									<li>
+										<p>d. harness the power of social media into effective customer service tool and sales channel</p>
+									</li>
+									<li>
+										<p>e. earn badges and positive reviews matter to your branding</p>
+									</li>
+									<li>
+										<p>f. get quality drivers application</p>
+									</li>
+									<li>
+										<p>g. <span style="text-decoration: underline;">Free</span> journey planner app with accurate ETA prediction</p>
+									</li>
+								</ul>
+								<a href="#">Free Sign Up</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+		</div>
+	</div>
 </section>
 
 
-{% endif %}
-<!--//testimonials-->
-
-<!-- Gallery -->
-<section class="gallery py-5" id="team">
-    <div class="container py-md-5">
-        <div class="header text-center">
-            <h3 class="tittle mb-lg-5 mb-3">Top Drivers</h3>
-        </div>
-        <div class="row team-bottom">
-            <div class="col-lg-3 col-sm-6 team-grid text-center">
-                <img src="{% static 'images/t1.jpg' %}" class="img-fluid" alt="">
-                <div class="caption">
-                    <h4>Mack Joe</h4>
-                    <ul class="list-unstyled w3pvt-icons">
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-facebook-f"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-dribbble"></span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 team-grid mt-sm-0 mt-5 text-center">
-                <img src="{% static 'images/t2.jpg' %}" class="img-fluid" alt="">
-                <div class="caption">
-                    <h4>Cruz Deo</h4>
-                    <ul class="list-unstyled w3pvt-icons">
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-facebook-f"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-dribbble"></span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 team-grid mt-lg-0 mt-5 text-center">
-                <img src="{% static 'images/t3.jpg' %}" class="img-fluid" alt="">
-                <div class="caption">
-                    <h4>Rochy Jae</h4>
-                    <ul class="list-unstyled w3pvt-icons">
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-facebook-f"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-dribbble"></span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 team-grid mt-lg-0 mt-5 text-center">
-                <img src="{% static 'images/t4.jpg' %}" class="img-fluid" alt="">
-                <div class="caption">
-                    <h4>Rojo Poy</h4>
-                    <ul class="list-unstyled w3pvt-icons">
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-facebook-f"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-twitter"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <span class="fa fa-dribbble"></span>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 {% endblock %}

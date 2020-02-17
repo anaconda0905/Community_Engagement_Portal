@@ -25,7 +25,7 @@ SECRET_KEY = 'rqr_cjv4igscyu8&&(0%e(=sy=f2)p=f_wn&@0xsp7m$@!kp=d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '108.161.151.70', '123.125.114.144']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', '108.161.151.70', '123.125.114.144']
 
 # Application definition
 
@@ -48,6 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.gis',
 
     'geoshop',
+
+    "leaflet_storage",
+
+    'boards',
 ]
 
 MIDDLEWARE = [
@@ -94,9 +98,9 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'mydb',
+        'NAME': 'geo_db',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': 'admin',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -187,12 +191,15 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'deliciousdelivery420@gmail.com'
-DEFAULT_FROM_EMAIL = 'deliciousdelivery420@gmail.com'
-SERVER_EMAIL = 'deliciousdelivery420@gmail.com'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='')
+SERVER_EMAIL = config('SERVER_EMAIL', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
 
 PHONENUMBER_DEFAULT_REGION = 'US'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+GDAL_LIBRARY_PATH = "C:\\Users\\HOME\\Documents\\Python Scripts\\django-venv\\Lib\\site-packages\\osgeo\\gdal300.dll"
+GEOS_LIBRARY_PATH = "C:\\Users\\HOME\\Documents\\Python Scripts\\django-venv\\Lib\\site-packages\\osgeo\\geos_c.dll"

@@ -38,10 +38,13 @@ urlpatterns = [
     url(r'^settings/account/$', accounts_views.edit_user, name='my_account'),
     url(r'^settings/account/done/$', accounts_views.my_account_done, name='my_account_done'),
     url(r'^settings/account/survey/$', accounts_views.data_survey, name='data_survey'),
+    url(r'^survey/update$', accounts_views.data_survey_update, name='data_survey_update'),
     url(r'^contactus/$', accounts_views.contactus, name='contactus'),
     url(r'^feedback/$', accounts_views.feedback, name='feedback'),
+    url(r'^forum/$', accounts_views.forum, name='forum'),
 
     url(r'^admin/', admin.site.urls),
+    # url(r'^ok/', include('leaflet_storage.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', accounts_views.activate, name='activate'),
     url('test', views.Home.as_view()),
