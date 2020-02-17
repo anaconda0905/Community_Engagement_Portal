@@ -211,8 +211,6 @@ def edit_user(request):
 def contactus(request):
     return render(request, 'contactus.html')
 
-def feedback(request):
-    return render(request, 'feedback.html')
 
 def forum(request):
     return render(request, 'forum.html')

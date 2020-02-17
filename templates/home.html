@@ -142,6 +142,10 @@
 	<!-- Container End -->
 </section>
 
+<!--===========================================
+=            Popular deals section            =
+============================================-->
+
 <section id="popular_deals_section" class="popular-deals section bg-gray">
 	<div>
 
@@ -152,13 +156,20 @@
 					<div class="col-lg-3 col-md-3 col-sm-12 col-12 ww-left-summary">
 						<div class="product-item bg-light">
 							<div class="card">
-								<div class="row left-avatar-group">
+									<div class="left-avatar-wrapper">
 
-									<img class="sm-round-symbol-1" src="{% static 'images/ayo-ogunseinde-6W4F62sN_yI-unsplash.jpg' %}" />
-									<img class="lg-round-symbol" src="{% static 'images/michael-dam-mEZ3PoFGs_k-unsplash.jpg' %}" />
-									<img class="sm-round-symbol-2" src="{% static 'images/joseph-pearson-ifCxnFLQnh0-unsplash.jpg' %}" />
+										<div class="left-avatar-group">
+											<div class="sm-round-symbol-1">
+												<img src="{% static 'images/ayo-ogunseinde-6W4F62sN_yI-unsplash.jpg' %}" />
+											</div>
+											<img class="lg-round-symbol" src="{% static 'images/michael-dam-mEZ3PoFGs_k-unsplash.jpg' %}" />
+											<div class="sm-round-symbol-2" >
+												<img src="{% static 'images/joseph-pearson-ifCxnFLQnh0-unsplash.jpg' %}" />
+											</div>
 
-								</div>
+										</div>
+
+									</div>
 								<h4>Get the best of MassTransitAdvisor</h4>
 								<ul class="left-list-style">
 									<li>
@@ -171,11 +182,85 @@
 										<p>Compare travel time and expenses between driving and taking public transport</p>
 									</li>
 								</ul>
-								<a href="#">Sign Up</a>
+								<div class="ww-align-center">
+									<a href="#">Sign Up</a>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6 col-sm-12 col-12">
+						<div class="product-item bg-light">
+							<div class="card" style="border-top: solid 4px #ffffab;">
+								<div class="ww-get-started-wrapper">
+									<h5>Tell us about your trip</h5>
+									<p>Your review matters to other passengers and the transit operator's alike</p>
+									<a href="#">Get Started</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="product-item bg-light">
+							<div class="card">
+								<div class="ww-get-started-wrapper">
+									<h5>Public Transport vs. Car Calculator</h5>
+									<p>Your review matters to other passengers and the transit operator's alike</p>
+									<a class="ww-align-center" href="#">Email Me the Analysis</a>
+								</div>
+							</div>
+						</div>
+
+						<div class="product-item bg-light">
+							<div class="card">
+								<div class="ww-get-started-wrapper">
+									<h5>How are the Stage Bus Operators doing?</h5>
+									<h6 class="mt-20">Hall of Fame</h5>
+									<ul class="mt-20">
+										<li>1. RapidKL</li>
+										<li>2. PJ City Bus</li>
+										<li>3. Smart Selangorku</li>
+										<li>4. MyBas Ipsh</li>
+										<li>5. Causeway Link</li>
+									</ul>
+									<h6 class="mt-20">Hall of Shame</h5>
+									<ul class="mt-20">
+										<li>1. MRT Feeder Bus</li>
+										<li>2. Panorama Melaka</li>
+										<li>3. Nadi Purta</li>
+										<li>4. MyBas Kangar</li>
+										<li>5. Selengor Omnibus</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="product-item bg-light">
+							<div class="card">
+								<div class="ww-get-started-wrapper">
+									<h5>Who are the Top-performing Drivers to Walk Away with Our Cash Reward?</h5>
+
+									<ul class="mt-20">
+										<li>1. Abd Kassim - RM 300</li>
+										<li>2. Adam Malik - RM 300</li>
+										<li>3. Rajendran Priyan - RM 300</li>
+										<li>4. Ajit Maslan - RM 300</li>
+										<li>5. ××××× - RM 100</li>
+										<li>6. ××××× - RM 100</li>
+										<li>7. ××××× - RM 100</li>
+										<li>8. ××××× - RM 100</li>
+										<li>9. ××××× - RM 100</li>
+										<li>10. ××××× - RM 100</li>
+									</ul>
+
+									<p class="mt-50 fs-p">
+										Your Vote give the meaning and motivation to their works.<br/>
+										Honour them with your vote.
+									</p>
+									<div class="ww-align-center ">
+										<a class="mt-20" href="#">Vote Your Captain Today</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-12 col-12">
 						<div class="product-item bg-light">
@@ -211,7 +296,9 @@
 										<p>g. <span style="text-decoration: underline;">Free</span> journey planner app with accurate ETA prediction</p>
 									</li>
 								</ul>
-								<a href="#">Free Sign Up</a>
+								<div class="ww-align-center">
+									<a href="#">Free Sign Up</a>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -222,6 +309,10 @@
 		</div>
 	</div>
 </section>
+
+
+
+
 
 
 {% endblock %}

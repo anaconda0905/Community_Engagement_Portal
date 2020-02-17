@@ -1,102 +1,87 @@
 {% extends 'base.html' %}
 
 {% load static %}
-
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">-->
 {% block stylesheet %}
 <style>
-
     body {
-        padding: 1rem;
-        color: hsla(215, 5%, 50%, 1);
+      padding: 1rem;
+      color: #797e86;
     }
 
     h1 {
-        color: hsla(215, 5%, 10%, 1);
-        margin-bottom: 2rem;
+      color: #18191b;
+      margin-bottom: 2rem;
     }
 
     section {
-        display: flex;
-        flex-flow: row wrap;
+      display: flex;
+      flex-flow: row wrap;
     }
 
     section > div {
-        flex: 1;
-        padding: 0.5rem;
+      flex: 1;
+      padding: 0.5rem;
     }
 
     input[type="radio"] {
-        display: none;
-
-    &
-    :not(:disabled) ~ label {
-        cursor: pointer;
+      display: none;
+    }
+    input[type="radio"]:not(:disabled) ~ label {
+      cursor: pointer;
+    }
+    input[type="radio"]:disabled ~ label {
+      color: #bcc2bf;
+      border-color: #bcc2bf;
+      box-shadow: none;
     }
 
-    &
-    :disabled ~ label {
-        color: hsla(150, 5%, 75%, 1);
-        border-color: hsla(150, 5%, 75%, 1);
-        box-shadow: none;
-        cursor: not-allowed;
-    }
-
-    }
     label {
-        height: 100%;
-        display: block;
-        background: white;
-        border: 2px solid hsla(150, 75%, 50%, 1);
-        border-radius: 20px;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        margin: 1 rem;
-        text-align: center;
-        box-shadow: 0px 3px 10px -2px hsla(150, 5%, 65%, 0.5);
-        position: relative;
+      display: block;
+      background: white;
+      border: 1px solid #20df80;
+      border-radius: 2px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      box-shadow: 0px 3px 10px -2px rgba(161, 170, 166, 0.5);
+      position: relative;
     }
 
     input[type="radio"]:checked + label {
-        background: hsla(150, 75%, 50%, 1);
-        color: hsla(215, 0%, 100%, 1);
-        box-shadow: 0px 0px 20px hsla(150, 100%, 50%, 0.75);
-
-    &
-    ::after {
-        color: hsla(215, 5%, 25%, 1);
-        font-family: FontAwesome;
-        border: 2px solid hsla(150, 75%, 45%, 1);
-        content: "\f00c";
-        font-size: 24px;
-        position: absolute;
-        top: -25px;
-        left: 50%;
-        transform: translateX(-50%);
-        height: 50px;
-        width: 50px;
-        line-height: 50px;
-        text-align: center;
-        border-radius: 50%;
-        background: white;
-        box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
+      background: #20df80;
+      color: white;
     }
-
-    }
-    input[type="radio"]#control_05:checked + label {
-        background: red;
-        border-color: red;
+    input[type="radio"]:checked + label::after {
+      color: #3d3f43;
+      font-family: FontAwesome;
+      border: 2px solid #1dc973;
+      content: "\f00c";
+      font-size: 24px;
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 50px;
+      width: 50px;
+      line-height: 50px;
+      text-align: center;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.25);
     }
 
     p {
-        font-weight: 900;
+      font-weight: 900;
     }
-
 
     @media only screen and (max-width: 700px) {
-        section {
-            flex-direction: column;
-        }
+      section {
+        flex-direction: column;
+      }
     }
+
+
     * {
         box-sizing: border-box;
     }
@@ -128,6 +113,7 @@
     /* Mark input boxes that gets an error on validation: */
     input.invalid {
         background-color: #ffdddd;
+
     }
 
     /* Hide all steps by default: */
@@ -178,40 +164,108 @@
 
 {% block content %}
 
-<form id="regForm" action="/">
+<form id="regForm" method="post">
+    {% csrf_token %}
     <h1>Feedback Info:</h1>
     <!-- One "tab" for each step in the form: -->
-    <div class="tab">How are you feeling now?
+    <div class="tab">What are you feeling now?<br><br>
         <section>
             <div>
                 <input type="radio" id="control_01" name="select" value="1">
                 <label for="control_01">
-
+                    <img src="{% static 'images/smile.png' %}" width="100"/>
                 </label>
             </div>
             <div>
                 <input type="radio" id="control_02" name="select" value="2">
                 <label for="control_02">
-
+                    <img src="{% static 'images/angry.png' %}" width=100"/>
                 </label>
             </div>
 
         </section>
     </div>
 
-    <div class="tab">Feedback Category
+    <div class="tab">Feedback Category<br><br>
+        <section>
+            <div>
+                <input type="radio" id="control_03" name="select1" value="3">
+                <label for="control_03">
+                    <h2>Bus</h2>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="control_04" name="select1" value="4">
+                <label for="control_04">
+                    <h2>Driver</h2>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="control_05" name="select1" value="5">
+                <label for="control_05">
+                    <h2>Bus Stop</h2>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="control_06" name="select1" value="6">
+                <label for="control_06">
+                    <h2>Operator</h2>
+                </label>
+            </div>
+        </section>
+        <section>
+            <div>
+                <input type="radio" id="control_13" name="select1" value="13">
+                <label for="control_13">
+                    <h2>Route</h2>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="control_14" name="select1" value="14">
+                <label for="control_14">
+                    <h2>Fare</h2>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="control_15" name="select1" value="15">
+                <label for="control_15">
+                    <h2>Safety</h2>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="control_16" name="select1" value="16">
+                <label for="control_16">
+                    <h2>New Line</h2>
+                </label>
+            </div>
+        </section>
+        <section>
+            <div>
+                <input type="radio" id="control_23" name="select1" value="23">
+                <label for="control_23">
+                    <h2>MAAS</h2>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="control_24" name="select1" value="24">
+                <label for="control_24">
+                    <h2>Walkability</h2>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="control_25" name="select1" value="25">
+                <label for="control_25">
+                    <h2>Technical</h2>
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="control_26" name="select1" value="26">
+                <label for="control_26">
+                    <h2>Other</h2>
+                </label>
+            </div>
+        </section>
 
-        <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-        <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
-    </div>
-    <div class="tab">Birthday:
-        <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-        <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-        <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-    </div>
-    <div class="tab">Login Info:
-        <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-        <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
     </div>
     <div style="overflow:auto;">
         <div style="float:right;">
@@ -221,8 +275,6 @@
     </div>
     <!-- Circles which indicates the steps of the form: -->
     <div style="text-align:center;margin-top:40px;">
-        <span class="step"></span>
-        <span class="step"></span>
         <span class="step"></span>
         <span class="step"></span>
     </div>
@@ -280,12 +332,17 @@
         y = x[currentTab].getElementsByTagName("input");
         // A loop that checks every input field in the current tab:
         for (i = 0; i < y.length; i++) {
-            // If a field is empty...
-            if (y[i].value == "") {
-                // add an "invalid" class to the field:
-                y[i].className += " invalid";
-                // and set the current valid status to false
-                valid = false;
+            if(y[i].checked)
+                break;
+            // If a field is empty..
+            else{
+                if(i == y.length -1) {
+                    // add an "invalid" class to the field:
+                    y[i].className += " invalid";
+                    window.alert("Please choose one category.");
+                    // and set the current valid status to false
+                    valid = false;
+                }
             }
         }
         // If the valid status is true, mark the step as finished and valid:

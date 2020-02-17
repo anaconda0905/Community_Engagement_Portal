@@ -4,7 +4,8 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from accounts import views as accounts_views
-from geoshop import views
+from boards import views
+from geoshop import views as test_views
 
 urlpatterns = [
     url(r'^$', accounts_views.home, name='home'),
@@ -40,14 +41,22 @@ urlpatterns = [
     url(r'^settings/account/survey/$', accounts_views.data_survey, name='data_survey'),
     url(r'^survey/update$', accounts_views.data_survey_update, name='data_survey_update'),
     url(r'^contactus/$', accounts_views.contactus, name='contactus'),
-    url(r'^feedback/$', accounts_views.feedback, name='feedback'),
+
     url(r'^forum/$', accounts_views.forum, name='forum'),
+    url(r'^boards/(?P<pk>\d+)/$', views.TopicListView.as_view(), name='board_topics'),
+    url(r'^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
+    url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/$', views.PostListView.as_view(), name='topic_posts'),
+    url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/reply/$', views.reply_topic, name='reply_topic'),
+    url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/posts/(?P<post_pk>\d+)/edit/$',
+        views.PostUpdateView.as_view(), name='edit_post'),
+    url(r'^feedback/$', views.feedback, name='feedback'),
 
     url(r'^admin/', admin.site.urls),
     # url(r'^ok/', include('leaflet_storage.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', accounts_views.activate, name='activate'),
-    url('test', views.Home.as_view()),
+
+    url('test', test_views.Home.as_view()),
 ]
 
 if settings.DEBUG:

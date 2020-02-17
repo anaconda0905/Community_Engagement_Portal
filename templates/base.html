@@ -123,9 +123,72 @@
             </div>
         </div>
     </section>
+    {% block breadcrumb %}
+    {% endblock %}
 
     {% block content %}
     {% endblock %}
+    <!--============================
+    =            Footer            =
+    =============================-->
+    <footer class="footer section section-sm">
+        <div class="row">
+            <div class="col-sm-1 col-md-1 col-lg-1">
+            </div>
+            <div class="col-sm-10 col-12 col-md-10 col-lg-10">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        <h5>ABOUT MASSTRANSITADVISOR</h5>
+                        <ul class="mt-30">
+                            <li>About Us</li>
+                            <li>Content Integrity</li>
+                        </ul>
+                        <h5 class="mt-50">Do BUSINESS WITH US</h5>
+                        <ul class="mt-30">
+                            <li>Stage Bus Operators</li>
+                            <li>Express Bus Operators</li>
+                            <li>Governmental and Research Institutions.</li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+                    <div class="col-sm-7 col-md-7 col-lg-7">
+                        <h5>EXPLORE</h5>
+                        <ul class="mt-30">
+                            <li>Write a Review</li>
+                            <li>Join Forum</li>
+                            <li>Take Survey and Earn Cash</li>
+                            <li>Vote Best Drivers</li>
+                            <li>Vote Operators</li>
+                            <li>Vote a New Route</li>
+                            <li>Journey Planner App</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-1">
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Bottom -->
+    <footer class="footer-bottom">
+        <!-- Container Start -->
+        <div class="row">
+            <div class="col-sm-1 col-md-1 col-lg-1"></div>
+            <div class="col-sm-10 col-12 col-md-10 col-lg-10">
+                <a class="navbar-brand" href="index.html">
+                    <img src="{% static 'images/logo.png' %}" alt="">
+                </a>
+                <p class="mt-20">
+                    2020 MassTransitAdvisor All rights reserved. Terms of Use | Privacy Policy | Site Map | How the site
+                    works<br/>*MassTransitAdvisor LLC is not a transit operator, and does not charge any service fees to
+                    users of our site. We aggregate, verify and curate user-generated contens, reviews, feedback and
+                    tailor solution to help transit operators to improve service delivery.
+                </p>
+
+            </div>
+            <div class="col-sm-1 col-md-1 col-lg-1"></div>
+        </div>
+    </footer>
 
 
     {% endblock body %}

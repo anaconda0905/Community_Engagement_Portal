@@ -238,6 +238,24 @@ h1, h2, h3 {
 .mt-10 {
   margin-top: 10px; }
 
+.mt-20 {
+  margin-top: 20px; }
+
+.mt-30 {
+  margin-top: 30px; }
+
+.mt-40 {
+  margin-top: 40px; }
+
+.mt-50 {
+  margin-top: 50px; }
+
+.ww-align-center {
+  text-align: center; }
+
+.fs-p {
+  font-size: 30px; }
+
 #topbar_section .ww-container {
   margin-left: 30px;
   margin-right: 60px; }
@@ -334,16 +352,44 @@ h1, h2, h3 {
     padding: 30px 60px !important;
     border-radius: 10px !important; }
   #topbackground_section .advance-search .align-content-center > a > img {
-    width: 70px;
-    height: 70px; }
+    width: 100px;
+    height: 100px; }
+  #topbackground_section .advance-search .align-content-center > a > h4 {
+    margin-top: 20px;
+    font-size: 25px;
+    font-weight: bold; }
   #topbackground_section .advance-search .justify-content-center + .justify-content-center {
     margin-top: 50px; }
 
 #popular_deals_section {
   background-color: #f5f5f5;
-  padding-top: 500px; }
-  #popular_deals_section .ww-left-summary {
-    padding-right: 0px; }
+  padding-top: 740px; }
+  #popular_deals_section .ww-get-started-wrapper {
+    padding: 10px 20px !important;
+    text-align: left; }
+    #popular_deals_section .ww-get-started-wrapper h5 {
+      font-size: 35px;
+      text-align: left;
+      line-height: 1.5;
+      font-weight: 900; }
+    #popular_deals_section .ww-get-started-wrapper h6 {
+      font-size: 30px;
+      text-align: left;
+      font-weight: 900; }
+    #popular_deals_section .ww-get-started-wrapper p {
+      color: #000000;
+      text-align: left;
+      font-size: 25px; }
+    #popular_deals_section .ww-get-started-wrapper a {
+      background-color: #ffffff !important;
+      margin-top: 30px;
+      padding: 20px; }
+      #popular_deals_section .ww-get-started-wrapper a:hover, #popular_deals_section .ww-get-started-wrapper a:focus {
+        color: #000000 !important;
+        background-color: #ffffab !important; }
+    #popular_deals_section .ww-get-started-wrapper > ul > li {
+      font-size: 25px;
+      color: #000000; }
   #popular_deals_section .card {
     font-size: 25px;
     text-align: center;
@@ -352,13 +398,12 @@ h1, h2, h3 {
     padding: 20px 9px;
     box-shadow: -1px 3px 6px rgba(0, 0, 0, 0.12); }
     #popular_deals_section .card .left-avatar-group {
+      display: inline-block;
       position: relative;
       margin-top: 20px;
       height: 140px; }
       #popular_deals_section .card .left-avatar-group .lg-round-symbol {
-        position: absolute;
-        left: 30%;
-        top: -10%;
+        position: relative;
         width: 130px;
         height: 130px;
         background-image: linear-gradient(to bottom, #98cd3d 0%, #bcdf22 100%);
@@ -372,30 +417,25 @@ h1, h2, h3 {
         z-index: 100; }
       #popular_deals_section .card .left-avatar-group .sm-round-symbol-1 {
         position: absolute;
-        left: 15%;
-        top: 15%;
-        width: 50px;
-        height: 50px;
-        background-image: linear-gradient(to bottom, #98cd3d 0%, #bcdf22 100%);
-        background-repeat: repeat-x;
-        text-align: center;
-        font-size: 40px;
-        color: #fff;
-        border-radius: 50%;
+        left: -60px;
+        top: 25px;
+        width: 80px;
+        height: 80px;
         margin: auto; }
+        #popular_deals_section .card .left-avatar-group .sm-round-symbol-1 > img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%; }
       #popular_deals_section .card .left-avatar-group .sm-round-symbol-2 {
         position: absolute;
-        top: 15%;
-        right: 10%;
-        width: 50px;
-        height: 50px;
-        background-image: linear-gradient(to bottom, #98cd3d 0%, #bcdf22 100%);
-        background-repeat: repeat-x;
-        text-align: center;
-        font-size: 40px;
-        color: #fff;
-        border-radius: 50%;
-        margin: auto; }
+        top: 25px;
+        right: -60px;
+        width: 80px;
+        height: 80px; }
+        #popular_deals_section .card .left-avatar-group .sm-round-symbol-2 > img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%; }
     #popular_deals_section .card .right-avatar-group {
       display: flex;
       justify-content: center;
@@ -403,13 +443,14 @@ h1, h2, h3 {
       height: 140px; }
       #popular_deals_section .card .right-avatar-group .round-avatar {
         border-radius: 50%;
-        width: 100px;
-        height: 100px; }
+        width: 120px;
+        height: 120px;
+        border: solid 5px #fff; }
         #popular_deals_section .card .right-avatar-group .round-avatar:after {
           content: '';
           width: 10px; }
     #popular_deals_section .card h4 {
-      font-size: 20px;
+      font-size: 35px;
       text-align: center;
       line-height: 1.5;
       font-weight: 900; }
@@ -417,13 +458,13 @@ h1, h2, h3 {
       position: relative; }
       #popular_deals_section .card .left-list-style > li {
         position: relative;
-        padding-left: 30px;
+        padding-left: 40px;
         margin-top: 10px;
         margin-bottom: 10px; }
         #popular_deals_section .card .left-list-style > li:before {
           content: '';
           position: absolute;
-          top: 15px;
+          top: 20px;
           left: 10px;
           width: 15px;
           height: 5px;
@@ -433,7 +474,7 @@ h1, h2, h3 {
         #popular_deals_section .card .left-list-style > li p {
           display: block;
           text-align: left;
-          font-size: 22px;
+          font-size: 30px;
           font-weight: 600;
           color: #000000; }
     #popular_deals_section .card .right-list-style > li {
@@ -449,11 +490,24 @@ h1, h2, h3 {
     #popular_deals_section .card a {
       display: inline-block;
       background-color: #ffffab;
-      display: inline-block;
       border-radius: 10px;
       border: solid 2px #bcbcbb;
-      padding-top: 5px;
-      padding-bottom: 5px; }
+      padding: 10px 30px; }
+
+footer {
+  background-color: #f5f5f5 !important; }
+  footer h5 {
+    font-size: 30px;
+    color: #666; }
+  footer ul > li {
+    font-size: 25px;
+    color: #000000; }
+
+.footer-bottom {
+  background-color: #f5f5f5; }
+  .footer-bottom p {
+    font-size: 20px;
+    color: #000000; }
 
 @media (max-width: 375px) {
   footer.footer {

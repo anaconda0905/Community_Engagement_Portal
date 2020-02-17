@@ -2701,3 +2701,32 @@ form textarea {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+
+.ww-map-wrapper .top-wrapper1{
+  height: 660px;
+}
+
+.row1{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ww-map-wrapper .top-wrapper2{
+  height: 660px;
+  padding-left:0px !important;
+  padding-right:0px !important;
+  overflow: scroll;
+}
+
+@media(max-width: 576px){
+  .ww-map-wrapper .top-wrapper1{
+    height: 300px;
+  }
+
+  .ww-map-wrapper .top-wrapper2{
+    height: auto;
+    padding-left:20px !important;
+    padding-right:20px !important;
+    overflow: initial !important;
+  }
+}
