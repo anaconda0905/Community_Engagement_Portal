@@ -23,7 +23,7 @@
     <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}" media="all">
     <link rel="stylesheet" href="{% static 'css/vendor.css' %}" media="all">
-
+    <script src="{% static 'plugins/jQuery/jquery.min.js' %}"></script>
     {% block stylesheet %}{% endblock %}
 </head>
 
@@ -71,15 +71,20 @@
                                     <h4 class="mt-10">Notification</h4>
                                 </li>
                                 {% if user.is_authenticated %}
-                                <li class="nav-item dropdown dropdown-slide">
-                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">
+                                <li class="nav-item dropdown dropdown-slide" style="display: flex; flex-direction: column;">
+                                    <div class="dropdown-toggle" data-toggle="dropdown" style="display: flex; justify-content: space-evenly; flex-direction:row;">
+                                        <a class="nav-link"  href="">
                                         {% if user.profile.image %}
-                                        <img class="ww-nav-img" src="{{user.profile.image.url}}" style="border-radius: 50%;" width="50"/>
+                                        <img class="ww-nav-img" src="{{user.profile.image.url}}" style="border-radius: 50%;" width="50">
+                                        <span class="fa fa-angle-down"></span>
                                         {% else %}
-                                        <img class="ww-nav-img" src="{% static '/images/user.png' %}"/>
+                                        <img class="ww-nav-img" src="{% static '/images/user.png' %}">
+                                        <span class="fa fa-angle-down"></span>
+                                        </a>
                                         {% endif %}
-                                        <span><i class="fa fa-angle-down"></i></span>
-                                    </a>
+                                        </a>
+                                        <h4 class="mt-10">{{ user.username }}</h4>
+                                    </div>
 
                                     <!-- Dropdown list -->
                                     <div class="dropdown-menu">
@@ -88,7 +93,6 @@
 
                                     </div>
 
-                                    <h4 class="mt-10">{{ user.username }}</h4>
                                 </li>
 
                                 {% else %}
@@ -137,7 +141,7 @@
             </div>
             <div class="col-sm-10 col-12 col-md-10 col-lg-10">
                 <div class="row">
-                    <div class="col-sm-4 col-md-4 col-lg-4">
+                    <div class="col-sm-12 col-md-12 col-lg-4">
                         <h5>ABOUT MASSTRANSITADVISOR</h5>
                         <ul class="mt-30">
                             <li>About Us</li>
@@ -150,8 +154,8 @@
                             <li>Governmental and Research Institutions.</li>
                         </ul>
                     </div>
-                    <div class="col-sm-1 col-md-1 col-lg-1"></div>
-                    <div class="col-sm-7 col-md-7 col-lg-7">
+                    <div class="col-lg-1"></div>
+                    <div class="col-sm-12 col-md-12 col-lg-7">
                         <h5>EXPLORE</h5>
                         <ul class="mt-30">
                             <li>Write a Review</li>
@@ -171,29 +175,25 @@
     </footer>
     <!-- Footer Bottom -->
     <footer class="footer-bottom">
-        <!-- Container Start -->
-        <div class="row">
-            <div class="col-sm-1 col-md-1 col-lg-1"></div>
-            <div class="col-sm-10 col-12 col-md-10 col-lg-10">
+      <!-- Container Start -->
+      <div class="row">
+          <div class="col-sm-1 col-md-1 col-lg-1"></div>
+          <div class="col-sm-10 col-12 col-md-10 col-lg-10">
                 <a class="navbar-brand" href="index.html">
-                    <img src="{% static 'images/logo.png' %}" alt="">
+                    <img src="{%static 'images/logo.png' %}" alt="">
                 </a>
                 <p class="mt-20">
-                    2020 MassTransitAdvisor All rights reserved. Terms of Use | Privacy Policy | Site Map | How the site
-                    works<br/>*MassTransitAdvisor LLC is not a transit operator, and does not charge any service fees to
-                    users of our site. We aggregate, verify and curate user-generated contens, reviews, feedback and
-                    tailor solution to help transit operators to improve service delivery.
+                    2020 MassTransitAdvisor All rights reserved. Terms of Use | Privacy Policy | Site Map | How the site works<br/>*MassTransitAdvisor LLC is not a transit operator, and does not charge any service fees to users of our site. We aggregate, verify and curate user-generated contens, reviews, feedback and tailor solution to help transit operators to improve service delivery.
                 </p>
 
-            </div>
-            <div class="col-sm-1 col-md-1 col-lg-1"></div>
-        </div>
+          </div>
+          <div class="col-sm-1 col-md-1 col-lg-1"></div>
+      </div>
     </footer>
-
 
     {% endblock body %}
     <!-- JAVASCRIPTS -->
-    <script src="{% static 'plugins/jQuery/jquery.min.js' %}"></script>
+
     <script src="{% static 'plugins/bootstrap/js/popper.min.js' %}"></script>
     <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'plugins/bootstrap/js/bootstrap-slider.js' %}"></script>

@@ -2701,6 +2701,9 @@ form textarea {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+.ww-map-wrapper{
+  box-shadow: 0px -5px 1px rgba(0, 0, 0, 0.06);
+}
 
 .ww-map-wrapper .top-wrapper1{
   height: 660px;
@@ -2713,12 +2716,15 @@ form textarea {
 
 .ww-map-wrapper .top-wrapper2{
   height: 660px;
-  padding-left:0px !important;
-  padding-right:0px !important;
+  padding-left:20px !important;
+  padding-right:20px !important;
   overflow: scroll;
 }
 
 @media(max-width: 576px){
+  .ww-map-wrapper{
+    box-shadow: none;
+  }
   .ww-map-wrapper .top-wrapper1{
     height: 300px;
   }
@@ -2729,4 +2735,55 @@ form textarea {
     padding-right:20px !important;
     overflow: initial !important;
   }
+}
+
+.round-slider {
+	display: grid;
+	position: relative;
+	width: 150px;
+	height: 150px;
+	justify-self: center;
+	align-self: center;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.round-slider .selection {
+	width: 140px;
+	height: 140px;
+	border-radius: 50%;
+	background: #00ccf8;
+	box-shadow: 0px 0px 3px 0px #00ccf8;
+	grid-row: 1;
+	grid-column: 1;
+	justify-self: center;
+	align-self: center;
+	pointer-events: none;
+	/* clip-path: polygon(value% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%, 50% 50%); */
+}
+.round-slider .selection:after {
+	display: block;
+	content: "";
+	width: 3px;
+	height: calc(50% - 5px);
+	background-color: red;
+	position: absolute;
+	left: calc(50% - 1px);
+	transform-origin: 1px 100%;
+	transform: rotate(0deg);
+}
+.round-slider .holder {
+	width: 110px;
+	height: 110px;
+	background: rgba(255, 255, 255, 1);
+	border-radius: 50%;
+	grid-row: 1;
+	grid-column: 1;
+	justify-self: center;
+	align-self: center;
+	pointer-events: none;
+	z-index: 2;
+	text-align: center;
+	line-height: 110px;
+	font-size: 2em;
+	box-shadow: 0px 0px 4px 2px #00ccf8;
 }

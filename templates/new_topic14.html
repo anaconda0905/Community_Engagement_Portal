@@ -28,6 +28,9 @@
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.70.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.roundslider/1.0/roundslider.min.css">
+    <script src="//cdn.jsdelivr.net/jquery.roundslider/1.0/roundslider.min.js"></script>
+
 {% endblock %}
 
 
@@ -48,6 +51,29 @@
             <h1 class="card-title">Bus: Incident Info</h1>
             <form method="post" novalidate>
                 {% csrf_token %}
+                <div class="form-group">
+                    <label for="busid">Bus No:</label><input id="busid" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="date">Incident Date:</label><input id = 'date' type="date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="time">Incident Time:</label><input id = 'time' type="time" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="routeid">Route No:</label><input id="routeid" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="routename">Route Name:</label><input id="routename" class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="busoperator">Bus Operator:</label><input id="busoperator" class="form-control" type="text">
+                </div>
+
+
+
+
+
 
                 <div class="form-group">
                     <label for="locname">Address:</label><input id="locname" class="form-control" type="text"/>
@@ -56,12 +82,14 @@
                     <label>Cleanliness:</label><br>
                         <select class="wide form-control">
                             <option data-display="Select">Nothing</option>
-                            <option value="1">Just nice and clean</option>
-                            <option value="2">Make sure the driver clean up before every trip</option>
+                            <option value="1">very politely person and warming me while  get in to the bus</option>
+                            <option value="2">Reward and Award if found a good driver</option>
                         </select>
                 </div>
 
                 {% include 'includes/form.html' %}
+                <label>Satisfied Level :</label><br>
+                <div id="slider"></div>
                 <button type="submit" class="btn btn-success">Request for Audit /Investigate</button>
 
             </form>
@@ -74,6 +102,22 @@
 
 
 {% block js %}
+<script>
+    $(document).ready(function () {
+        $("#slider").roundSlider({
+            value: 0,
+            min: 0,
+            max: 100,
+            width: 30,
+            step: 1,
+            sliderType: "min-range",
+            change: function (args) {
+                console.log(args.value);
+                // $('#range').html(args.value)
+            }
+        });
+    });
+</script>
 <script>
     var map = L.map('mapid').setView([-41.3058, 174.82082], 8);
 
@@ -94,7 +138,7 @@
 		["C820B6",-41.51285,173.53274]
     ];
 	myIcon = L.icon({
-					iconUrl: "{% static 'images/bus-logo.png' %}", // the url of the img
+					iconUrl: "{% static 'images/bus-driver.png' %}", // the url of the img
 					iconSize: [40, 40],
 					iconAnchor: [20, 40] // the coordinates of the &amp;amp;quot;tip&amp;amp;quot; of the icon ( in this case must be ( icon width/ 2, icon height )
 				});

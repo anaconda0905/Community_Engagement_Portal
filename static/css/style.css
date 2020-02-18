@@ -288,6 +288,7 @@ h1, h2, h3 {
   padding: 10px 20px !important;
   background-color: #000;
   font-size: 18px; }
+/**/
 @media (max-width: 576px) {
   #topbar_section .main-nav {
     border-bottom: solid 1px grey;
@@ -336,11 +337,21 @@ h1, h2, h3 {
       #topbar_section .extra-nav > li .add-button {
         margin-top: -20px; } }
 
+.overly:before {
+  background: rgba(15, 95, 95, 0) !important; }
+
 #topbackground_section {
-  height: 332px; }
+  padding: 0px !important; }
   @media (max-width: 576px) {
     #topbackground_section {
-      padding: 20px 0px; } }
+      padding: 0px 0px; } }
+  #topbackground_section .hero-area {
+    margin-top: -240px;
+    padding: 0px;
+    z-index: 1000; }
+    @media (max-width: 576px) {
+      #topbackground_section .hero-area {
+        margin-top: -300px; } }
   @media (max-width: 576px) {
     #topbackground_section .content-block {
       padding-bottom: 20px; } }
@@ -362,8 +373,10 @@ h1, h2, h3 {
     margin-top: 50px; }
 
 #popular_deals_section {
-  background-color: #f5f5f5;
-  padding-top: 740px; }
+  background-color: #f5f5f5; }
+  @media (max-width: 576px) {
+    #popular_deals_section {
+      padding-bottom: 0px; } }
   #popular_deals_section .ww-get-started-wrapper {
     padding: 10px 20px !important;
     text-align: left; }
@@ -404,8 +417,6 @@ h1, h2, h3 {
       height: 140px; }
       #popular_deals_section .card .left-avatar-group .lg-round-symbol {
         position: relative;
-        width: 130px;
-        height: 130px;
         background-image: linear-gradient(to bottom, #98cd3d 0%, #bcdf22 100%);
         background-repeat: repeat-x;
         text-align: center;
@@ -414,14 +425,25 @@ h1, h2, h3 {
         border-radius: 50%;
         margin: auto;
         border: solid 5px #ffffff;
-        z-index: 100; }
+        z-index: 100;
+        width: 130px;
+        height: 130px; }
+        @media (min-width: 992px) and (max-width: 1400px) {
+          #popular_deals_section .card .left-avatar-group .lg-round-symbol {
+            width: 100px;
+            height: 100px; } }
       #popular_deals_section .card .left-avatar-group .sm-round-symbol-1 {
         position: absolute;
         left: -60px;
-        top: 25px;
         width: 80px;
         height: 80px;
+        top: 25px;
         margin: auto; }
+        @media (min-width: 992px) and (max-width: 1400px) {
+          #popular_deals_section .card .left-avatar-group .sm-round-symbol-1 {
+            left: -45px;
+            width: 60px;
+            height: 60px; } }
         #popular_deals_section .card .left-avatar-group .sm-round-symbol-1 > img {
           width: 100%;
           height: 100%;
@@ -432,6 +454,11 @@ h1, h2, h3 {
         right: -60px;
         width: 80px;
         height: 80px; }
+        @media (min-width: 992px) and (max-width: 1400px) {
+          #popular_deals_section .card .left-avatar-group .sm-round-symbol-2 {
+            right: -45px;
+            width: 60px;
+            height: 60px; } }
         #popular_deals_section .card .left-avatar-group .sm-round-symbol-2 > img {
           width: 100%;
           height: 100%;
@@ -443,17 +470,24 @@ h1, h2, h3 {
       height: 140px; }
       #popular_deals_section .card .right-avatar-group .round-avatar {
         border-radius: 50%;
+        border: solid 5px #fff;
         width: 120px;
-        height: 120px;
-        border: solid 5px #fff; }
+        height: 120px; }
         #popular_deals_section .card .right-avatar-group .round-avatar:after {
           content: '';
           width: 10px; }
+        @media (min-width: 992px) and (max-width: 1400px) {
+          #popular_deals_section .card .right-avatar-group .round-avatar {
+            width: 80px;
+            height: 80px; } }
     #popular_deals_section .card h4 {
       font-size: 35px;
       text-align: center;
       line-height: 1.5;
       font-weight: 900; }
+      @media (min-width: 992px) and (max-width: 1400px) {
+        #popular_deals_section .card h4 {
+          font-size: 30px; } }
     #popular_deals_section .card .left-list-style {
       position: relative; }
       #popular_deals_section .card .left-list-style > li {
@@ -477,6 +511,9 @@ h1, h2, h3 {
           font-size: 30px;
           font-weight: 600;
           color: #000000; }
+          @media (min-width: 992px) and (max-width: 1400px) {
+            #popular_deals_section .card .left-list-style > li p {
+              font-size: 25px; } }
     #popular_deals_section .card .right-list-style > li {
       position: relative;
       margin-top: 10px;
@@ -487,6 +524,9 @@ h1, h2, h3 {
         font-size: 22px;
         font-weight: 600;
         color: #000000; }
+        @media (min-width: 992px) and (max-width: 1400px) {
+          #popular_deals_section .card .right-list-style > li p {
+            font-size: 20px; } }
     #popular_deals_section .card a {
       display: inline-block;
       background-color: #ffffab;
@@ -508,15 +548,5 @@ footer {
   .footer-bottom p {
     font-size: 20px;
     color: #000000; }
-
-@media (max-width: 375px) {
-  footer.footer {
-    padding-top: 450px; } }
-@media (min-width: 375px) and (max-width: 576px) {
-  footer.footer {
-    padding-top: 450px; } }
-@media (min-width: 576px) and (max-width: 768px) {
-  footer.footer {
-    padding-top: 450px; } }
 
 /*# sourceMappingURL=style.css.map */

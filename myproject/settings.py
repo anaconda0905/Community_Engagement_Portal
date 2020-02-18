@@ -25,7 +25,7 @@ SECRET_KEY = 'rqr_cjv4igscyu8&&(0%e(=sy=f2)p=f_wn&@0xsp7m$@!kp=d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1', '108.161.151.70', '123.125.114.144']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', '108.161.151.70', '192.168.6.216']
 
 # Application definition
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django_range_slider',
     'widget_tweaks',
 
     'accounts',
@@ -49,7 +50,7 @@ INSTALLED_APPS = [
 
     'geoshop',
 
-    "leaflet_storage",
+    # "leaflet_storage",
 
     'boards',
 ]

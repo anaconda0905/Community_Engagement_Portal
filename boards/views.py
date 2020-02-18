@@ -6,7 +6,7 @@ from django.views.generic import UpdateView, ListView
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.urls import reverse
-
+from django.shortcuts import render_to_response
 from .forms import NewTopicForm, PostForm
 from .models import Board, Post, Topic
 
@@ -55,7 +55,7 @@ class PostListView(ListView):
 
 
 @login_required
-def new_topic(request, pk):
+def new_topic13(request, pk):
     board = get_object_or_404(Board, pk=pk)
     if request.method == 'POST':
         form = NewTopicForm(request.POST)
@@ -72,8 +72,127 @@ def new_topic(request, pk):
             return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
     else:
         form = NewTopicForm()
-    return render(request, 'new_topic.html', {'board': board, 'form': form})
+    return render(request, 'new_topic13.html', {'board': board, 'form': form})
 
+@login_required
+def new_topic14(request, pk):
+    board = get_object_or_404(Board, pk=pk)
+    if request.method == 'POST':
+        form = NewTopicForm(request.POST)
+        if form.is_valid():
+            topic = form.save(commit=False)
+            topic.board = board
+            topic.starter = request.user
+            topic.save()
+            Post.objects.create(
+                message=form.cleaned_data.get('message'),
+                topic=topic,
+                created_by=request.user
+            )
+            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
+    else:
+        form = NewTopicForm()
+    return render(request, 'new_topic14.html', {'board': board, 'form': form})
+
+@login_required
+def new_topic15(request, pk):
+    board = get_object_or_404(Board, pk=pk)
+    if request.method == 'POST':
+        form = NewTopicForm(request.POST)
+        if form.is_valid():
+            topic = form.save(commit=False)
+            topic.board = board
+            topic.starter = request.user
+            topic.save()
+            Post.objects.create(
+                message=form.cleaned_data.get('message'),
+                topic=topic,
+                created_by=request.user
+            )
+            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
+    else:
+        form = NewTopicForm()
+    return render(request, 'new_topic15.html', {'board': board, 'form': form})
+
+@login_required
+def new_topic113(request, pk):
+    board = get_object_or_404(Board, pk=pk)
+    if request.method == 'POST':
+        form = NewTopicForm(request.POST)
+        if form.is_valid():
+            topic = form.save(commit=False)
+            topic.board = board
+            topic.starter = request.user
+            topic.save()
+            Post.objects.create(
+                message=form.cleaned_data.get('message'),
+                topic=topic,
+                created_by=request.user
+            )
+            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
+    else:
+        form = NewTopicForm()
+    return render(request, 'new_topic113.html', {'board': board, 'form': form})
+
+@login_required
+def new_topic23(request, pk):
+    board = get_object_or_404(Board, pk=pk)
+    if request.method == 'POST':
+        form = NewTopicForm(request.POST)
+        if form.is_valid():
+            topic = form.save(commit=False)
+            topic.board = board
+            topic.starter = request.user
+            topic.save()
+            Post.objects.create(
+                message=form.cleaned_data.get('message'),
+                topic=topic,
+                created_by=request.user
+            )
+            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
+    else:
+        form = NewTopicForm()
+    return render(request, 'new_topic23.html', {'board': board, 'form': form})
+
+@login_required
+def new_topic24(request, pk):
+    board = get_object_or_404(Board, pk=pk)
+    if request.method == 'POST':
+        form = NewTopicForm(request.POST)
+        if form.is_valid():
+            topic = form.save(commit=False)
+            topic.board = board
+            topic.starter = request.user
+            topic.save()
+            Post.objects.create(
+                message=form.cleaned_data.get('message'),
+                topic=topic,
+                created_by=request.user
+            )
+            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
+    else:
+        form = NewTopicForm()
+    return render(request, 'new_topic24.html', {'board': board, 'form': form})
+
+@login_required
+def new_topic25(request, pk):
+    board = get_object_or_404(Board, pk=pk)
+    if request.method == 'POST':
+        form = NewTopicForm(request.POST)
+        if form.is_valid():
+            topic = form.save(commit=False)
+            topic.board = board
+            topic.starter = request.user
+            topic.save()
+            Post.objects.create(
+                message=form.cleaned_data.get('message'),
+                topic=topic,
+                created_by=request.user
+            )
+            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
+    else:
+        form = NewTopicForm()
+    return render(request, 'new_topic25.html', {'board': board, 'form': form})
 
 @login_required
 def reply_topic(request, pk, topic_pk):
@@ -126,7 +245,20 @@ def feedback(request):
     if request.method == 'POST':
         if request.POST.get('select') == '1':
             if request.POST.get('select1') == '3':
-                ba = Board.objects.get(id=1)
-                return redirect('new_topic', pk = 1)
+                return redirect('new_topic13', pk = 1)
+            if request.POST.get('select1') == '4':
+                return redirect('new_topic14', pk = 1)
+            if request.POST.get('select1') == '5':
+                return redirect('new_topic15', pk = 1)
+            if request.POST.get('select1') == '13':
+                return redirect('new_topic113', pk = 1)
+
+        if request.POST.get('select') == '2':
+            if request.POST.get('select1') == '3':
+                return redirect('new_topic23', pk = 1)
+            if request.POST.get('select1') == '4':
+                return redirect('new_topic24', pk = 1)
+            if request.POST.get('select1') == '5':
+                return redirect('new_topic25', pk = 1)
 
     return render(request, 'feedback.html')

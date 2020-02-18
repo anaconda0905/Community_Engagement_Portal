@@ -1,5 +1,5 @@
 from django import forms
-
+from django_range_slider.fields import RangeSliderField
 from .models import Post, Topic
 
 
@@ -12,9 +12,11 @@ class NewTopicForm(forms.ModelForm):
         help_text='The max length of the text is 4000.'
     )
 
+    uploadfile = forms.FileField(required=False, widget=forms.FileInput(attrs={'class': 'form-control', }))
+
     class Meta:
         model = Topic
-        fields = ['subject', 'message']
+        fields = ['subject', 'message','uploadfile']
 
 
 class PostForm(forms.ModelForm):
