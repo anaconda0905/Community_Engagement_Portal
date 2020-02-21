@@ -59,20 +59,20 @@
                                     <h4 class="mt-10">Review</h4>
                                 </li>
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">
+                                    <a class="nav-link" href="{% url 'popular' %}">
                                         <img class="ww-nav-img" src="{% static '/images/heart.png' %}"/>
                                     </a>
                                     <h4 class="mt-10">Popular</h4>
                                 </li>
                                 <li class="nav-item active" style="padding-left: 10px;">
-                                    <a class="nav-link" href="index.html">
+                                    <a class="nav-link" href="{% url 'popular' %}">
                                         <img class="ww-nav-img" src="{% static '/images/bell.png' %}"/>
                                     </a>
                                     <h4 class="mt-10">Notification</h4>
                                 </li>
                                 {% if user.is_authenticated %}
                                 <li class="nav-item dropdown dropdown-slide" style="display: flex; flex-direction: column;">
-                                    <div class="dropdown-toggle" data-toggle="dropdown" style="display: flex; justify-content: space-evenly; flex-direction:row;">
+                                    <div class="dropdown-toggle" data-toggle="dropdown" style="display: flex; justify-content: space-evenly; flex-direction:column;">
                                         <a class="nav-link"  href="">
                                         {% if user.profile.image %}
                                         <img class="ww-nav-img" src="{{user.profile.image.url}}" style="border-radius: 50%;" width="50">

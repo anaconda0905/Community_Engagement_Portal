@@ -22,4 +22,4 @@ class Home(generic.ListView):
     queryset = Shop.objects.annotate(
         distance=Distance("location", user_location)
     ).order_by("distance")[0:6]
-    template_name = "shop.html"
+    template_name = "odpair.html"

@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.70.0/dist/L.Control.Locate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.70.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Load animation tweening lib requirement for CanvasFlowMapLayer -->
+    <script src="https://unpkg.com/@tweenjs/tween.js@18.5.0/dist/tween.umd.js"></script>
+    <script src="{% static 'js/CanvasFlowmapLayer.js' %}"></script>
     <!-- Set map height -->
     <style>
         html, body, #container, #mapid {
@@ -109,6 +113,63 @@
     //         map.fitBounds(poly.getBounds());
     //     })
     //     .addTo(map);
+
+var geoJsonFeatureCollection = {
+  // collection of GeoJSON point features
+  // with origin and destination attribute properties
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates":[-41.3058, 174.82082]
+  },
+  "properties": {
+    "origin_id": 238,
+    "origin_city": "Hechi",
+    "origin_country": "China",
+    "origin_lon": -41.3058,
+    "origin_lat": 174.82082,
+    "destination_id": 1,
+    "destination_city": "Sarh",
+    "destination_country": "Chad",
+    "destination_lon": -34.3058,
+    "destination_lat": 171.82082
+  }
+  // see discussion above, demos, and CSV example data sources
+};
+
+var exampleFlowmapLayer = L.canvasFlowmapLayer(geoJsonFeatureCollection, {
+  // required property for this custom layer,
+  // which relies on the property names of your own data
+  originAndDestinationFieldIds: {
+    // all kinds of important stuff here...see docs below
+ originUniqueIdField: '238',
+  originGeometry: {
+    x: -41.3058,
+    y: 174.82082,
+    spatialReference: {
+      wkid: 4326
+    }
+  },
+  destinationUniqueIdField: '1',
+  destinationGeometry: {
+    x: -31.3058,
+    y: 170.82082,
+    spatialReference: {
+      wkid: 4326
+    }
+  }
+    // however, this isn't required if your own data
+    // is in the same format as the layer source code
+  },
+
+  // some custom options
+  pathDisplayMode: 'selection',
+  animationStarted: true,
+  animationEasingFamily: 'Cubic',
+  animationEasingType: 'In',
+  animationDuration: 2000
+}).addTo(map);
+
 
     var lc = L.control.locate({
         position: 'topleft',

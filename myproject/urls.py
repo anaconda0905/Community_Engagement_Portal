@@ -9,6 +9,7 @@ from geoshop import views as test_views
 
 urlpatterns = [
     url(r'^$', accounts_views.home, name='home'),
+    url(r'^quotation$', accounts_views.home, name='home_quotation'),
     url(r'^signup/$', accounts_views.signup, name='signup'),
     # url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^login/$', accounts_views.login_user, {'template_name':'login.html'}, name='login'),
@@ -44,6 +45,7 @@ urlpatterns = [
 
     url(r'^forum/$', accounts_views.forum, name='forum'),
     url(r'^boards/(?P<pk>\d+)/$', views.TopicListView.as_view(), name='board_topics'),
+    url(r'^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
     url(r'^boards/(?P<pk>\d+)/new13/$', views.new_topic13, name='new_topic13'),
     url(r'^boards/(?P<pk>\d+)/new14/$', views.new_topic14, name='new_topic14'),
     url(r'^boards/(?P<pk>\d+)/new15/$', views.new_topic15, name='new_topic15'),
@@ -56,9 +58,9 @@ urlpatterns = [
     url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/posts/(?P<post_pk>\d+)/edit/$',
         views.PostUpdateView.as_view(), name='edit_post'),
     url(r'^feedback/$', views.feedback, name='feedback'),
+    url(r'^popluar/$', views.popular, name='popular'),
 
     url(r'^admin/', admin.site.urls),
-    # url(r'^ok/', include('leaflet_storage.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', accounts_views.activate, name='activate'),
 

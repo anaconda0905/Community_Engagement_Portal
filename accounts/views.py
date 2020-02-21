@@ -174,7 +174,11 @@ def data_survey_update(request):
 
 def home(request):
     return render(request, 'home.html')
-    
+
+def home_quotation(request):
+    return render(request, 'home_quotation.html')
+
+
 @login_required
 def edit_user(request):
     # print(request.user)

@@ -47,5 +47,5 @@ traitlets==4.2.1
 uritemplate==0.6
 urllib3==1.25.8
 psycopg2
-django_range_slider
+
 

@@ -1,5 +1,6 @@
 import math
-
+import datetime
+from datetime import datetime as mydatetime
 from django.contrib.auth.models import User
 from django.contrib.gis.db import models
 from django.utils.html import mark_safe
@@ -24,10 +25,26 @@ class Board(models.Model):
 
 class Topic(models.Model):
     subject = models.CharField(max_length=255)
+
+    address = models.CharField(max_length=100)
+    like = models.BooleanField()
+    location = models.PointField()
+    categorynumber = models.PositiveIntegerField(default=0)
+    busno = models.CharField(max_length=100)
+    incidentdate = models.DateField(default=datetime.date.today)
+    incidenttime = models.TimeField(default=(mydatetime.now()))
+    routeno = models.CharField(max_length=100)
+    routename = models.CharField(max_length=100)
+    busoperator = models.CharField(max_length=100)
+
     last_updated = models.DateTimeField(auto_now_add=True)
     board = models.ForeignKey(Board, related_name='topics')
     starter = models.ForeignKey(User, related_name='topics')
     views = models.PositiveIntegerField(default=0)
+    upvote = models.PositiveIntegerField(default=0)
+    downvote = models.PositiveIntegerField(default=0)
+
+
 
     def __str__(self):
         return self.subject

@@ -27,9 +27,41 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.70.0/dist/L.Control.Locate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.70.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.roundslider/1.0/roundslider.min.css">
-    <script src="//cdn.jsdelivr.net/jquery.roundslider/1.0/roundslider.min.js"></script>
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+</style>
 
 {% endblock %}
 
@@ -70,26 +102,46 @@
                     <label for="busoperator">Bus Operator:</label><input id="busoperator" class="form-control" type="text">
                 </div>
 
-
-
-
-
-
                 <div class="form-group">
                     <label for="locname">Address:</label><input id="locname" class="form-control" type="text"/>
                 </div>
-                <div class="form-group">
-                    <label>Cleanliness:</label><br>
-                        <select class="wide form-control">
-                            <option data-display="Select">Nothing</option>
-                            <option value="1">Just nice and clean</option>
-                            <option value="2">Make sure the driver clean up before every trip</option>
-                        </select>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                <label>Quick Feedback <i class="more-less glyphicon glyphicon-plus"></i></label>
+
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" style="padding: 15px;border: 1px solid #888;box-shadow: 5px 5px 5px #8888;">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>Cleanliness:</label><br>
+                                <select class="wide form-control">
+                                    <option data-display="Select">Nothing</option>
+                                    <option value="1">Just nice and clean</option>
+                                    <option value="2">Make sure the driver clean up before every trip</option>
+                                </select>
+                            </div>
+                            {% include 'includes/form.html' %}
+                        </div>
+                    </div>
                 </div>
 
-                {% include 'includes/form.html' %}
-                <label>Satisfied Level :</label><br>
-                <div id="slider"></div>
+
+                <label>Satisfied Level :<span id="demo"/></label><br>
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+
+                <div class="form-group">
+                    <label for="file-upload">
+                        <span class="d-block btn bg-primary text-white my-3 select-files">Upload photos and video </span>
+                        <span class="d-block">Maximum upload file size: 500 KB</span>
+                        <input type="file" class="form-control-file d-none" id="file-upload" name="file">
+                    </label>
+                </div>
+
                 <button type="submit" class="btn btn-success">Request for Audit /Investigate</button>
 
             </form>
@@ -103,20 +155,14 @@
 
 {% block js %}
 <script>
-    $(document).ready(function () {
-        $("#slider").roundSlider({
-            value: 0,
-            min: 0,
-            max: 100,
-            width: 30,
-            step: 1,
-            sliderType: "min-range",
-            change: function (args) {
-                console.log(args.value);
-                // $('#range').html(args.value)
-            }
-        });
-    });
+    $('.collapse').collapse({ toggle: false });
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
 </script>
 <script>
     var map = L.map('mapid').setView([-41.3058, 174.82082], 8);

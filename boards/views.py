@@ -195,6 +195,26 @@ def new_topic25(request, pk):
     return render(request, 'new_topic25.html', {'board': board, 'form': form})
 
 @login_required
+def new_topic(request, pk):
+    board = get_object_or_404(Board, pk=pk)
+    if request.method == 'POST':
+        form = NewTopicForm(request.POST)
+        if form.is_valid():
+            topic = form.save(commit=False)
+            topic.board = board
+            topic.starter = request.user
+            topic.save()
+            Post.objects.create(
+                message=form.cleaned_data.get('message'),
+                topic=topic,
+                created_by=request.user
+            )
+            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
+    else:
+        form = NewTopicForm()
+    return render(request, 'new_topic.html', {'board': board, 'form': form})
+
+@login_required
 def reply_topic(request, pk, topic_pk):
     topic = get_object_or_404(Topic, board__pk=pk, pk=topic_pk)
     if request.method == 'POST':
@@ -245,7 +265,7 @@ def feedback(request):
     if request.method == 'POST':
         if request.POST.get('select') == '1':
             if request.POST.get('select1') == '3':
-                return redirect('new_topic13', pk = 1)
+                return redirect('new_topic', pk = 1)
             if request.POST.get('select1') == '4':
                 return redirect('new_topic14', pk = 1)
             if request.POST.get('select1') == '5':
@@ -262,3 +282,27 @@ def feedback(request):
                 return redirect('new_topic25', pk = 1)
 
     return render(request, 'feedback.html')
+
+
+def popular(request):
+    if request.method == 'POST':
+        print('yes')
+        if request.POST.get('select0') == '33':
+            if request.POST.get('select') == '1':
+                if request.POST.get('select1') == '3':
+                    return redirect('new_topic13', pk = 1)
+                if request.POST.get('select1') == '4':
+                    return redirect('new_topic14', pk = 1)
+                if request.POST.get('select1') == '5':
+                    return redirect('new_topic15', pk = 1)
+                if request.POST.get('select1') == '13':
+                    return redirect('new_topic113', pk = 1)
+
+            if request.POST.get('select') == '2':
+                if request.POST.get('select1') == '3':
+                    return redirect('new_topic23', pk = 1)
+                if request.POST.get('select1') == '4':
+                    return redirect('new_topic24', pk = 1)
+                if request.POST.get('select1') == '5':
+                    return redirect('new_topic25', pk = 1)
+    return render(request, 'popular.html')
