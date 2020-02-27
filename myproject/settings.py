@@ -202,5 +202,5 @@ PHONENUMBER_DEFAULT_REGION = 'US'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-GDAL_LIBRARY_PATH = "C:\\Users\\HOME\\Documents\\Python Scripts\\django-venv\\Lib\\site-packages\\osgeo\\gdal300.dll"
-GEOS_LIBRARY_PATH = "C:\\Users\\HOME\\Documents\\Python Scripts\\django-venv\\Lib\\site-packages\\osgeo\\geos_c.dll"
+GDAL_LIBRARY_PATH = "C:\\Users\\HOME\\Documents\\Python Scripts\\Community_Engagement_Portal\\venv\\Lib\\site-packages\\osgeo\\gdal300.dll"
+GEOS_LIBRARY_PATH = "C:\\Users\\HOME\\Documents\\Python Scripts\\Community_Engagement_Portal\\venv\\Lib\\site-packages\\osgeo\\geos_c.dll"
