@@ -7,6 +7,7 @@ import datetime
 
 # Create your models here.
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     fullname = models.CharField(max_length=30, blank=True)
@@ -14,6 +15,7 @@ class Profile(models.Model):
     birth_date = models.DateField(default=datetime.date.today, blank=True, null=True)
     phone = PhoneNumberField(blank=True, help_text='Contact phone number')
     image = models.ImageField(upload_to='profile_image', blank=True, null=True)
+
 
 class Survey(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="survey")
@@ -26,6 +28,7 @@ class Survey(models.Model):
     times = models.CharField(max_length=30, blank=True, null=True)
     reason_q2 = models.CharField(max_length=30, blank=True, null=True)
     reason_q3 = models.CharField(max_length=30, blank=True, null=True)
+
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):

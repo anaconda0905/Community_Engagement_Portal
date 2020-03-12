@@ -33,6 +33,7 @@ def login_user(request, *args, **kwargs):
             request.session.set_expiry(60 * 5)
     return auth_views.login(request, *args, **kwargs)    
 
+
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -105,6 +106,7 @@ def activate(request, uidb64, token):
 def my_account_done(request):
     return render(request, 'my_account_done.html')
 
+
 @login_required
 def data_survey(request):
     if request.method == 'POST':
@@ -175,6 +177,7 @@ def data_survey_update(request):
 def home(request):
     return render(request, 'home.html')
 
+
 def home_quotation(request):
     return render(request, 'home_quotation.html')
 
@@ -211,6 +214,7 @@ def edit_user(request):
         })
     else:
         raise PermissionDenied
+
 
 def contactus(request):
     return render(request, 'contactus.html')
