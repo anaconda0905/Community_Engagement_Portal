@@ -3,37 +3,38 @@
 {% load static %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" media="all">
-<link rel="stylesheet" href="{% static 'plugins/bulma/css/bulma.css' %}" type="text/css" media="all"/>
-<link rel="stylesheet" href="{% static 'css/account/accounts.css' %}">
-<link rel="stylesheet" href="{% static 'css/account/style.css' %}">
-<script>
-    addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/animate/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/select2/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    }
-</script>
+
 {% endblock %}
 
 {% block body %}
-<div class="w3layouts-main">
-    <div class="bg-layer">
-        <div class="container">
-            <h1 class="welcome">
-                <a href="{% url 'home' %}">
-                    <div class="main-icon">
-                        <span class="fa fa-home"></span>
-                    </div>
-                </a>
-            </h1>
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('{% static "img/background.png" %}');">
             {% block content %}
             {% endblock %}
         </div>
     </div>
-</div>
 
+{% endblock body %}
 
-{% endblock %}
+{% block js %}
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+    <script src="{% static 'js/authorization.js' %}"></script>
+{% endblock js %}

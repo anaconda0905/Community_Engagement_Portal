@@ -26,13 +26,12 @@ import json
 
 
 def login_user(request, *args, **kwargs):
-    if request.method == 'POST':
-        if not request.POST.get('remember_me', None):
-            print("un_checked")
-            # 60 second
-            request.session.set_expiry(60 * 5)
+    # if request.method == 'POST':
+    #     if not request.POST.get('remember_me', None):
+    #         print("un_checked")
+    #         # 60 second
+    #         request.session.set_expiry(60 * 5)
     return auth_views.login(request, *args, **kwargs)    
-
 
 def signup(request):
     if request.method == 'POST':

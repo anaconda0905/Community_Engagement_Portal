@@ -1,71 +1,83 @@
 {% extends 'base_accounts.html' %}
 {% load form_tags widget_tweaks %}
-{% block title %}Log in to Community Engagement Portal{% endblock %}
+{% block title %}Log in to MassTransit Advisor{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-lg-3 col-md-6 col-sm-8">
-        <div class="cardnew">
-            <div class="card-body-new">
-                
-                <!-- <span class="fa fa-eercast"></span> -->
-                <h3 class="card-title">Log in</h3>
-                <form method="post" novalidate>
-                    {% csrf_token %}
-                    {#% include 'includes/form.html' %#}
-                    {% if form.non_field_errors %}
-                      <div class="alert alert-danger" role="alert">
-                        {% for error in form.non_field_errors %}
-                          <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
-                        {% endfor %}
-                      </div>
-                    {% endif %}
-                    
-                    <div class="form-group">
-                        <label for="{{ form.username.id_for_label }}">Username/Email:</label>
-                        {% render_field form.username class=form.username|input_class %}
-                        {% for error in form.username.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                        {% endfor %}
-                    </div>
-                    
-                    <div class="form-group">
-                        {{ form.password.label_tag }}
-                        {% render_field form.password class=form.password|input_class %}
-                        {% for error in form.password.errors %}
-                        <div class="invalid-feedback">
-                            {{ error }}
-                        </div>
-                        {% endfor %}
-                    </div>
-                    
-                    <div class="login-check">
-						 <label class="checkbox"><input type="checkbox" value="true" name="remember_me"><i> </i> Keep me logged in</label>
-					</div>
-                    <button type="submit" class="btn btn-primary btn-block">Log in</button>
-                </form>
-            </div>
-            <div class="card-footer text-muted text-center">
-                New User? <a href="{% url 'signup' %}">Sign up</a>
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-40 p-b-45">
+        <form class="login100-form validate-form" method="post" novalidate>
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {% for error in form.non_field_errors %}
+                        <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <span class="login100-form-title p-b-30">
+                Welcome back!
+            </span>
+
+            <div class="wrap-input100 validate-input" data-validate="Username is required">
+                <span for="{{ form.username.id_for_label }}" class="label-input100">USERNAME / EMAIL</span>
+                <input type="text"
+                       name="{{ form.username.name }}"
+                       id="{{ form.username.id_for_label }}"
+                       class="input100"
+                       placeholder="Type your username"
+                       {% if form.username.value != None %}value="{{ form.username.value|stringformat:'s' }}"{% endif %}
+                       maxlength="{{ form.username.field.max_length }}"
+                       {% if form.username.field.required %}required{% endif %}>
+                <span class="focus-input100" data-symbol="&#xf206;"></span>
             </div>
 
-            <div class="social">
-                <ul>
-                    <li>or login using : </li>
-                    <li><a href="{% url 'social:begin' 'facebook' %}" class="facebook">
-                      <span class="fa fa-facebook"></span></a></li>
-                    <li><a href="{% url 'social:begin' 'google-oauth2'%}" class="google">
-                      <span class="fa fa-google-plus"></span></a></li>
-                </ul>
+            {% for error in form.username.errors %}
+                <div class="alert alert-danger">
+                    <strong>Error!</strong>
+                    {{ error }}
+                </div>
+            {% endfor %}
+            <br>
+
+            <div class="wrap-input100 validate-input" data-validate="Password is required">
+                <span for="{{ form.password.id_for_label }}" class="label-input100">PASSWORD</span>
+                <input type="password"
+                       name="{{ form.password.name }}"
+                       id="{{ form.password.id_for_label }}"
+                       class="input100"
+                       placeholder="Type your password"
+                       {% if form.password.value != None %}value="{{ form.password.value|stringformat:'s' }}"{% endif %}
+                       maxlength="{{ form.password.field.max_length }}"
+                       {% if form.password.field.required %}required{% endif %}>
+                <span class="focus-input100" data-symbol="&#xf190;"></span>
             </div>
-        </div>
-        <div class="text-center py-2">
-            <small>
-                <a href="{% url 'password_reset' %}" class="text-muted">Forgot your password?</a>
-            </small>
-        </div>
+            {% for error in form.password.errors %}
+                <div class="alert alert-danger">
+                    <strong>Error!</strong>
+                    {{ error }}
+                </div>
+            {% endfor %}
+
+            <div class="text-center p-t-20 p-b-20">
+                <a href="{% url 'password_reset' %}">
+                    Forgot your password?
+                </a>
+            </div>
+
+            <div class="container-login100-form-btn">
+                <div class="wrap-login100-form-btn">
+                    <button type="submit" class="sign-in-btn">
+                        Sign In
+                    </button>
+                </div>
+            </div>
+
+            <div class="txt1 text-center p-t-40">
+                <span>Or</span>
+                <a href="{% url 'signup' %}" style="font-weight: bold;">&nbsp;Create An Account Here!</a>
+            </div>
+
+        </form>
     </div>
-</div>
+
 {% endblock %}

@@ -25,7 +25,7 @@ SECRET_KEY = 'rqr_cjv4igscyu8&&(0%e(=sy=f2)p=f_wn&@0xsp7m$@!kp=d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1', '108.161.151.70', '192.168.6.216']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', '192.168.6.169']
 
 # Application definition
 
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     # "leaflet_storage",
 
     'boards',
+    'django_inlinecss'
 ]
 
 MIDDLEWARE = [
@@ -99,9 +100,9 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'geo_db',
+        'NAME': 'mtadb',
         'USER': 'postgres',
-        'PASSWORD': 'admin',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -181,9 +182,10 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '77ad9c53c70b5a5d9e680e4ff2a42bd5'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '48489876388-67rbi5lrcobmq2804pc8i9014bctrrg4.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'FQdT5OZN1yfxcpcLVSHUnXl0'
 
-SESSION_COOKIE_AGE = 60 * 60 * 24 * 30 # One month
+# SESSION_COOKIE_AGE = 60 * 60 * 24 * 30 # One month
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # # myproject/settings.py
 # EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 # EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
@@ -196,11 +198,11 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='')
 SERVER_EMAIL = config('SERVER_EMAIL', default='')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+EMAIL_TIMEOUT=60
 
 PHONENUMBER_DEFAULT_REGION = 'US'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-GDAL_LIBRARY_PATH = "C:\\Users\\HOME\\Documents\\Python Scripts\\Community_Engagement_Portal\\venv\\Lib\\site-packages\\osgeo\\gdal300.dll"
-GEOS_LIBRARY_PATH = "C:\\Users\\HOME\\Documents\\Python Scripts\\Community_Engagement_Portal\\venv\\Lib\\site-packages\\osgeo\\geos_c.dll"
+GDAL_LIBRARY_PATH = r'D:\workspace\Django\django-venv\Lib\site-packages\osgeo\gdal300.dll'
