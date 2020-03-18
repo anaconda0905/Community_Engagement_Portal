@@ -36,7 +36,7 @@ class ProfileForm(forms.ModelForm):
         self.fields['image'].widget.attrs['style'] = 'class: form-control;'
         
 class SignUpForm(UserCreationForm):
-    fullname = forms.CharField(max_length=254, required=True,label="Full Name as NRIC")
+    # fullname = forms.CharField(max_length=254, required=True,label="Full Name as NRIC")
     # nric = forms.CharField(max_length=254, required=False, label="NRIC")
     # birth_date = forms.DateField(
     #     help_text='Required. Format: mm/dd/yyyy', 
@@ -46,13 +46,13 @@ class SignUpForm(UserCreationForm):
     #         attrs={'type': 'date', 'class': 'form-control'}
     #     )
     # )
-    # phone = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'(xxx)xxx-xxxx'}), required=False)
+    phone = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'(xxx)xxx-xxxx'}), required=False)
     email = forms.CharField(max_length=254, required=True, widget=forms.EmailInput(attrs={'placeholder':'Enter valid email'}))
     # image = forms.ImageField(upload_to ="profile_image", blank=True,)
 
     class Meta:
         model = User
-        fields = ('username','fullname', 'email', 'password1', 'password2',)
+        fields = ('username', 'email', 'password1', 'password2',)
         
     def clean_email(self):
         """

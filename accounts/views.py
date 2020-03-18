@@ -45,10 +45,10 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
-            user.profile.fullname = form.cleaned_data.get('fullname')
+            # user.profile.fullname = form.cleaned_data.get('fullname')
             # user.profile.nric = form.cleaned_data.get('nric')
             # user.profile.birth_date = form.cleaned_data.get('birth_date')
-            # user.profile.phone = form.cleaned_data.get('phone')
+            user.profile.phone = form.cleaned_data.get('phone')
             # if(request.FILES['avatar']):
             #     user.profile.avatar = request.FILES['avatar']
             user.is_active = False
@@ -64,6 +64,7 @@ def signup(request):
             mail_subject = 'Activate your account.'
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
+            email.content_subtype = "html" #This is the crucial part.
             email.send()
             # Sending activation link in terminal
             # user.email_user(mail_subject, message)
