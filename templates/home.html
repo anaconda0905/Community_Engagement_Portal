@@ -1,318 +1,218 @@
-{% extends 'base.html' %}
+{% extends 'base_pages.html' %}
 
 {% load static %}
 
 {% block content %}
-
-
-
-
-<section id="topbackground_section" class="hero-area text-center overly">
-	<!-- Container Start -->
-	<div class="bg-1" style="height:332px;"></div>
-
-	<div class="row hero-area">
-		<div class="col-lg-1 col-md-1 col-sm-1"></div>
-		<div class="col-lg-10 col-md-10 col-sm-10">
-			<!-- Header Contetnt -->
-			<div class="content-block">
-				<h1 class="ww-contentblock-title">Vote Your Best Route</h1>
+	<!-- Start banner Area -->
+	<section class="banner-area mt-70">
+		<div class="container box_1170">
+			<div class="row fullscreen d-flex align-items-center justify-content-center">
+				<div class="banner-content text-center col-lg-8">
+					<a href="#" class="primary-btn">Vote your best route</a>
+				</div>
 			</div>
-			<!-- Advance Search -->
-			<div class="advance-search">
-				<div>
-					<div class="row justify-content-center">
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="{% url 'feedback' %}">
-								<img src="{% static 'images/bus.png' %}"/>
-								<h4>Stage Bus</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/express-bus-coach.png' %}"/>
-								<h4>Express Bus</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/Campus-shuttle.png' %}"/>
-								<h4>Bus Rapid Transit</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/shopping-mall-shuttle.png' %}"/>
-								<h4>Mall Shuttle</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/airport-shuttle.png' %}"/>
-								<h4>Airport Shuttle</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/tourism-van.png' %}"/>
-								<h4>Tourism Shuttle</h4>
-							</a>
-						</div>
-					</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
 
-					<div class="row justify-content-center">
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/School-bus.png' %}"/>
-								<h4>School Bus</h4>
-							</a>
+	<!-- Start Post Silder Area -->
+	<section class="post-slider-area">
+		<div class="container box_1170">
+			<div class="row justify-content-center">
+				<div class="col-lg-10">
+					<div class="owl-carousel active-post-carusel">
+						<div class="post-box mb-30">
+							<div class="align-items-center justify-content-between d-flex">
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-stage-bus.png' %}" alt="Stage Bus">
+									<p class="mt-10">Stage Bus</p>
+								</a>
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-taxicab.png' %}" alt="Taxicab">
+									<p>Taxicab</p>
+								</a>
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-train-rail.png' %}" alt="Train & Rail">
+									<p>Train & Rail</p>
+								</a>
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-airport.png' %}" alt="Airport Shuttle">
+									<p>Airport Shuttle</p>
+								</a>
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-cycle.png' %}" alt="Cycle & Walk">
+									<p>Cycle & Walk</p>
+								</a>
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-more.png' %}" alt="More">
+									<p>More</p>
+								</a>
+							</div>
 						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/Campus-shuttle.png' %}"/>
-								<h4>Campus Shuttle</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/bus-terminal.png' %}"/>
-								<h4>Bus Terminal</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/taxi-cab-ride-hailing.png' %}"/>
-								<h4>Taxicab &<br/>Ride-hailing</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/train.png' %}"/>
-								<h4>Train & Rail</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/cycle&walk.png' %}"/>
-								<h4>Cycle & Walk</h4>
-							</a>
-						</div>
-					</div>
 
-					<div class="row justify-content-center">
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/ridesharing-carpool-vanpool.png' %}"/>
-								<h4>Ride Sharing<br/>Carpool</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/Ferry.png' %}"/>
-								<h4>Ferry</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/lost-and-found.png' %}"/>
-								<h4>Lost & Found</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/MaaS.png' %}"/>
-								<h4>MaaS &<br/>Technology</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/forum.png' %}"/>
-								<h4>Forum</h4>
-							</a>
-						</div>
-						<div class="col-lg-2 col-md-2 col-sm-4 col-6 align-content-center">
-							<a href="#">
-								<img src="{% static 'images/More.png' %}"/>
-								<h4>More</h4>
-							</a>
+						<div class="post-box mb-30">
+							<div class="align-items-center justify-content-between d-flex">
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-stage-bus.png' %}" alt="">
+									<p class="mt-10">Stage Bus</p>
+								</a>
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-taxicab.png' %}" alt="">
+									<p>Taxicab</p>
+								</a>
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-train-rail.png' %}" alt="">
+									<p>Train & Rail</p>
+								</a>
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-airport.png' %}" alt="">
+									<p>Airport Shuttle</p>
+								</a>
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-cycle.png' %}" alt="">
+									<p>Cycle & Walk</p>
+								</a>
+								<a href="#" class="align-items-center d-flex flex-column">
+									<img src="{% static 'img/icons-more.png' %}" alt="">
+									<p>More</p>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
-		<div class="col-lg-1 col-md-1 col-sm-1"/></div>
-	</div>
+	</section>
+	<!-- Start Post Silder Area -->
 
-	<!-- Container End -->
-</section>
-
-<!--===========================================
-=            Popular deals section            =
-============================================-->
-
-<section id="popular_deals_section" class="popular-deals section bg-gray">
-	<div>
-
-		<div class="row">
-			<div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
-			<div class="col-lg-10 col-md-10 col-sm-12 col-12">
-				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-12 col-12 ww-left-summary">
-						<div class="product-item bg-light">
-							<div class="card">
-									<div class="left-avatar-wrapper">
-
-										<div class="left-avatar-group">
-											<div class="sm-round-symbol-1">
-												<img src="{% static 'images/ayo-ogunseinde-6W4F62sN_yI-unsplash.jpg' %}" />
-											</div>
-											<img class="lg-round-symbol" src="{% static 'images/michael-dam-mEZ3PoFGs_k-unsplash.jpg' %}" />
-											<div class="sm-round-symbol-2" >
-												<img src="{% static 'images/joseph-pearson-ifCxnFLQnh0-unsplash.jpg' %}" />
-											</div>
-
-										</div>
-
-									</div>
-								<h4>Get the best of MassTransitAdvisor</h4>
-								<ul class="left-list-style">
-									<li>
-										<p>Your feedback and vote are treated seriousely</p>
-									</li>
-									<li>
-										<p>Get travel tips and earn badges to become Advisor</p>
-									</li>
-									<li>
-										<p>Compare travel time and expenses between driving and taking public transport</p>
-									</li>
-								</ul>
-								<div class="ww-align-center">
-									<a href="#">Sign Up</a>
+	<!-- Start main body Area -->
+	<div class="main-body section-gap mt--30">
+		<div class="container box_1170">
+			<h3>From the community</h3>
+			<div class="row" style="margin-top: 20px;">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12">
+					<div class="single-post-item short">
+						<div class="post-header justify-content-between d-flex flex-row">
+							<div>
+								<label class="nick-name">AL</label>
+								<label>@username</label>
+							</div>
+							<label>2h</label>
+						</div>
+						<figure>
+							<img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
+						</figure>
+						<div class="post-footer">
+							<div class="justify-content-between d-flex flex-row">
+								<div>
+									<img src="{% static 'img/icons-emoji-happy.png' %}" style="max-height: 20px;" />
+									<label><span style="font-weight: bold;">Bus</span> / Driver</label>
+								</div>
+								<label>30 Reviews</label>
+							</div>
+							<div class="justify-content-between d-flex flex-row" style="margin-top: -10px;">
+								<label>Driving Behavior</label>
+								<div>
+									<img src="{% static 'img/icons-likebutton-after.png' %}" style="max-height: 20px;"/>
+									<label>1.3k</label>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6 col-md-12 col-sm-12 col-12">
-						<div class="product-item bg-light">
-							<div class="card" style="border-top: solid 4px #ffffab;">
-								<div class="ww-get-started-wrapper">
-									<h5>Tell us about your trip</h5>
-									<p>Your review matters to other passengers and the transit operator's alike</p>
-									<a href="#">Get Started</a>
-								</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12">
+					<div class="single-post-item short">
+						<div class="post-header justify-content-between d-flex flex-row">
+							<div>
+								<label class="nick-name">AL</label>
+								<label>@username</label>
 							</div>
+							<label>2h</label>
 						</div>
-
-						<div class="product-item bg-light">
-							<div class="card">
-								<div class="ww-get-started-wrapper">
-									<h5>Public Transport vs. Car Calculator</h5>
-									<p>Your review matters to other passengers and the transit operator's alike</p>
-									<a class="ww-align-center" href="#">Email Me the Analysis</a>
+						<figure>
+							<img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
+						</figure>
+						<div class="post-footer">
+							<div class="justify-content-between d-flex flex-row">
+								<div>
+									<img src="{% static 'img/icons-emoji-happy.png' %}" style="max-height: 20px;" />
+									<label><span style="font-weight: bold;">Bus</span> / Driver</label>
 								</div>
+								<label>30 Reviews</label>
 							</div>
-						</div>
-
-						<div class="product-item bg-light">
-							<div class="card">
-								<div class="ww-get-started-wrapper">
-									<h5>How are the Stage Bus Operators doing?</h5>
-									<h6 class="mt-20">Hall of Fame</h5>
-									<ul class="mt-20">
-										<li>1. RapidKL</li>
-										<li>2. PJ City Bus</li>
-										<li>3. Smart Selangorku</li>
-										<li>4. MyBas Ipsh</li>
-										<li>5. Causeway Link</li>
-									</ul>
-									<h6 class="mt-20">Hall of Shame</h5>
-									<ul class="mt-20">
-										<li>1. MRT Feeder Bus</li>
-										<li>2. Panorama Melaka</li>
-										<li>3. Nadi Purta</li>
-										<li>4. MyBas Kangar</li>
-										<li>5. Selengor Omnibus</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="product-item bg-light">
-							<div class="card">
-								<div class="ww-get-started-wrapper">
-									<h5>Who are the Top-performing Drivers to Walk Away with Our Cash Reward?</h5>
-
-									<ul class="mt-20">
-										<li>1. Abd Kassim - RM 300</li>
-										<li>2. Adam Malik - RM 300</li>
-										<li>3. Rajendran Priyan - RM 300</li>
-										<li>4. Ajit Maslan - RM 300</li>
-										<li>5. ××××× - RM 100</li>
-										<li>6. ××××× - RM 100</li>
-										<li>7. ××××× - RM 100</li>
-										<li>8. ××××× - RM 100</li>
-										<li>9. ××××× - RM 100</li>
-										<li>10. ××××× - RM 100</li>
-									</ul>
-
-									<p class="mt-50 fs-p">
-										Your Vote give the meaning and motivation to their works.<br/>
-										Honour them with your vote.
-									</p>
-									<div class="ww-align-center ">
-										<a class="mt-20" href="#">Vote Your Captain Today</a>
-									</div>
+							<div class="justify-content-between d-flex flex-row" style="margin-top: -10px;">
+								<label>Driving Behavior</label>
+								<div>
+									<img src="{% static 'img/icons-likebutton-after.png' %}" style="max-height: 20px;"/>
+									<label>1.3k</label>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-3 col-md-12 col-sm-12 col-12">
-						<div class="product-item bg-light">
-							<div class="card">
-								<div class="row right-avatar-group">
-
-									<img class="round-avatar" src="{% static 'images/alex-knight-2EJCSULRwC8-unsplash.jpg' %}" />
-
-									<img class="round-avatar" src="{% static 'images/stephen-dawson-qwtCeJ5cLYs-unsplash.jpg' %}" />
-
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12">
+					<div class="single-post-item short">
+						<div class="post-header justify-content-between d-flex flex-row">
+							<div>
+								<label class="nick-name">AL</label>
+								<label>@username</label>
+							</div>
+							<label>2h</label>
+						</div>
+						<figure>
+							<img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
+						</figure>
+						<div class="post-footer">
+							<div class="justify-content-between d-flex flex-row">
+								<div>
+									<img src="{% static 'img/icons-emoji-happy.png' %}" style="max-height: 20px;" />
+									<label><span style="font-weight: bold;">Bus</span> / Driver</label>
 								</div>
-								<h4>Transform your stage bus business</h4>
-								<ul class="right-list-style">
-									<li>
-										<p>a. we reward your drivers with real cash</p>
-									</li>
-									<li>
-										<p>b. gain monetizable insights for service improvement and non-fare revenue</p>
-									</li>
-									<li>
-										<p>c. deep integration into your operation for fast turnaround time;</p>
-									</li>
-									<li>
-										<p>d. harness the power of social media into effective customer service tool and sales channel</p>
-									</li>
-									<li>
-										<p>e. earn badges and positive reviews matter to your branding</p>
-									</li>
-									<li>
-										<p>f. get quality drivers application</p>
-									</li>
-									<li>
-										<p>g. <span style="text-decoration: underline;">Free</span> journey planner app with accurate ETA prediction</p>
-									</li>
-								</ul>
-								<div class="ww-align-center">
-									<a href="#">Free Sign Up</a>
+								<label>30 Reviews</label>
+							</div>
+							<div class="justify-content-between d-flex flex-row" style="margin-top: -10px;">
+								<label>Driving Behavior</label>
+								<div>
+									<img src="{% static 'img/icons-likebutton-after.png' %}" style="max-height: 20px;"/>
+									<label>1.3k</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-12">
+					<div class="single-post-item short">
+						<div class="post-header justify-content-between d-flex flex-row">
+							<div>
+								<label class="nick-name">AL</label>
+								<label>@username</label>
+							</div>
+							<label>2h</label>
+						</div>
+						<figure>
+							<img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
+						</figure>
+						<div class="post-footer">
+							<div class="justify-content-between d-flex flex-row">
+								<div>
+									<img src="{% static 'img/icons-emoji-happy.png' %}" style="max-height: 20px;" />
+									<label><span style="font-weight: bold;">Bus</span> / Driver</label>
+								</div>
+								<label>30 Reviews</label>
+							</div>
+							<div class="justify-content-between d-flex flex-row" style="margin-top: -10px;">
+								<label>Driving Behavior</label>
+								<div>
+									<img src="{% static 'img/icons-likebutton-after.png' %}" style="max-height: 20px;"/>
+									<label>1.3k</label>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
 		</div>
 	</div>
-</section>
+	<!-- Start main body Area -->
 
 {% endblock %}
