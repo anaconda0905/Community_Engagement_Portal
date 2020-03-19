@@ -102,11 +102,6 @@ def activate(request, uidb64, token):
 #     def get_object(self):
 #         return self.request.user
 
-        
-def my_account_done(request):
-    return render(request, 'my_account_done.html')
-
-
 @login_required
 def data_survey(request):
     if request.method == 'POST':
@@ -185,6 +180,7 @@ def home_quotation(request):
 @login_required
 def edit_user(request):
     # print(request.user)
+    success = 0
     user = request.user
     user_form = UserProfileForm(instance=user)
  
@@ -204,13 +200,21 @@ def edit_user(request):
                 # print(formset)
 
                 if formset.is_valid():
+
                     created_user.save()
                     formset.save()
-                return redirect('my_account_done')
- 
+
+                    success = 1
+                    return render(request, "account_update.html", {
+                        "user_form": user_form,
+                        "profile_form": formset,
+                        "success": success,
+                    })
+            success = 2
         return render(request, "account_update.html", {
             "user_form": user_form,
             "profile_form": formset,
+            "success":success,
         })
     else:
         raise PermissionDenied

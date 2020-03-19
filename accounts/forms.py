@@ -25,7 +25,7 @@ class ProfileForm(forms.ModelForm):
     )
     
     image = forms.ImageField(required=False,widget= forms.FileInput(attrs={'class': 'form-control', }))
-    phone = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'(xxx)xxx-xxxx', 'class': 'form-control'}), required=False)
+    phone = forms.CharField(widget= forms.TextInput(attrs={'placeholder':'(xxx)xxx-xxxx', 'class': 'form-control'}), label="MOBILE NO.", required=False)
 
     class Meta:
         model = Profile
