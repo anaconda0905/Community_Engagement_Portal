@@ -1,35 +1,11 @@
 $(document).ready(function() {
   "use strict";
-
   var window_width = $(window).width(),
   window_height = window.outerHeight,
-  // header_height = $(".default-header").height(),
   header_height = $("#header").height() + 10,
-  // header_height_static = $(".site-header.static").outerHeight(),
   fitscreen = window_height - header_height;
 
-  // console.log('window_height',window_height);
-  // console.log('header_height',header_height);
-  // console.log('header_height_static',header_height_static);
-  // console.log('fitscreen',fitscreen);
-  console.log('header height',header_height);
   $(".fullscreen").css("height", window_height / 2 + header_height);
-  // $(".fitscreen").css("height", fitscreen);
-  $('#review_section').css("height",window_height - header_height * 2);
-  $('#review_detail_home').css("height",window_height - header_height * 4 - 30);
-  $('#review_detail_home').css("margin-top", header_height);
-
-  // if(window_width <= 420) {
-  //   // $('#email_detail_home').removeAttr('height');
-  //   $('#email_section').css("height",window_height);
-  //   $('#email_detail_home').css("height",window_height - header_height - 30);
-  //   $('#email_detail_home').css("margin-top", header_height);
-  // } else {
-  //   $('#email_section').css("height",window_height - header_height * 2);
-  //   $('#email_detail_home').css("height",window_height - header_height * 4 - 30);
-  //   $('#email_detail_home').css("margin-top", header_height);
-  // }
-  
 
   if (document.getElementById("default-select")) {
     $("select").niceSelect();
@@ -165,6 +141,161 @@ $(document).ready(function() {
       $("#header").removeClass("header-scrolled");
     }
   });
+
+  var form = $("#review-form");
+  form.validate({
+      errorPlacement: function errorPlacement(error, element) {
+           element.before(error); 
+      },
+      rules: {
+          feeling : {
+              required: true,
+          },
+          feedback_regarding : {
+              required: true,
+          },
+          feedback_categories : {
+              required: true,
+          },
+      },
+      onfocusout: function(element) {
+          $(element).valid();
+      },
+      highlight : function(element, errorClass, validClass) {
+          $(element.form).find('.actions').addClass('form-error');
+          $(element).removeClass('valid');
+          $(element).addClass('error');
+      },
+      unhighlight: function(element, errorClass, validClass) {
+          $(element.form).find('.actions').removeClass('form-error');
+          $(element).removeClass('error');
+          $(element).addClass('valid');
+      }
+  });
+  form.steps({
+      headerTag: "h4",
+      bodyTag: "section",
+      transitionEffect: "fade",
+      enablePagination: true,
+      labels: {
+          previous : '«',
+          next : 'Next',
+          finish : 'Submit',
+          current : ''
+      },
+      titleTemplate : '<span class="title">#title#</span>',
+      onStepChanging: function (event, currentIndex, newIndex)
+      {
+          form.validate().settings.ignore = ":disabled,:hidden";
+          return form.valid();
+      },
+      onFinishing: function (event, currentIndex)
+      {
+          form.validate().settings.ignore = ":disabled";
+          return form.valid();
+      },
+      onFinished: function (event, currentIndex)
+      {
+          alert('Sumited');
+      },
+      // onInit : function (event, currentIndex) {
+      //     event.append('demo');
+      // }
+  });
+
+  // $('.review-form > .actions li a').click(function(){
+  //   console.log("clicked");
+  //   $steps = $('.review-form > .steps li');
+  //   for (var i = 0; i < $steps.length; i++) {
+  //      if($steps[i].attr('aria-selected')){
+  //        $current = $steps[i];
+  //        break;
+  //      }
+  //   }
+  //   $current.prevAll().addClass('checked');
+  //   $current.nextAll().removeClass('checked');
+  // });
+
+
+  // ----------for survey page ------------------
+  var form = $("#survey-form");
+  form.validate({
+      errorPlacement: function errorPlacement(error, element) {
+           element.before(error); 
+      },
+      rules: {
+          feeling : {
+              required: true,
+          },
+          feedback_regarding : {
+              required: true,
+          },
+          feedback_categories : {
+              required: true,
+          },
+      },
+      onfocusout: function(element) {
+          $(element).valid();
+      },
+      highlight : function(element, errorClass, validClass) {
+          $(element.form).find('.actions').addClass('form-error');
+          $(element).removeClass('valid');
+          $(element).addClass('error');
+      },
+      unhighlight: function(element, errorClass, validClass) {
+          $(element.form).find('.actions').removeClass('form-error');
+          $(element).removeClass('error');
+          $(element).addClass('valid');
+      }
+  });
+  form.steps({
+      headerTag: "h4",
+      bodyTag: "section",
+      transitionEffect: "fade",
+      enablePagination: true,
+      labels: {
+          previous : '«',
+          next : 'Next',
+          finish : 'Submit',
+          current : ''
+      },
+      titleTemplate : '<span class="title">#title#</span>',
+      onStepChanging: function (event, currentIndex, newIndex)
+      {
+          form.validate().settings.ignore = ":disabled,:hidden";
+          return form.valid();
+      },
+      onFinishing: function (event, currentIndex)
+      {
+          form.validate().settings.ignore = ":disabled";
+          return form.valid();
+      },
+      onFinished: function (event, currentIndex)
+      {
+          alert('Sumited');
+      },
+      // onInit : function (event, currentIndex) {
+      //     event.append('demo');
+      // }
+  });
+
+
+  $(document).ready(function(){
+      $('.custom-control-input').click(function() {
+          $('.custom-control-input').not(this).prop('checked', false);
+          $(this).prop('checked',true);
+      });
+  });
+
+  const labels = document.querySelectorAll('.label');
+   labels.forEach(label => {
+       const chars = label.textContent.split('');
+       label.innerHTML = '';
+       chars.forEach(char => {
+           label.innerHTML += `<span>${char === ' ' ? '&nbsp' : char}</span>`;
+       });
+   })
+
 });
 
 

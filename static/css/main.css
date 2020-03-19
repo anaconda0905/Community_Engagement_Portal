@@ -3426,19 +3426,32 @@ body.mobile-nav-active #mobile-nav-toggle {
                Review step page style
 ################
 */
+/*
+################
+               Email page style
+################
+*/
 #review_section {
-  background-image: url(img/bg-01.jpg);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; }
+  @media (max-width: 420px) {
+    #review_section {
+      margin-top: -20px; } }
   #review_section #review_detail_home {
     position: relative;
     background-color: rgba(150, 0, 179, 0.5);
-    border-radius: 15px; }
+    border-radius: 15px;
+    padding-top: 20em;
+    padding-bottom: 20em; }
     #review_section #review_detail_home .review-content h1 {
       color: #fff;
       font-family: 'open-sans';
-      font-size: 3.5em; }
+      font-size: 3rem;
+      font-weight: bold; }
+      @media (max-width: 420px) {
+        #review_section #review_detail_home .review-content h1 {
+          font-size: 2.5rem; } }
     #review_section #review_detail_home .review-content p {
       color: #fff;
       font-size: 1.3em;
@@ -3446,6 +3459,235 @@ body.mobile-nav-active #mobile-nav-toggle {
       word-spacing: normal;
       font-family: 'open-sans';
       font-weight: 100; }
+    @media (max-width: 420px) {
+      #review_section #review_detail_home {
+        display: block !important;
+        margin-top: 20px !important;
+        padding-top: 12em;
+        padding-bottom: 12em; } }
+
+#steps_review_detail_home {
+  position: relative;
+  background-color: rgba(150, 0, 179, 0.5);
+  border-radius: 15px; }
+  #steps_review_detail_home form {
+    width: 100%; }
+  @media (max-width: 420px) {
+    #steps_review_detail_home {
+      display: block !important;
+      margin-top: 20px !important;
+      padding-top: 0;
+      padding-bottom: 5em; } }
+
+.wizard > .steps .current-info, .wizard > .steps .number {
+  display: none; }
+
+#review-form, #survey-form {
+  min-height: 600px;
+  padding: 65px 75px 65px; }
+  @media (max-width: 420px) {
+    #review-form, #survey-form {
+      min-height: 500px;
+      padding: 50px 0px; } }
+  @media (min-width: 420px) and (max-width: 768px) {
+    #review-form, #survey-form {
+      min-height: 500px;
+      padding: 50px 0px; } }
+  #review-form .emoticon-wrapper, #survey-form .emoticon-wrapper {
+    display: flex;
+    flex-direction: row; }
+    #review-form .emoticon-wrapper .emoticon, #survey-form .emoticon-wrapper .emoticon {
+      max-height: 100px; }
+  #review-form .step1-header-title, #survey-form .step1-header-title {
+    font-family: 'open-sans';
+    font-weight: normal;
+    font-size: 35px;
+    color: white;
+    margin-bottom: 1.5em;
+    margin-top: 2em; }
+  #review-form .step2-header-title, #survey-form .step2-header-title {
+    width: 100%;
+    text-align: center;
+    font-family: 'open-sans';
+    font-weight: normal;
+    font-size: 30px;
+    color: white;
+    margin-bottom: 0.5em; }
+    @media (max-width: 420px) {
+      #review-form .step2-header-title, #survey-form .step2-header-title {
+        font-size: 20px; } }
+    @media (min-width: 420px) and (max-width: 912px) {
+      #review-form .step2-header-title, #survey-form .step2-header-title {
+        font-size: 25px; } }
+  #review-form .emoticon-wrapper input[type="checkbox"], #survey-form .emoticon-wrapper input[type="checkbox"] {
+    opacity: 0;
+    position: fixed;
+    width: 0; }
+  #review-form .emoticon-wrapper img, #survey-form .emoticon-wrapper img {
+    display: inline-block; }
+  #review-form .emoticon-wrapper img:hover, #survey-form .emoticon-wrapper img:hover {
+    background-color: #dfd; }
+  #review-form .emoticon-wrapper input[type="checkbox"]:focus + img, #survey-form .emoticon-wrapper input[type="checkbox"]:focus + img {
+    border: 2px dashed #444; }
+  #review-form .emoticon-wrapperr input[type="checkbox"]:checked:before, #survey-form .emoticon-wrapperr input[type="checkbox"]:checked:before {
+    content: "-"; }
+
+.steps {
+  position: absolute;
+  bottom: -50px;
+  width: 34%;
+  left: 33%; }
+  @media (max-width: 420px) {
+    .steps {
+      bottom: -20px; } }
+  .steps ul {
+    display: flex;
+    position: relative; }
+    .steps ul li {
+      width: 20.16%;
+      margin-right: 10px; }
+      .steps ul li a {
+        display: inline-block;
+        width: 100%;
+        height: 7px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 3.5px; }
+      .steps ul li.first a, .steps ul li.checked a, .steps ul li.done a, .steps ul li.current a {
+        background: #fff;
+        transition: all 0.5s ease; }
+    .steps ul:before {
+      color: #333;
+      top: -38px;
+      position: absolute; }
+
+.actions {
+  position: absolute;
+  width: 100%;
+  bottom: 30px;
+  left: 30px; }
+  .actions ul {
+    display: flex;
+    flex-direction: row; }
+    .actions ul li:first-child a {
+      background-color: white;
+      font-size: 30px;
+      border-radius: 50%;
+      padding: 0px 11px 6px; }
+    .actions ul li:nth-child(2) {
+      padding-left: calc(50% - 130px); }
+      .actions ul li:nth-child(2) a {
+        color: white;
+        font-size: 24px;
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 5px 40px; }
+        .actions ul li:nth-child(2) a:hover {
+          transform: translateY(10px) scaleY(1.2); }
+    .actions ul li:last-child {
+      padding-left: calc(50% - 150px); }
+      .actions ul li:last-child a {
+        color: white;
+        font-size: 24px;
+        border: 1px solid white;
+        border-radius: 10px;
+        padding: 5px 40px; }
+        .actions ul li:last-child a:hover {
+          transform: translateY(10px) scaleY(1.2); }
+
+.content .custom-control-label img {
+  max-height: 100px; }
+.content .feedback-regarding {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  text-align: left;
+  padding: 50px 0px 50px 40px; }
+  @media (max-width: 420px) {
+    .content .feedback-regarding {
+      padding: 15px 0px 15px 50px; } }
+.content .survey-regarding {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  text-align: left;
+  padding: 50px 0px; }
+  @media (max-width: 420px) {
+    .content .survey-regarding {
+      padding: 20px 0px; } }
+  @media (min-width: 420px) and (max-width: 768px) {
+    .content .survey-regarding {
+      padding: 20px 0px; } }
+
+.bulgy-radios {
+  width: 100%; }
+  .bulgy-radios label {
+    display: block;
+    position: relative;
+    height: 1em;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    user-select: none;
+    color: #000000;
+    letter-spacing: 1px; }
+    .bulgy-radios label:hover input:not(:checked) ~ .radio {
+      opacity: 0.8; }
+  .bulgy-radios .label {
+    display: flex;
+    align-items: center;
+    padding-right: 3rem; }
+    .bulgy-radios .label span {
+      line-height: 1em; }
+  .bulgy-radios input {
+    position: absolute;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    left: -2000px; }
+    .bulgy-radios input:checked ~ .radio {
+      background-color: #000000;
+      transition: background .3s; }
+      .bulgy-radios input:checked ~ .radio::after {
+        opacity: 1; }
+    .bulgy-radios input:checked ~ .label {
+      color: #000000; }
+
+.radio {
+  position: absolute;
+  top: 0.1rem;
+  left: 0;
+  height: 0.8rem;
+  width: 0.8rem;
+  background: transparent;
+  border-radius: 50%;
+  border: 1px solid #000000; }
+  .radio::after {
+    content: '';
+    position: absolute;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 50%;
+    background: transparent; }
+
+@keyframes bulge {
+  50% {
+    transform: rotate(4deg);
+    font-size: 1.5em;
+    font-weight: bold; }
+  100% {
+    transform: rotate(0);
+    font-size: 1em;
+    font-weight: bold; } }
+.alert-message {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  padding-top: 20px;
+  border-radius: 5px;
+  font-style: italic;
+  font-weight: bold;
+  font-family: 'open-sans'; }
 
 .footer-area {
   background: #222222; }

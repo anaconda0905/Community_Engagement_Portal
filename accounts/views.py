@@ -173,8 +173,8 @@ def home(request):
     return render(request, 'home.html')
 
 
-def home_quotation(request):
-    return render(request, 'home_quotation.html')
+def started(request):
+    return render(request, 'get_started.html')
 
 
 @login_required

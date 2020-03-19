@@ -163,7 +163,7 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'staticfiles')
 
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home_quotation'
+LOGIN_REDIRECT_URL = 'get_started'
 LOGOUT_REDIRECT_URL = 'home'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

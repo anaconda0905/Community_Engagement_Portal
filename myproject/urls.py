@@ -9,7 +9,7 @@ from geoshop import views as test_views
 
 urlpatterns = [
     url(r'^$', accounts_views.home, name='home'),
-    url(r'^quotation$', accounts_views.home, name='home_quotation'),
+    url(r'^started$', accounts_views.started, name='get_started'),
     url(r'^signup/$', accounts_views.signup, name='signup'),
     # url(r'^login/$', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^login/$', accounts_views.login_user, {'template_name':'login.html'}, name='login'),

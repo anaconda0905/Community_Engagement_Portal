@@ -2,6 +2,11 @@
 {% load static %}
 {% block title %}Edit Profile{% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/css/intlTelInput.css">
+{% endblock css %}
+
+
 {% block content %}
 
     <!-- Start banner Area -->
@@ -208,6 +213,7 @@
 
 
 {% block modal %}
+
     <div class="modal fade" id="profileEditModalForm" tabindex="-2" role="dialog" aria-labelledby="myModalLabel1"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
