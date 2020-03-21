@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.contrib.auth import login as auth_login
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
@@ -114,14 +114,16 @@ def data_survey(request):
             survey = Survey.objects.create(user=request.user, 
                 question = temp
             )
+
             survey.save()
-        except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+
+        except Exception as e:
             error_occured = True
         if error_occured != True:
             data = json.dumps({'url':'/settings/account/survey'})
             return HttpResponse(data)
         else:
-            return HttpResponse('Error occured.')
+            return HttpResponseNotFound('ee')
         
     return render(request, 'account_data_survey.html')
 

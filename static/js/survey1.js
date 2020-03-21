@@ -134,20 +134,20 @@ $(document).ready(function() {
   });
 
   // Header scroll class
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $("#header").addClass("header-scrolled");
-    } else {
-      $("#header").removeClass("header-scrolled");
-    }
-  });
+  // $(window).scroll(function() {
+  //   if ($(this).scrollTop() > 100) {
+  //     $("#header").addClass("header-scrolled");
+  //   } else {
+  //     $("#header").removeClass("header-scrolled");
+  //   }
+  // });
 
 
   // ----------for survey page ------------------
   var form = $("#survey-form");
   form.validate({
       errorPlacement: function errorPlacement(error, element) {
-           element.before(error); 
+           element.before(error);
       },
       rules: {
           feeling : {
@@ -198,7 +198,85 @@ $(document).ready(function() {
       },
       onFinished: function (event, currentIndex)
       {
-          alert('Sumited');
+          var myObj = {
+              "gender":null,
+              "age":null,
+              "race":null,
+              "nationality":null,
+              "residential":null,
+              "occupation":null,
+              "martial":null,
+              "vehicle":null,
+              "income":null,
+          };
+          var temp = document.getElementsByName('gender');
+          for (var i = 0; i < temp.length; i++) {
+              if(temp[i].checked){
+                  myObj.gender =temp[i].value;
+              }
+          }
+          var temp = document.getElementsByName('age');
+          for (var i = 0; i < temp.length; i++) {
+              if(temp[i].checked){
+                  myObj.age =temp[i].value;
+              }
+          }
+          var temp = document.getElementsByName('race');
+          for (var i = 0; i < temp.length; i++) {
+              if(temp[i].checked){
+                  myObj.race =temp[i].value;
+              }
+          }
+          var temp = document.getElementsByName('residential_status');
+          for (var i = 0; i < temp.length; i++) {
+              if(temp[i].checked){
+                  myObj.residential =temp[i].value;
+              }
+          }
+          var temp = document.getElementsByName('occupation');
+          for (var i = 0; i < temp.length; i++) {
+              if(temp[i].checked){
+                  myObj.occupation =temp[i].value;
+              }
+          }
+          var temp = document.getElementsByName('marital_status');
+          for (var i = 0; i < temp.length; i++) {
+              if(temp[i].checked){
+                  myObj.martial =temp[i].value;
+              }
+          }
+          var temp = document.getElementsByName('vechicle_type');
+          for (var i = 0; i < temp.length; i++) {
+              if(temp[i].checked){
+                  myObj.vehicle =temp[i].value;
+              }
+          }
+          var temp = document.getElementsByName('time_type');
+          for (var i = 0; i < temp.length; i++) {
+              if(temp[i].checked){
+                  myObj.income =temp[i].value;
+              }
+          }
+            var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+            myObj.nationality = document.getElementById('nat_input').value;
+          $.ajax({
+             type:"POST",
+              headers:{
+                "X-CSRFToken":csrftoken,
+              },
+             contentType:"application/json",
+             url:'',
+             data: JSON.stringify(myObj),
+             dataType: "json",
+             success:function (data) {
+                 window.location.href = "/settings/account";
+             },
+             statusCode:{
+                 404:function () {
+                     window.location.href = "/settings/account";
+                 }
+             }
+          });
       },
       // onInit : function (event, currentIndex) {
       //     event.append('demo');
@@ -213,14 +291,20 @@ $(document).ready(function() {
       });
   });
 
+  $('#nationality').click(function () {
+    $('#nat_input').removeAttr('disabled');
+  });
+
   const labels = document.querySelectorAll('.label');
-   labels.forEach(label => {
-       const chars = label.textContent.split('');
-       label.innerHTML = '';
+  for(var i = 1; i < labels.length-1; i++)
+  {
+      const chars = labels[i].textContent.split('');
+       labels[i].innerHTML = '';
        chars.forEach(char => {
-           label.innerHTML += `<span>${char === ' ' ? '&nbsp' : char}</span>`;
+           labels[i].innerHTML += `<span>${char === ' ' ? '&nbsp' : char}</span>`;
        });
-   })
+  }
+
 
 });
 
