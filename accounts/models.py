@@ -19,15 +19,7 @@ class Profile(models.Model):
 
 class Survey(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="survey")
-    q1 = models.CharField(max_length=30, blank=True, null=True)
-    q2 = models.CharField(max_length=30, blank=True, null=True)
-    q3 = models.CharField(max_length=30, blank=True, null=True)
-    q4 = models.CharField(max_length=30, blank=True, null=True)
-    q5 = models.CharField(max_length=30, blank=True, null=True)
-    q6 = models.CharField(max_length=30, blank=True, null=True)
-    times = models.CharField(max_length=30, blank=True, null=True)
-    reason_q2 = models.CharField(max_length=30, blank=True, null=True)
-    reason_q3 = models.CharField(max_length=30, blank=True, null=True)
+    question = models.CharField(max_length=3000, blank=True, null=True)
 
 
 @receiver(post_save, sender=User)

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
     {% block css %}
     {% endblock css %}
 {% endblock %}
@@ -141,8 +141,8 @@
 
 							<p>{{ user.username }}</p>
 							<ul>
-                                <li><a href="{% url 'my_account' %}"><p>Profile</p></a></li>
-								<li><a href="{% url 'password_change' %}"><p>Change Password</p></a></li>
+                                <li><a href="{% url 'my_account' %}" class="text-left">Edit Profile</a></li>
+								<li><a href="{% url 'password_change' %}" class="text-left">Change Password</a></li>
 							</ul>
 						</li>
                         {% else %}

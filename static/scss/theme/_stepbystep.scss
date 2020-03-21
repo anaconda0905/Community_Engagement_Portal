@@ -16,7 +16,79 @@
 .wizard > .steps .current-info, .wizard > .steps .number {
   display: none;
 }
-#review-form,#survey-form{
+#review-form{
+    min-height: 600px;
+    padding: 65px 75px 65px;
+
+    @media(max-width: 420px){
+      min-height: 500px;
+      // padding: 15px 30px;
+      padding: 50px 0px;
+    }
+    @media(min-width: 420px) and (max-width: 768px){
+      min-height: 500px;
+      // padding: 15px 30px;
+      padding: 50px 0px;
+    }
+    .emoticon-wrapper{
+      display: flex;
+      flex-direction: row;
+      .emoticon{
+        max-height: 100px;
+      }
+    }
+    .step1-header-title{
+      font-family: 'open-sans';
+      font-weight: normal;
+      font-size: 35px;
+      color: white;
+      margin-bottom: 1.5em;
+      margin-top: 2em;
+    }
+    .step2-header-title{
+      width: 100%;
+      text-align: center;
+      font-family: 'open-sans';
+      font-weight: normal;
+      font-size: 30px;
+      color: white;
+
+      margin-bottom: 0.5em;
+
+      @media(max-width: 420px){
+        font-size: 20px;
+      }
+      @media(min-width: 420px) and (max-width: 912px){
+        font-size: 25px;
+      }
+    }
+    .emoticon-wrapper input[type="checkbox"] {
+      opacity: 0;
+      position: fixed;
+      width: 0;
+    }
+
+    .emoticon-wrapper img {
+      display: inline-block;
+    }
+
+    .emoticon-wrapper img:hover {
+      background-color: #dfd;
+    }
+
+    .emoticon-wrapper input[type="checkbox"]:focus + img {
+      border: 2px dashed #444;
+    }
+
+    .emoticon-wrapperr input[type="checkbox"]:checked{
+        &:before{
+          content: "-";
+        }
+    }
+}
+
+
+#survey-form{
   min-height: 600px;
   padding: 65px 75px 65px;
 
@@ -86,6 +158,7 @@
       }
   }
 }
+
 .steps {
   position: absolute;
   bottom: -50px;
@@ -128,6 +201,9 @@
   width: 100%;
   bottom: 30px;
   left: 30px;
+  @media(max-width: 576px){
+    bottom: 10px;
+  }
   ul {
     display: flex;
     flex-direction: row;
@@ -174,14 +250,25 @@
       max-height: 100px;
     }
   }
-  .feedback-regarding{
+  .feedback-regarding, .incident-regarding{
     width: 100%;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     text-align: left;
-    padding: 50px 0px 50px 40px;
+    padding: 50px 0px;
+
     @media(max-width: 420px){
-      padding: 15px 0px 15px 50px;
+      width: 90%;
+      padding: 25px 0px;
+    }
+
+    @media(min-width: 420px) and (max-width: 768px){
+      width: 90%;
+      padding: 25px 0px;
+    }
+
+    .wrap-input200{
+      margin-bottom: 15px;
     }
   }
   .survey-regarding{
@@ -222,7 +309,8 @@
   .label {
     display: flex;
     align-items: center;
-    padding-right: 3rem;
+    // padding-right: 3rem;
+    padding-left: 1em;
     span {
       line-height: 1em;
     }
@@ -259,7 +347,8 @@
 .radio {
   position: absolute;
   top: 0.1rem;
-  left: 0;
+  left: 1em;
+  // left: 0;
   height: 0.8rem;
   width: 0.8rem;
   background: transparent;
@@ -297,3 +386,30 @@
   font-weight: bold;
   font-family: 'open-sans';
 }
+
+
+// label.error {
+//   display: block;
+//   position: absolute;
+//   top: 0px;
+//   right: 0; }
+// label.error:after {
+//   font-family: 'Material-Design-Iconic-Font';
+//   position: absolute;
+//   content: attr(data-symbol);
+//   right: 20px;
+//   top: 40px;
+//   font-size: 13px;
+//   color: #ff1212; }
+
+// input.error {
+//   border: 1px solid #ff1212; }
+
+// input.error:after {
+//   font-family: 'Material-Design-Iconic-Font';
+//   position: absolute;
+//   content: attr(data-symbol);
+//   right: 20px;
+//   top: 40px;
+//   font-size: 13px;
+//   color: #ff1212; }
