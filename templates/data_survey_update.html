@@ -43,7 +43,7 @@
 						<h4></h4>
 
 						<section>
-							<h3 class="step2-header-title">GENDER{{ sur }}</h3>
+							<h3 class="step2-header-title">GENDER</h3>
 							<div class="survey-regarding align-items-center d-flex flex-column">
 
 								<div class="row bulgy-radios align-items-center justify-content-center d-flex flex-column" role="radiogroup" aria-labelledby="bulgy-radios-label">
@@ -194,7 +194,7 @@
                                         <script>
                                             $(document).ready(function () {
                                             var temp = document.getElementsByName('residential_status');
-                                            temp[{{ sur.residential_status }}-1].checked = true
+                                            temp[{{ sur.residential }}-1].checked = true
                                             });
                                         </script>
 									</div>
@@ -260,7 +260,7 @@
                                         <script>
                                             $(document).ready(function () {
                                             var temp = document.getElementsByName('marital_status');
-                                            temp[{{ sur.marital_status }}-1].checked = true
+                                            temp[{{ sur.martial }}-1].checked = true
                                             });
                                         </script>
 									</div>
@@ -293,7 +293,7 @@
                                         <script>
                                             $(document).ready(function () {
                                             var temp = document.getElementsByName('vechicle_type');
-                                            temp[{{ sur.vechicle_type }}-1].checked = true
+                                            temp[{{ sur.vehicle }}-1].checked = true
                                             });
                                         </script>
 									</div>
@@ -307,8 +307,9 @@
 							<div class="survey-regarding align-items-center d-flex flex-column">
 								<div class="row bulgy-radios align-items-center justify-content-center d-flex flex-column" role="radiogroup" aria-labelledby="bulgy-radios-label">
 									<div class="col-lg-2 col-md-4 col-sm-6 col-8">
+
 										<label>
-											<input type="radio" name="time_type" value="1" checked/>
+											<input type="radio" name="time_type" value="1"/>
 											<span class="radio"></span>
 											<span class="label">< RM 1,000</span>
 										</label>
@@ -342,9 +343,10 @@
                                         <script>
                                             $(document).ready(function () {
                                             var temp = document.getElementsByName('time_type');
-                                            temp[{{ sur.time_type }}-1].checked = true
+                                            temp[{{ sur.income }}-1].checked = true
                                             });
                                         </script>
+
 									</div>
 								</div>
 							</div>
