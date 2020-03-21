@@ -123,7 +123,7 @@ def data_survey(request):
             data = json.dumps({'url':'/settings/account/survey'})
             return HttpResponse(data)
         else:
-            return HttpResponseNotFound('ee')
+            return HttpResponseNotFound('error')
         
     return render(request, 'account_data_survey.html')
 
@@ -136,31 +136,22 @@ def data_survey_update(request):
             # on python 3
             temp = str(request.body, 'utf-8')
             json_data = json.loads(temp)
-            Survey.objects.filter(user=request.user).update(
-                q1=json_data["q1"],
-                q2=json_data["q2"],
-                q3=json_data["q2"],
-                q4=json_data["q2"],
-                q5=json_data["q2"],
-                q6=json_data["q2"],
-                times=json_data["times"],
-                reason_q2=json_data["reason_q2"],
-                reason_q3=json_data["reason_q3"]
-            )
-
-        except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+            Survey.objects.filter(user=request.user).update(question=temp)
+        except Exception as e:
             error_occured = True
         if error_occured != True:
             data = json.dumps({'url': '/survey/update'})
             return HttpResponse(data)
         else:
-            return HttpResponse('Error occured.')
+            return HttpResponseNotFound('error')
     else:
         try:
             sur = Survey.objects.get(user=request.user)
+            survey_json = json.loads(sur.question)
+
         except:
             return HttpResponse('Survey matching query does not exist.')
-        return render(request, 'data_survey_update.html', {'sur':sur})
+        return render(request, 'data_survey_update.html', {'sur':survey_json})
 
 
 def home(request):

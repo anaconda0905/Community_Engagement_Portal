@@ -1,256 +1,367 @@
-{% extends 'base_accounts.html' %}
-
+{% extends 'base_pages.html' %}
+{% load static %}
 {% block title %}Survey Question{% endblock %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-image-checkbox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    {% block css %}
+        <style>
+            .input-nationality{
+                position: relative !important;
+                cursor: pointer;
+                height: 20px !important;
+                width: 100px !important;
+                left: 0px !important;
+            }
+
+        </style>
+
+    {% endblock css %}
+{% endblock %}
+
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-lg-3 col-md-6 col-sm-8">
-        <div class="cardnew">
-            <div class="card-body-new">
-                <h3 class="card-title" style="text-align:center;">Survey Question</h3>
-
-                <div class="steps" id="onboardingSteps">
-                    <div id="stp1" class="step-item is-active" data-step-id="0"></div>
-                    <div id="stp2" class="step-item" data-step-id="1"></div>
-
-                    <div id="stp3" class="step-item" data-step-id="2"></div>
-                    <div id="stp4" class="step-item" data-step-id="3"></div>
-                    <div id="stp5" class="step-item" data-step-id="4"></div>
-                    <div id="stp6" class="step-item" data-step-id="5"></div>
-                    <div class="steps-content is-marginless pt-5">
-                        <div class="step-content is-active">
-                            <div class="row">
-                                <div class="col-12"><b>Q1. How often do you take Public Transport?</b></div>
-                                <br><br><br>
-                                {% if sur.q1 == 'Everyday' %}
-
-                                <div class="col-6"><input type="radio" name="q1" checked> Everyday</div>
-                                <div class="col-6"><input type="radio" name="q1" > Seldom</div>
-                                {% else %}
-
-                                <div class="col-6"><input type="radio" name="q1" > Everyday</div>
-                                <div class="col-6"><input type="radio" name="q1"checked> Seldom</div>
-                                {% endif %}
-                                <div class="col-12"><input type="text" class="form-controlnew" value="{{ sur.times }}" name="q1"> times a D/W/M
-                                </div>
-                            </div>
-                            <div>
-                                <hr class="hrnew">
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <div class="row">
-                                <div class="col-12"><b>Q2. Bus Tracking & Estimate Time Arrival Important to you?</b>
-                                </div><br><br><br>
-                                {% if sur.q2 == 'Yes' %}
-                                <div class="col-6"><input type="radio" name="q2" checked> Yes</div>
-                                <div class="col-6"><input type="radio" name="q2"> No</div>
-                                {% else %}
-                                <div class="col-6"><input type="radio" name="q2"> Yes</div>
-                                <div class="col-6"><input type="radio" name="q2" checked> No</div>
-                                {% endif %}
-                                <div class="col-12">Reason:<input type="text" name="q2" class="form-controlother" value="{{ sur.reason_q2 }}"></div>
-                            </div>
-                            <div>
-                                <hr class="hrnew">
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <div class="row">
-                                <div class="col-12"><b>Q3. Is it difficult to get around using only public
-                                    transportation?</b>
-                                </div><br><br><br>
-                                {% if sur.q3 == 'Yes' %}
-                                <div class="col-6"><input type="radio" name="q3" checked> Yes</div>
-                                <div class="col-6"><input type="radio" name="q3"> No</div>
-                                {% else %}
-                                <div class="col-6"><input type="radio" name="q3"> Yes</div>
-                                <div class="col-6"><input type="radio" name="q3" checked> No</div>
-                                {% endif %}
-                                <div class="col-12">Reason:<input type="text" name="q3" class="form-controlother" value="{{ sur.reason_q3 }}"></div>
-                            </div>
-                            <div>
-                                <hr class="hrnew">
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <div class="row">
-                                <div class="col-12">
-                                    <b>Q4. How safe is Public Transport?</b>
-                                </div><br><br>
-                                {% if sur.q4 == 'High' %}
-                                <div class="col-12"><input type="radio" name="q4" checked> High</div>
-                                <div class="col-12"><input type="radio" name="q4"> Medium</div>
-                                <div class="col-12"><input type="radio" name="q4"> Low</div>
-
-                                {% elif sur.q4 == 'Medium' %}
-                                <div class="col-12"><input type="radio" name="q4"> High</div>
-                                <div class="col-12"><input type="radio" name="q4" checked> Medium</div>
-                                <div class="col-12"><input type="radio" name="q4"> Low</div>
-
-                                {% elif sur.q4 == 'Low' %}
-                                <div class="col-12"><input type="radio" name="q4"> High</div>
-                                <div class="col-12"><input type="radio" name="q4"> Medium</div>
-                                <div class="col-12"><input type="radio" name="q4" checked> Low</div>
-                                {% else %}
-                                <div class="col-12"><input type="radio" name="q4"> High</div>
-                                <div class="col-12"><input type="radio" name="q4"> Medium</div>
-                                <div class="col-12"><input type="radio" name="q4"> Low</div>
-                                {% endif %}
-                            </div>
-                            <div>
-                                <hr class="hrnew">
-                            </div>
-
-                        </div>
-                        <div class="step-content">
-                            <div class="row">
-                                <div class="col-12">
-                                    <b>Q5. Do you know the Student/Senior Citizen/OKU Special Fare?</b>
-                                </div><br><br><br>
-                                {% if sur.q5 == 'Yes' %}
-                                <div class="col-12"><input type="radio" name="q5" checked> Yes</div>
-                                <div class="col-12"><input type="radio" name="q5"> No</div>
-                                {% endif %}
-                                {% if sur.q5 == 'No' %}
-                                <div class="col-12"><input type="radio" name="q5"> Yes</div>
-                                <div class="col-12"><input type="radio" name="q5" checked> No</div>
-                                {% endif %}
-                            </div>
-
-                            <div>
-                                <hr class="hrnew">
-                            </div>
-                        </div>
-                        <div class="step-content">
-                            <div class="row">
-                                <div class="col-12">
-                                    <b>Q6. Do you know the Student/Senior Citizen/OKU Special Fare?</b>
-                                </div><br><br><br>
-                                {% if sur.q6 == 'Yes' %}
-                                <div class="col-12"><input type="radio" name="q6" checked required> Yes</div>
-                                <div class="col-12"><input type="radio" name="q6"> No</div>
-                                {% endif %}
-                                {% if sur.q6 == 'No' %}
-                                <div class="col-12"><input type="radio" name="q6"> Yes</div>
-                                <div class="col-12"><input type="radio" name="q6" checked> No</div>
-                                {% endif %}
-                            </div>
-                            <div>
-                                <hr class="hrnew">
-                            </div>
-                        </div>
-                        <div class="steps-actions pl-4 pr-4 pt-4 pb-2">
-                            <div class="steps-action">
-                                <a href="#" data-nav="previous" class="button is-light is-pulled-left is-marginless"
-                                   disabled="disabled">Prev</a>
-                            </div>
-                            <div class="steps-action">
-                                <a href="#" data-nav="next" class="button blue is-right is-marginless">Next</a>
-
-                                <form method="POST">
-                                    {% csrf_token %}
-                                    <!-- <input class="button green is-marginless" id="submit" name="submit" type="button" value="Submit" onclick="collect_data()" disabled="disabled"> -->
-<!--                                    <input type="button" class="btn btn-primary btn-block" name="submit" id="submit" value="submit">-->
-                                    <input class="button green is-marginless" id="submit" name="submit"
-                                           type="button"
-                                           value="Submit" disabled="disabled">
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Start banner Area -->
+<section class="banner-area">
+    <div class="container box_1170">
+        <div class="row review-step-1">
         </div>
     </div>
-</div>
+</section>
+<!-- End banner Area -->
+
+<!-- Start main body Area -->
+    <div id="review_section" class="main-body section-gap mt--30" style="background-image: url('{% static "img/bg-01.jpg" %}');">
+		<div class="container box_1170">
+			<div id="steps_review_detail_home">
+				<form method="POST" id="survey-form" class="survey-form" >
+                    {% csrf_token %}
+						<h4></h4>
+
+						<section>
+							<h3 class="step2-header-title">GENDER{{ sur }}</h3>
+							<div class="survey-regarding align-items-center d-flex flex-column">
+
+								<div class="row bulgy-radios align-items-center justify-content-center d-flex flex-column" role="radiogroup" aria-labelledby="bulgy-radios-label">
+									<div class="col-lg-2 col-md-4 col-sm-4 col-6">
+
+										<label>
+											<input class="customRadio" type="radio" name="gender" value="1" checked/>
+											<span class="radio"></span>
+											<span class="label">Male</span>
+										</label>
+                                        <script>
+                                            $(document).ready(function () {
+                                            var temp = document.getElementsByName('gender');
+                                            temp[{{ sur.gender }}-1].checked = true
+                                            });
+                                        </script>
+										<label>
+											<input class="customRadio" type="radio" name="gender" value="2"/>
+											<span class="radio"></span>
+											<span class="label">Female</span>
+										</label>
+									</div>
+								</div>
+
+							</div>
+						</section>
+
+						<h4></h4>
+						<section>
+							<h3 class="step2-header-title">AGE (years)</h3>
+							<div class="survey-regarding align-items-center d-flex flex-column">
+
+								<div class="row bulgy-radios align-items-center justify-content-center d-flex flex-column" role="radiogroup" aria-labelledby="bulgy-radios-label">
+									<div class="col-lg-1 col-md-4 col-sm-4 col-4">
+										<label>
+											<input type="radio" name="age" value="1" checked/>
+											<span class="radio"></span>
+											<span class="label">< 19</span>
+										</label>
+
+										<label>
+											<input type="radio" name="age" value="2"/>
+											<span class="radio"></span>
+											<span class="label">20-29</span>
+										</label>
+										<label>
+											<input type="radio" name="age" value="3"/>
+											<span class="radio"></span>
+											<span class="label">30-39</span>
+										</label>
+										<label>
+											<input type="radio" name="age" value="4"/>
+											<span class="radio"></span>
+											<span class="label">40-49</span>
+										</label>
+										<label>
+											<input type="radio" name="age" value="5"/>
+											<span class="radio"></span>
+											<span class="label">50-59</span>
+										</label>
+                                        <script>
+                                            $(document).ready(function () {
+                                            var temp = document.getElementsByName('age');
+                                            temp[{{ sur.age }}-1].checked = true
+                                            });
+                                        </script>
+									</div>
+								</div>
+
+							</div>
+						</section>
+
+						<h4></h4>
+						<section>
+							<h3 class="step2-header-title">RACE</h3>
+							<div class="survey-regarding align-items-center d-flex flex-column">
+
+								<div class="row bulgy-radios align-items-center justify-content-center d-flex flex-column" role="radiogroup" aria-labelledby="bulgy-radios-label">
+									<div class="col-lg-3 col-md-6 col-sm-8 col-11">
+										<label>
+											<input class="customRadio" type="radio" name="race" value="1" checked/>
+											<span class="radio"></span>
+											<span class="label">Malay</span>
+										</label>
+
+										<label>
+											<input class="customRadio" type="radio" name="race" value="2"/>
+											<span class="radio"></span>
+											<span class="label">Chinese</span>
+										</label>
+										<label>
+											<input class="customRadio" type="radio" name="race" value="3"/>
+											<span class="radio"></span>
+											<span class="label">Indian</span>
+										</label>
+										<label>
+											<input class="customRadio" type="radio" name="race" value="4"/>
+											<span class="radio"></span>
+											<span class="label" id="nationality">Others: </span>
+                                            <div class="wrap-input200 validate-input" style="left: 100px; width: 100px; margin-top: -20px;">
+
+										    <input class="input200 input-nationality" type="text" id="nat_input" disabled/>
+										    <span class="focus-input200" data-symbol="&#xf1f0;"></span>
+										</div>
+										</label>
+                                        <script>
+                                            $(document).ready(function () {
+                                            var temp = document.getElementsByName('race');
+                                            temp[{{ sur.race }}-1].checked = true
+                                                if(temp[3].checked == true)
+                                                {
+                                                    $('#nat_input').removeAttr('disabled');
+
+                                                    $('#nat_input').val('{{ sur.nationality }}');
+                                                }
+                                            });
+                                        </script>
+
+
+									</div>
+								</div>
+
+							</div>
+						</section>
+
+						<h4></h4>
+						<section>
+							<h3 class="step2-header-title">RESIDENTIAL STATUS</h3>
+							<div class="survey-regarding align-items-center d-flex flex-column">
+								<div class="row bulgy-radios align-items-center justify-content-center d-flex flex-column" role="radiogroup" aria-labelledby="bulgy-radios-label">
+									<div class="col-lg-3 col-md-5 col-sm-8 col-10">
+										<label>
+											<input type="radio" name="residential_status" value="1" checked/>
+											<span class="radio"></span>
+											<span class="label">Malaysian Resident</span>
+										</label>
+
+										<label>
+											<input type="radio" name="residential_status" value="2"/>
+											<span class="radio"></span>
+											<span class="label">Foreign Worker</span>
+										</label>
+										<label>
+											<input type="radio" name="residential_status" value="3"/>
+											<span class="radio"></span>
+											<span class="label">Visitor/Tourist</span>
+										</label>
+                                        <script>
+                                            $(document).ready(function () {
+                                            var temp = document.getElementsByName('residential_status');
+                                            temp[{{ sur.residential_status }}-1].checked = true
+                                            });
+                                        </script>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<h4></h4>
+						<section>
+							<h3 class="step2-header-title">OCCUPATION</h3>
+							<div class="survey-regarding align-items-center d-flex flex-column">
+								<div class="row bulgy-radios align-items-center justify-content-center d-flex flex-column" role="radiogroup" aria-labelledby="bulgy-radios-label">
+									<div class="col-lg-3 col-md-5 col-sm-8 col-10">
+										<label>
+											<input type="radio" name="occupation" value="1" checked/>
+											<span class="radio"></span>
+											<span class="label">Student</span>
+										</label>
+
+										<label>
+											<input type="radio" name="occupation" value="2"/>
+											<span class="radio"></span>
+											<span class="label">Private Sector</span>
+										</label>
+										<label>
+											<input type="radio" name="occupation" value="3"/>
+											<span class="radio"></span>
+											<span class="label">Public Sector</span>
+										</label>
+										<label>
+											<input type="radio" name="occupation" value="4"/>
+											<span class="radio"></span>
+											<span class="label">Not Working/Retired</span>
+										</label>
+                                        <script>
+                                            $(document).ready(function () {
+                                            var temp = document.getElementsByName('occupation');
+                                            temp[{{ sur.occupation }}-1].checked = true
+                                            });
+                                        </script>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<h4></h4>
+						<section>
+							<h3 class="step2-header-title">MARITAL STATUS</h3>
+							<div class="survey-regarding align-items-center d-flex flex-column">
+								<div class="row bulgy-radios align-items-center justify-content-center d-flex flex-column" role="radiogroup" aria-labelledby="bulgy-radios-label">
+									<div class="col-lg-2 col-md-4 col-sm-4 col-6">
+										<label>
+											<input type="radio" name="marital_status" value="1" checked/>
+											<span class="radio"></span>
+											<span class="label">Single</span>
+										</label>
+
+										<label>
+											<input type="radio" name="marital_status" value="2"/>
+											<span class="radio"></span>
+											<span class="label">Married</span>
+										</label>
+                                        <script>
+                                            $(document).ready(function () {
+                                            var temp = document.getElementsByName('marital_status');
+                                            temp[{{ sur.marital_status }}-1].checked = true
+                                            });
+                                        </script>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<h4></h4>
+						<section>
+							<h3 class="step2-header-title">WHAT TYPE OF VECHICLES DO YOU OWN; AND 	NUMMBER</h3>
+							<div class="survey-regarding align-items-center d-flex flex-column">
+								<div class="row bulgy-radios align-items-center justify-content-center d-flex flex-column" role="radiogroup" aria-labelledby="bulgy-radios-label">
+									<div class="col-lg-2 col-md-4 col-sm-4 col-6">
+										<label>
+											<input type="radio" name="vechicle_type" value="1" checked />
+											<span class="radio"></span>
+											<span class="label">Motorcycle</span>
+										</label>
+
+										<label>
+											<input type="radio" name="vechicle_type" value="2"/>
+											<span class="radio"></span>
+											<span class="label">Car</span>
+										</label>
+										<label>
+											<input type="radio" name="vechicle_type" value="3"/>
+											<span class="radio"></span>
+											<span class="label">None</span>
+										</label>
+                                        <script>
+                                            $(document).ready(function () {
+                                            var temp = document.getElementsByName('vechicle_type');
+                                            temp[{{ sur.vechicle_type }}-1].checked = true
+                                            });
+                                        </script>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<h4></h4>
+						<section>
+							<h3 class="step2-header-title">IF YOU ARE WORKING(either part-time or 	full-time),WHAT IS YOUR AVERAGE MONTHLY INCOME?</h3>
+							<div class="survey-regarding align-items-center d-flex flex-column">
+								<div class="row bulgy-radios align-items-center justify-content-center d-flex flex-column" role="radiogroup" aria-labelledby="bulgy-radios-label">
+									<div class="col-lg-2 col-md-4 col-sm-6 col-8">
+										<label>
+											<input type="radio" name="time_type" value="1" checked/>
+											<span class="radio"></span>
+											<span class="label">< RM 1,000</span>
+										</label>
+
+										<label>
+											<input type="radio" name="time_type" value="2"/>
+											<span class="radio"></span>
+											<span class="label">RM 1,000-2,000</span>
+										</label>
+										<label>
+											<input type="radio" name="time_type" value="3"/>
+											<span class="radio"></span>
+											<span class="label">RM 2,000-3,000</span>
+										</label>
+										<label>
+											<input type="radio" name="time_type" value="4"/>
+											<span class="radio"></span>
+											<span class="label">RM 3,000-4,000</span>
+										</label>
+										<label>
+											<input type="radio" name="time_type" value="5"/>
+											<span class="radio"></span>
+											<span class="label">RM 4,000-5,000</span>
+										</label>
+										<label>
+											<input type="radio" name="time_type" value="6"/>
+											<span class="radio"></span>
+											<span class="label">>RM 5,000</span>
+
+										</label>
+                                        <script>
+                                            $(document).ready(function () {
+                                            var temp = document.getElementsByName('time_type');
+                                            temp[{{ sur.time_type }}-1].checked = true
+                                            });
+                                        </script>
+									</div>
+								</div>
+							</div>
+						</section>
+				</form>
+			</div>
+		</div>
+	</div>
+<!-- Start main body Area -->
+
 {% endblock %}
 
 
 {% block js %}
-
-<script>
-    (function () {
-        new bulmaSteps(document.getElementById('onboardingSteps'), {
-            onShow: (id) => testActualStep(id)
-        })
-
-        function testActualStep(id) {
-            if (id === 5) {
-                $("#submit").removeAttr("disabled")
-            }
-            if (id === 4) {
-                $("#submit").attr("disabled", "disabled");
-            }
-            if (id === 3) {
-                $("#submit").attr("disabled", "disabled");
-            }
-            if (id === 2) {
-                $("#submit").attr("disabled", "disabled");
-            }
-            if (id === 1) {
-                $("#submit").attr("disabled", "disabled");
-            }
-
-        }
-
-        $('.checkbox').change(function () {
-            if ($("#" + this.id + "_block").length) {
-                $("#" + this.id + "_block").toggleClass("disabled");
-            }
-        });
-    })();
-</script>
-
-<script>
-
-
-    $("input#submit").on('click', function () {
-        var myObj = {
-            "q1": null,
-            "q2": null,
-            "q3": null,
-            "q4": null,
-            "q5": null,
-            "q6": null,
-            "times": null,
-            "reason_q2": null,
-            "reason_q3": null,
-        };
-        if (document.getElementsByName('q1')[0].checked) myObj.q1 = "Everyday";
-        if (document.getElementsByName('q1')[1].checked) myObj.q1 = "Seldom";
-        myObj.times = document.getElementsByName('q1')[2].value;
-
-        if (document.getElementsByName('q2')[0].checked) myObj.q2 = "Yes";
-        if (document.getElementsByName('q2')[1].checked) myObj.q2 = "No";
-        myObj.reason_q2 = document.getElementsByName('q2')[2].value;
-
-        if (document.getElementsByName('q3')[0].checked) myObj.q3 = "Yes";
-        if (document.getElementsByName('q3')[1].checked) myObj.q3 = "No";
-        myObj.reason_q3 = document.getElementsByName('q3')[2].value;
-
-        if (document.getElementsByName('q4')[0].checked) myObj.q4 = "High";
-        if (document.getElementsByName('q4')[1].checked) myObj.q4 = "Medium";
-        if (document.getElementsByName('q4')[2].checked) myObj.q4 = "Low";
-
-        if (document.getElementsByName('q5')[0].checked) myObj.q5 = "Yes";
-        if (document.getElementsByName('q5')[1].checked) myObj.q5 = "No";
-
-        if (document.getElementsByName('q6')[0].checked) myObj.q6 = "Yes";
-        if (document.getElementsByName('q6')[1].checked) myObj.q6 = "No";
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            url: '{% url "data_survey_update" %}',
-            // data : { x: "1", y: "2" , z: "3" },
-            data: JSON.stringify(myObj),
-            dataType: "json",
-            success: function (data) {
-                window.location.href = "{% url 'home' %}";
-            }
-        });
-    });
-
-</script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/superfish.min.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/jquery.steps.js' %}"></script>
+    <script src="{% static 'js/survey2.js' %}"></script>
 {% endblock js %}
