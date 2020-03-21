@@ -507,7 +507,7 @@ function goToStep(wizard, options, state, index)
         saveCurrentStateToCookie(wizard, options, state);
 
         // Change visualisation
-        refreshStepNavigation(wizard, options, state, oldIndex);
+        //refreshStepNavigation(wizard, options, state, oldIndex);
         refreshPagination(wizard, options, state);
         loadAsyncContent(wizard, options, state);
         startTransitionEffect(wizard, options, state, index, oldIndex, function()
