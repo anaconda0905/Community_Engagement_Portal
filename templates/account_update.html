@@ -25,7 +25,11 @@
                 <div class="col-lg-6 col-md-8 col-sm-8 col-12">
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-4 col-3">
-                            <img src="{% static 'img/i8.jpg' %}"/>
+                            {% if user.profile.image %}
+                                <img id="back_user_img" src="{{ user.profile.image.url }}"/>
+                            {% else %}
+                                <img id="back_user_img" src="{% static 'img/default.png' %}"/>
+                            {% endif %}
                         </div>
                         <div class="col-lg-9 col-md-9 col-sm-8 col-9">
                             <div class="user-info">
@@ -410,6 +414,11 @@
     {% if success == 2 %}
         <script>
             $('#profileEditModalForm').modal('show');
+
+        {% if user.profile.image %}
+            document.getElementById('img_id').src = "{% static 'img/default.png' %}";
+            document.getElementById('back_user_img').src = "{% static 'img/default.png' %}";
+        {% endif %}
         </script>
     {% endif %}
     {% if success == 1 %}
