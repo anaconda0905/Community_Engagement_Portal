@@ -63,19 +63,16 @@ def review(request):
         bus_no = request.POST['bus_no']
         incident_date = request.POST['incident_date']
         incident_time = request.POST['incident_time']
-        # quick_review = request.POST['quick_review']
+        quick_review = request.POST['selectone']
         route_no  = request.POST['route_no']
         route_name = request.POST['route_name']
         bus_operator = request.POST['bus_operator']
+        address = request.POST['locname']
 
-        locname = request.POST['locname']
-        event=request.POST['event']
-        comment=request.POST['comment']
-        audit=request.POST.get('remember_me', None)
-        print(request.POST['selectone'])
-        print(request.POST['lon'])
-        print(request.POST['lat'])
-        print(locname)
+        subject=request.POST['event']
+        message=request.POST['comment']
+        audit=request.POST.get('audit', None)
+
         # topic = Topic.objects.create(
         #     user=request.user,
         # )

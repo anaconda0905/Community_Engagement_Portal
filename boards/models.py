@@ -24,27 +24,29 @@ class Board(models.Model):
 
 
 class Topic(models.Model):
-    subject = models.CharField(max_length=255)
 
+    feeling = models.CharField(max_length=100)
+    category = models.CharField(max_length=100)
+    subcategory = models.CharField(max_length=100)
+    bus_no = models.CharField(max_length=100)
+    incident_date = models.DateField(default=datetime.date.today)
+    incident_time = models.TimeField(default=(mydatetime.now()))
+    quick_review = models.CharField(max_length=100)
+    route_no = models.CharField(max_length=100)
+    route_name = models.CharField(max_length=100)
+    bus_operator = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    like = models.BooleanField()
+    subject = models.CharField(max_length=255)
+    message = models.CharField(max_length=255)
+    audit = models.CharField(max_length=255)
     location = models.PointField()
-    categorynumber = models.PositiveIntegerField(default=0)
-    busno = models.CharField(max_length=100)
-    incidentdate = models.DateField(default=datetime.date.today)
-    incidenttime = models.TimeField(default=(mydatetime.now()))
-    routeno = models.CharField(max_length=100)
-    routename = models.CharField(max_length=100)
-    busoperator = models.CharField(max_length=100)
-
+    mulfile = models.FileField(upload_to='mediadata/')
     last_updated = models.DateTimeField(auto_now_add=True)
     board = models.ForeignKey(Board, related_name='topics')
     starter = models.ForeignKey(User, related_name='topics')
     views = models.PositiveIntegerField(default=0)
     upvote = models.PositiveIntegerField(default=0)
     downvote = models.PositiveIntegerField(default=0)
-
-
 
     def __str__(self):
         return self.subject
