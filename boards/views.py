@@ -9,7 +9,7 @@ from django.urls import reverse
 from django.shortcuts import render_to_response
 from .forms import NewTopicForm, PostForm
 from .models import Board, Post, Topic
-
+from django.contrib.gis.geos import Point
 
 class BoardListView(ListView):
     model = Board
@@ -72,11 +72,17 @@ def review(request):
         subject=request.POST['event']
         message=request.POST['comment']
         audit=request.POST.get('audit', None)
+        lat = request.POST['lat']
+        lon = request.POST['lon']
+        pnt = Point(float(lon), float(lat))
 
-        # topic = Topic.objects.create(
-        #     user=request.user,
-        # )
-        # topic.save()
+        topic = Topic.objects.create(
+            starter=request.user,
+            board=Board.objects.get(id=category),
+            subject=subject,
+            location = pnt,
+        )
+        topic.save()
     return render(request, 'review.html')
 
 @login_required
