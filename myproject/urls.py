@@ -44,6 +44,8 @@ urlpatterns = [
     url(r'^contactus/$', accounts_views.contactus, name='contactus'),
 
     url(r'^forum/$', accounts_views.forum, name='forum'),
+    url(r'^review/$', views.review, name='review'),
+
     url(r'^boards/(?P<pk>\d+)/$', views.TopicListView.as_view(), name='board_topics'),
     url(r'^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
     url(r'^boards/(?P<pk>\d+)/new13/$', views.new_topic13, name='new_topic13'),
@@ -59,7 +61,6 @@ urlpatterns = [
         views.PostUpdateView.as_view(), name='edit_post'),
     url(r'^feedback/$', views.feedback, name='feedback'),
     url(r'^popluar/$', views.popular, name='popular'),
-
     url(r'^admin/', admin.site.urls),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', accounts_views.activate, name='activate'),

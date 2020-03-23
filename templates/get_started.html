@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-image-checkbox.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
     {% block css %}
     {% endblock css %}
 {% endblock %}
@@ -29,9 +30,12 @@
 				<div class="col-md-8 review-content">
 					<h1 class="p-b-30">Tell us about your trip</h1>
 					<p class="mt-20">We always want to improve - could you help us out for a few minutes and let us know about your experience?</p>
-					<button type="submit" class="started-btn mt-30">
-						Get Started
-					</button>
+
+                    <form action="{% url 'review' %}">
+                        <button type="submit" class="started-btn mt-30">
+                            Get Started
+                        </button>
+                    </form>
 				</div>
 			</div>
 		</div>

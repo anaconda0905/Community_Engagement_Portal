@@ -255,7 +255,7 @@
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 10px;
     text-align: left;
-    padding: 50px 0px;
+    padding: 50px 30px;
 
     @media(max-width: 420px){
       width: 90%;
@@ -269,6 +269,33 @@
 
     .wrap-input200{
       margin-bottom: 15px;
+    }
+  }
+  .review-regarding{
+    // width: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    text-align: left;
+    margin-top: 40px;
+    padding: 50px 20px;  
+    @media(max-width: 420px){
+      // width: 90%;
+      padding: 25px 30px;
+    }
+
+    @media(min-width: 420px) and (max-width: 768px){
+      // width: 90%;
+      padding: 25px 20px;
+    }
+
+    p{
+      @media(max-width: 420px){
+        margin-top: 20px;
+      }
+      @media(min-width: 420px) and (max-width: 768px){
+        // width: 90%;
+        margin-top: 20px;
+      }
     }
   }
   .survey-regarding{
@@ -413,3 +440,50 @@
 //   top: 40px;
 //   font-size: 13px;
 //   color: #ff1212; }
+
+.quote-imgs-thumbs {
+  background: $white;
+  border: 1px solid $white;
+  border-radius: 0.25rem;
+  margin: 1.5rem 0;
+  padding: 0.75rem;
+}
+.quote-imgs-thumbs--hidden {
+  display: none;
+}
+.img-preview-thumb {
+  background: #fff;
+  border: 1px solid #777;
+  border-radius: 0.25rem;
+  box-shadow: 0.125rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.12);
+  margin-right: 1rem;
+  max-width: 140px;
+  padding: 0.25rem;
+}
+
+#reviewSubmitModalForm{
+  .modal-content{
+    .img-submitted{
+      max-height: 50px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h4{
+      margin-top: 1.2rem;
+      color: $primary-color;
+      font-size: 25px;
+    }
+    .lbl-1 {
+      text-align: center;
+      color: #000;
+      margin-top: 1rem;
+      display: block;
+    }
+    .lbl-2 {
+      text-align: center;
+      color: #000;
+      margin-bottom: 3rem;
+      display: block;
+    }
+  }
+}

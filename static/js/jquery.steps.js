@@ -3,6 +3,7 @@
  * Copyright (c) 2014 Rafael Staib (http://www.jquery-steps.com)
  * Licensed under MIT http://www.opensource.org/licenses/MIT
  */
+
 ;(function ($, undefined)
 {
 $.fn.extend({
@@ -507,7 +508,7 @@ function goToStep(wizard, options, state, index)
         saveCurrentStateToCookie(wizard, options, state);
 
         // Change visualisation
-        //refreshStepNavigation(wizard, options, state, oldIndex);
+        refreshStepNavigation(wizard, options, state, oldIndex);
         refreshPagination(wizard, options, state);
         loadAsyncContent(wizard, options, state);
         startTransitionEffect(wizard, options, state, index, oldIndex, function()
@@ -867,7 +868,7 @@ function refreshStepNavigation(wizard, options, state, oldIndex)
         oldStepAnchor.parent().addClass("done").removeClass("error")._selectAria(false);
         stepTitles.eq(oldIndex).removeClass("current").next(".body").removeClass("current");
         currentInfo = oldStepAnchor.find(".current-info");
-        currentOrNewStepAnchor.focus();
+        // currentOrNewStepAnchor.focus();
     }
 
     currentOrNewStepAnchor.prepend(currentInfo).parent()._selectAria().removeClass("done")._enableAria();

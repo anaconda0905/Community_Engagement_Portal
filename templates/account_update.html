@@ -64,7 +64,7 @@
                 <div class="col-md-12 d-flex flex-row justify-content-between">
                     <h3>Review</h3>
                     <div class="create-review-icon">
-                        <a href="#">
+                        <a href="{% url 'review' %}">
                             <img src="{% static 'img/icons-create-purple.png' %}"></img>
                             <span>&nbsp;Create A REVIEW</span>
                         </a>
@@ -397,7 +397,7 @@
 {#                        {% include 'includes/user_form.html' %}#}
 {#                        {% include 'includes/profile_form.html' %}#}
                         <div class="text-center">
-                            <button class="sign-in-btn text-uppercase" style="width: 40%;">close</button>
+                            <button type="button" class="sign-in-btn text-uppercase" data-dismiss="modal" style="width: 40%;">Exit</button>
                             <button type="submit" class="sign-in-btn text-uppercase" style="width: 40%;">Save</button>
                         </div>
                     </form>
@@ -457,6 +457,7 @@
             $(this).val(temp);
             {#window.alert(temp);#}
         }
+
 
     </script>
 

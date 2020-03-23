@@ -53,6 +53,34 @@ class PostListView(ListView):
         queryset = self.topic.posts.order_by('created_at')
         return queryset
 
+@login_required
+def review(request):
+    if request.method == 'POST':
+
+        feeling = request.POST.get('feeling')
+        category = request.POST['feedback_regarding']
+        subcategory = request.POST['feedback_categories']
+        bus_no = request.POST['bus_no']
+        incident_date = request.POST['incident_date']
+        incident_time = request.POST['incident_time']
+        # quick_review = request.POST['quick_review']
+        route_no  = request.POST['route_no']
+        route_name = request.POST['route_name']
+        bus_operator = request.POST['bus_operator']
+
+        locname = request.POST['locname']
+        event=request.POST['event']
+        comment=request.POST['comment']
+        audit=request.POST.get('remember_me', None)
+        # print(request.POST.getlist('selectone'))
+        print(request.POST['lon'])
+        print(request.POST['lat'])
+        print(locname)
+        # topic = Topic.objects.create(
+        #     user=request.user,
+        # )
+        # topic.save()
+    return render(request, 'review.html')
 
 @login_required
 def new_topic13(request, pk):

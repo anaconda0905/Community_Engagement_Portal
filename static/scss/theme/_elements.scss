@@ -1047,6 +1047,28 @@ h6 {
     max-width: 400px;
 }
 
+#reviewSubmitModalForm{
+    .modal-dialog{
+        margin-top: 250px;
+        max-width: 500px;
+        
+        @media(max-width: 420px){
+            max-width: 400px;
+            margin-top: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @media(min-width: 420px) and (max-width: 768px){
+            max-width: 400px;
+            margin-top: 150px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+}
+
 
 
 #signupModalForm .modal-dialog{
@@ -1155,6 +1177,25 @@ h6 {
     &:hover{
         background: $primary-color;
         color: $white;
+    }
+}
+
+.show-for-sr{
+    background: $primary-color;
+    line-height: 24px;
+    border-radius: 25px;
+    border: 1px solid $primary-color;
+    color: $white;
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    &:hover{
+        background: $white;    
+        color: $primary-color;
     }
 }
 
@@ -1797,4 +1838,178 @@ iframe {
     padding-left: 15px;
     padding-right: 15px;
   }
+}
+
+// custom select box
+.form-select {
+    margin-bottom: 15px;
+    position: relative;
+}
+.select-list {
+    position: relative;
+    display: inline-block;
+    width: 35%;
+    margin-bottom: 47px;
+    @media(max-width: 420px){
+        width: 50%;
+    }
+    @media(min-width: 420px) and (max-width: 768px){
+        width: 40%;
+    }
+}
+.list-item {
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+}
+ul.list-item {
+    z-index: 9;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    display: block;
+}
+ul.list-item li { 
+    padding: 13px 20px;
+    z-index: 2;
+    color: $black;
+    font-size: 13px;
+    background-color: $white;
+    text-align: left;
+}
+ul.list-item li:not(.init) { 
+    display: none; 
+    background: #fff;
+    color: $black;
+    padding: 5px 20px; 
+}
+ul.list-item li:not(.init):hover, ul.list-item li.selected:not(.init) { 
+    background: $white;
+    color: $primary-color;
+}
+li.init { 
+    cursor: pointer;
+    position: relative;
+    &:after {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        font-size: 25px;
+        color: $white;
+        font-family: 'themify';
+        content: attr(data-symbol);
+        font-family: 'Material Design';
+        content: attr(data-symbol);
+        font-family: Material-Design-Iconic-Font;
+        padding: 3px 7px 0px 7px;
+        background-color: $primary-color;
+        border-radius: 50%;
+    }
+}
+
+.checkbox {
+  --checkbox-bg-color: white;
+  --border-color: #ccd1d9;
+  --checkbox-hover-color: #aab2bd;
+  --checkbox-checked-color: #3bafda;
+
+  --border-color: white;
+  position: relative;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  appearance: none;
+  outline: none;
+  transition: 0.3s;
+
+  & ~ label {
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  &::before {
+    position: absolute;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18px' height='18px' fill='none' stroke-width='2px' stroke='white' stroke-linecap='round' viewBox='0 0 21 21'%3E%3Cpolyline points='5 10.75 8.5 14.25 16 6'%3E%3C/polyline%3E%3C/svg%3E");
+    transform: scale(0);
+    transition: 0.3s;
+  }
+
+  &:hover {
+    box-shadow: inset 0 0 0 2px $primary-color;
+  }
+
+  &:checked {
+    box-shadow: inset 0 0 0 12px $primary-color;
+
+    &::before {
+      transform: scale(1);
+    }
+  }
+
+  &.bounce {
+    &:checked {
+      &::before {
+        animation: scale-out-bounce 0.6s ease-out reverse forwards;
+      }
+    }
+  }
+}
+
+// https://easings.net/#easeInBounce
+@keyframes scale-out-bounce {
+  0% {
+    transform: scale(1);
+  }
+
+  4% {
+    transform: scale(0.98);
+  }
+
+  8% {
+    transform: scale(0.99);
+  }
+
+  18% {
+    transform: scale(0.94);
+  }
+
+  26% {
+    transform: scale(0.98);
+  }
+
+  46% {
+    transform: scale(0.75);
+  }
+
+  64% {
+    transform: scale(0.98);
+  }
+
+  76% {
+    transform: scale(0.44);
+  }
+
+  88% {
+    transform: scale(0.11);
+  }
+
+  100% {
+    transform: scale(0);
+  }
+}
+
+.text-black{
+    color:$black;
+}
+
+.bounce{
+    margin-top: 2px;
 }

@@ -114,7 +114,6 @@ def data_survey(request):
             survey = Survey.objects.create(user=request.user, 
                 question = temp
             )
-
             survey.save()
 
         except Exception as e:
@@ -157,7 +156,7 @@ def data_survey_update(request):
 def home(request):
     return render(request, 'home.html')
 
-
+@login_required
 def started(request):
     return render(request, 'get_started.html')
 
@@ -196,6 +195,7 @@ def edit_user(request):
                         "success": success,
                     })
             success = 2
+
         return render(request, "account_update.html", {
             "user_form": user_form,
             "profile_form": formset,

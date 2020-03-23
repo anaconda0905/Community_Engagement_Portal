@@ -390,22 +390,22 @@
 #mobile-nav ul li a img{
     position: absolute;
     max-height: 30px;
-    left: 55%;
+    left: 65%;
     top: 5px;
+    z-index: 10;
 }
 
 #mobile-nav ul li a span{
     position: absolute;
     max-height: 30px;
     top: 0px;
-    left: calc(50% + 25px);
+    left: calc(60% + 25px);
     background-color: #9600b3;
     color: white;
     border-radius: 50%;
     padding: 0px 7px;
     font-size: 15px;
 }
-
 
 #mobile-nav ul li a:hover {
     color: #fff;
