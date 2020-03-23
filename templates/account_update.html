@@ -1,5 +1,7 @@
 {% extends 'base_pages.html' %}
 {% load static %}
+{% load humanize %}
+{% load gravatar %}
 {% block title %}Edit Profile{% endblock %}
 
 {% block css %}
@@ -39,7 +41,7 @@
                             <div class="user-link d-flex justify-content-between flex-row">
                                 <div>
                                     <h4>Review</h4>
-                                    <h5>10</h5>
+                                    <h5>{{ data|length }}</h5>
                                 </div>
                                 <div>
                                     <h4>Follow</h4>
@@ -72,47 +74,27 @@
                 </div>
                 <div class="col-md-12">
                     <div class="row" style="margin-top: 20px;">
+                        {% for adata in data %}
                         <div class="col-lg-3 col-md-3 col-sm-6 col-12">
                             <div class="single-post-item short">
                                 <div class="post-header justify-content-between d-flex flex-row">
                                     <div>
-                                        <label class="nick-name">AL</label>
-                                        <label>@username</label>
-                                    </div>
-                                    <label>2h</label>
-                                </div>
-                                <figure>
-                                    <img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
-                                </figure>
-                                <div class="post-footer">
-                                    <div class="justify-content-between d-flex flex-row">
-                                        <div>
-                                            <img src="{% static 'img/icons-emoji-happy.png' %}"
-                                                 style="max-height: 20px;"/>
-                                            <label><span style="font-weight: bold;">Bus</span> / Driver</label>
-                                        </div>
-                                        <label>30 Reviews</label>
-                                    </div>
-                                    <div class="justify-content-between d-flex flex-row" style="margin-top: -10px;">
-                                        <label>Driving Behavior</label>
-                                        <div>
-                                            <img src="{% static 'img/icons-likebutton-after.png' %}"
-                                                 style="max-height: 20px;"/>
-                                            <label>1.3k</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                            <div class="single-post-item short">
-                                <div class="post-header justify-content-between d-flex flex-row">
-                                    <div>
-                                        <label class="nick-name">AL</label>
-                                        <label>@username</label>
+                                        <label class="nick-name">
+                                            {% with user.profile.fullname|split:" " as names %}
+                                                {% if names|length == 1 %}
+                                                    {{ user.profile.fullname|make_list|first }}{% filter upper %}{{ user.profile.fullname|make_list|last }}{% endfilter %}
+                                                {% else %}
+                                                    {% for name in names %}
+                                                        {{ name|make_list|first }}
+                                                    {% endfor %}
+                                                {% endif %}
 
+                                            {% endwith %}
+
+                                        </label>
+                                        <label>@{{ adata.starter }}</label>
                                     </div>
-                                    <label>2h</label>
+                                    <label>{{ adata.last_updated|naturaltime }}</label>
                                 </div>
                                 <figure>
                                     <img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
@@ -137,70 +119,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                            <div class="single-post-item short">
-                                <div class="post-header justify-content-between d-flex flex-row">
-                                    <div>
-                                        <label class="nick-name">AL</label>
-                                        <label>@username</label>
-                                    </div>
-                                    <label>2h</label>
-                                </div>
-                                <figure>
-                                    <img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
-                                </figure>
-                                <div class="post-footer">
-                                    <div class="justify-content-between d-flex flex-row">
-                                        <div>
-                                            <img src="{% static 'img/icons-emoji-happy.png' %}"
-                                                 style="max-height: 20px;"/>
-                                            <label><span style="font-weight: bold;">Bus</span> / Driver</label>
-                                        </div>
-                                        <label>30 Reviews</label>
-                                    </div>
-                                    <div class="justify-content-between d-flex flex-row" style="margin-top: -10px;">
-                                        <label>Driving Behavior</label>
-                                        <div>
-                                            <img src="{% static 'img/icons-likebutton-after.png' %}"
-                                                 style="max-height: 20px;"/>
-                                            <label>1.3k</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                            <div class="single-post-item short">
-                                <div class="post-header justify-content-between d-flex flex-row">
-                                    <div>
-                                        <label class="nick-name">AL</label>
-                                        <label>@username</label>
-                                    </div>
-                                    <label>2h</label>
-                                </div>
-                                <figure>
-                                    <img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
-                                </figure>
-                                <div class="post-footer">
-                                    <div class="justify-content-between d-flex flex-row">
-                                        <div>
-                                            <img src="{% static 'img/icons-emoji-happy.png' %}"
-                                                 style="max-height: 20px;"/>
-                                            <label><span style="font-weight: bold;">Bus</span> / Driver</label>
-                                        </div>
-                                        <label>30 Reviews</label>
-                                    </div>
-                                    <div class="justify-content-between d-flex flex-row" style="margin-top: -10px;">
-                                        <label>Driving Behavior</label>
-                                        <div>
-                                            <img src="{% static 'img/icons-likebutton-after.png' %}"
-                                                 style="max-height: 20px;"/>
-                                            <label>1.3k</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
 
                 </div>
@@ -217,7 +136,30 @@
 
 
 {% block modal %}
+<div class="modal fade" id="reviewSubmitModalForm" tabindex="-2" role="dialog" aria-labelledby="myModalLabel1"
+             aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content form-elegant">
+                <!--Header-->
+                <div class="modal-header text-center align-items-center justify-content-center flex-column d-flex">
+                    <div>
+                        <img src="{% static 'img/submitted.png' %}" class="img-submitted">
+                        <h4>Review Submitted</h4>
+                        <span class="lbl-1">Thank you for completing the review of this submission.</span>
+                        <span class="lbl-2">It helps us get better.</span>
+                    </div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
 
+                <div class="modal-body mx-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" id="profileEditModalForm" tabindex="-2" role="dialog" aria-labelledby="myModalLabel1"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -410,7 +352,11 @@
             <!--/.Content-->
         </div>
     </div>
-
+    {% if success == 10 %}
+        <script>
+        $('#reviewSubmitModalForm').modal('show');
+        </script>
+    {% endif %}
     {% if success == 2 %}
         <script>
             $('#profileEditModalForm').modal('show');

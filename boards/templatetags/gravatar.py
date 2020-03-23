@@ -17,3 +17,7 @@ def gravatar(user):
         params=urlencode({'d': default, 's': str(size)})
     )
     return url
+
+@register.filter(name='split')
+def split(value, key):
+    return value.split(key)

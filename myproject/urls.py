@@ -48,13 +48,7 @@ urlpatterns = [
 
     url(r'^boards/(?P<pk>\d+)/$', views.TopicListView.as_view(), name='board_topics'),
     url(r'^boards/(?P<pk>\d+)/new/$', views.new_topic, name='new_topic'),
-    url(r'^boards/(?P<pk>\d+)/new13/$', views.new_topic13, name='new_topic13'),
-    url(r'^boards/(?P<pk>\d+)/new14/$', views.new_topic14, name='new_topic14'),
-    url(r'^boards/(?P<pk>\d+)/new15/$', views.new_topic15, name='new_topic15'),
-    url(r'^boards/(?P<pk>\d+)/new113/$', views.new_topic113, name='new_topic113'),
-    url(r'^boards/(?P<pk>\d+)/new23/$', views.new_topic23, name='new_topic23'),
-    url(r'^boards/(?P<pk>\d+)/new24/$', views.new_topic24, name='new_topic24'),
-    url(r'^boards/(?P<pk>\d+)/new25/$', views.new_topic25, name='new_topic25'),
+
     url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/$', views.PostListView.as_view(), name='topic_posts'),
     url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/reply/$', views.reply_topic, name='reply_topic'),
     url(r'^boards/(?P<pk>\d+)/topics/(?P<topic_pk>\d+)/posts/(?P<post_pk>\d+)/edit/$',

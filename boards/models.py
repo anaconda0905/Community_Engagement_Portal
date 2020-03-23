@@ -38,9 +38,10 @@ class Topic(models.Model):
     address = models.CharField(max_length=100)
     subject = models.CharField(max_length=255)
     message = models.CharField(max_length=255)
-    audit = models.CharField(max_length=255)
+    audit = models.CharField(max_length=255, default="off", blank=True, null=True)
     location = models.PointField()
-    mulfile = models.FileField(upload_to='mediadata/')
+    # file = models.FileField(upload_to="files/%Y/%m/%d")
+    # mulfile = models.FileField(upload_to='mediadata/')
     last_updated = models.DateTimeField(auto_now_add=True)
     board = models.ForeignKey(Board, related_name='topics')
     starter = models.ForeignKey(User, related_name='topics')
@@ -70,6 +71,11 @@ class Topic(models.Model):
     def get_last_ten_posts(self):
         return self.posts.order_by('-created_at')[:10]
 
+class MFile(models.Model):
+    board = models.ForeignKey(Board, related_name='files')
+    starter = models.ForeignKey(User, related_name='files')
+    topic = models.ForeignKey(Topic, related_name='files')
+    afile = models.FileField(upload_to="files/%Y/%m/%d")
 
 class Post(models.Model):
     message = models.TextField(max_length=4000)

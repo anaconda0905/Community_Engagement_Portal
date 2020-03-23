@@ -8,8 +8,13 @@ from django.utils.decorators import method_decorator
 from django.urls import reverse
 from django.shortcuts import render_to_response
 from .forms import NewTopicForm, PostForm
-from .models import Board, Post, Topic
+from .models import Board, Post, Topic, MFile
 from django.contrib.gis.geos import Point
+
+from accounts.forms import UserProfileForm, ProfileForm
+from accounts.models import Profile, Survey
+from django.contrib.auth.models import User
+from django.forms.models import inlineformset_factory, formset_factory
 
 class BoardListView(ListView):
     model = Board
@@ -79,151 +84,52 @@ def review(request):
         topic = Topic.objects.create(
             starter=request.user,
             board=Board.objects.get(id=category),
+            feeling=feeling,
+            category=category,
+            subcategory=subcategory,
+            bus_no=bus_no,
+            incident_date=incident_date,
+            incident_time=incident_time,
+            quick_review=quick_review,
+            route_no=route_no,
+            route_name=route_name,
+            bus_operator=bus_operator,
+            message=message,
+            address=address,
+            audit=audit,
             subject=subject,
             location = pnt,
+            views=1,
         )
         topic.save()
+        for afile in request.FILES.getlist('upload_files'):
+            MFile.objects.create(
+                starter=request.user,
+                board=Board.objects.get(id=category),
+                topic=topic,
+                afile=afile)
+
+        Post.objects.create(
+            message=message,
+            topic=topic,
+            created_by=request.user,
+        )
+        success = 10
+        user = request.user
+        user_form = UserProfileForm(instance=user)
+
+        ProfileInlineFormset = inlineformset_factory(User, Profile, form=ProfileForm, can_delete=False)
+        formset = ProfileInlineFormset(instance=user)
+        data = Topic.objects.filter(starter=request.user)
+
+        return render(request, "account_update.html", {
+                        "user_form": user_form,
+                        "profile_form": formset,
+                        "success": success,
+                        "data":data,
+                    })
+
     return render(request, 'review.html')
-
-@login_required
-def new_topic13(request, pk):
-    board = get_object_or_404(Board, pk=pk)
-    if request.method == 'POST':
-        form = NewTopicForm(request.POST)
-        if form.is_valid():
-            topic = form.save(commit=False)
-            topic.board = board
-            topic.starter = request.user
-            topic.save()
-            Post.objects.create(
-                message=form.cleaned_data.get('message'),
-                topic=topic,
-                created_by=request.user
-            )
-            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
-    else:
-        form = NewTopicForm()
-    return render(request, 'new_topic13.html', {'board': board, 'form': form})
-
-@login_required
-def new_topic14(request, pk):
-    board = get_object_or_404(Board, pk=pk)
-    if request.method == 'POST':
-        form = NewTopicForm(request.POST)
-        if form.is_valid():
-            topic = form.save(commit=False)
-            topic.board = board
-            topic.starter = request.user
-            topic.save()
-            Post.objects.create(
-                message=form.cleaned_data.get('message'),
-                topic=topic,
-                created_by=request.user
-            )
-            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
-    else:
-        form = NewTopicForm()
-    return render(request, 'new_topic14.html', {'board': board, 'form': form})
-
-@login_required
-def new_topic15(request, pk):
-    board = get_object_or_404(Board, pk=pk)
-    if request.method == 'POST':
-        form = NewTopicForm(request.POST)
-        if form.is_valid():
-            topic = form.save(commit=False)
-            topic.board = board
-            topic.starter = request.user
-            topic.save()
-            Post.objects.create(
-                message=form.cleaned_data.get('message'),
-                topic=topic,
-                created_by=request.user
-            )
-            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
-    else:
-        form = NewTopicForm()
-    return render(request, 'new_topic15.html', {'board': board, 'form': form})
-
-@login_required
-def new_topic113(request, pk):
-    board = get_object_or_404(Board, pk=pk)
-    if request.method == 'POST':
-        form = NewTopicForm(request.POST)
-        if form.is_valid():
-            topic = form.save(commit=False)
-            topic.board = board
-            topic.starter = request.user
-            topic.save()
-            Post.objects.create(
-                message=form.cleaned_data.get('message'),
-                topic=topic,
-                created_by=request.user
-            )
-            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
-    else:
-        form = NewTopicForm()
-    return render(request, 'new_topic113.html', {'board': board, 'form': form})
-
-@login_required
-def new_topic23(request, pk):
-    board = get_object_or_404(Board, pk=pk)
-    if request.method == 'POST':
-        form = NewTopicForm(request.POST)
-        if form.is_valid():
-            topic = form.save(commit=False)
-            topic.board = board
-            topic.starter = request.user
-            topic.save()
-            Post.objects.create(
-                message=form.cleaned_data.get('message'),
-                topic=topic,
-                created_by=request.user
-            )
-            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
-    else:
-        form = NewTopicForm()
-    return render(request, 'new_topic23.html', {'board': board, 'form': form})
-
-@login_required
-def new_topic24(request, pk):
-    board = get_object_or_404(Board, pk=pk)
-    if request.method == 'POST':
-        form = NewTopicForm(request.POST)
-        if form.is_valid():
-            topic = form.save(commit=False)
-            topic.board = board
-            topic.starter = request.user
-            topic.save()
-            Post.objects.create(
-                message=form.cleaned_data.get('message'),
-                topic=topic,
-                created_by=request.user
-            )
-            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
-    else:
-        form = NewTopicForm()
-    return render(request, 'new_topic24.html', {'board': board, 'form': form})
-
-@login_required
-def new_topic25(request, pk):
-    board = get_object_or_404(Board, pk=pk)
-    if request.method == 'POST':
-        form = NewTopicForm(request.POST)
-        if form.is_valid():
-            topic = form.save(commit=False)
-            topic.board = board
-            topic.starter = request.user
-            topic.save()
-            Post.objects.create(
-                message=form.cleaned_data.get('message'),
-                topic=topic,
-                created_by=request.user
-            )
-            return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
-    else:
-        form = NewTopicForm()
-    return render(request, 'new_topic25.html', {'board': board, 'form': form})
 
 @login_required
 def new_topic(request, pk):
@@ -238,7 +144,7 @@ def new_topic(request, pk):
             Post.objects.create(
                 message=form.cleaned_data.get('message'),
                 topic=topic,
-                created_by=request.user
+                created_by=request.user,
             )
             return redirect('topic_posts', pk=pk, topic_pk=topic.pk)
     else:

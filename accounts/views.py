@@ -10,6 +10,8 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from accounts.models import Profile, Survey
+from boards.models import Board, Post, Topic, MFile
+from django.shortcuts import get_object_or_404, redirect, render
 from django.core.mail import EmailMessage
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView
@@ -170,6 +172,7 @@ def edit_user(request):
  
     ProfileInlineFormset = inlineformset_factory(User, Profile, form=ProfileForm, can_delete = False)
     formset = ProfileInlineFormset(instance=user)
+    data = Topic.objects.filter(starter=request.user).order_by('-id')[:8]
     # print(user_form)
     # print(formset)
  
@@ -193,6 +196,7 @@ def edit_user(request):
                         "user_form": user_form,
                         "profile_form": formset,
                         "success": success,
+                        "data":data,
                     })
             success = 2
 
@@ -200,6 +204,7 @@ def edit_user(request):
             "user_form": user_form,
             "profile_form": formset,
             "success":success,
+            "data": data,
         })
     else:
         raise PermissionDenied
