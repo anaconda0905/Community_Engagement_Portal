@@ -358,22 +358,28 @@
 
 
 
-  $('#quick_review').parent().append('<ul  class="list-item" id="newpayment_type" name="quick_review"></ul>');
+  $('#quick_review').parent().append('<ul  class="list-item" id="newpayment_type" name="newpayment_type"></ul>');
+  $('#quick_review').parent().append('<input type="hidden" id="selectone" name="selectone" value="">');
   $('#quick_review option').each(function(){
-      $('#newpayment_type').append('<li name="selectone" value="' + $(this).val() + '' + '" data-symbol="' + '&#xf2f9;' + '">' + $(this).text()+'</li>');
+      $('#newpayment_type').append('<li value="' + $(this).val() + '' + '" data-symbol="' + '&#xf2f9;' + '">' + $(this).text()+'</li>');
   });
+
   $('#quick_review').remove();
   $('#newpayment_type').attr('id', 'quick_review');
   $('#quick_review li').first().addClass('init');
+
   $("#quick_review").on("click", ".init", function() {
       $(this).closest("#quick_review").children('li:not(.init)').toggle();
+
   });
   
   var PaymentsOptions = $("#quick_review").children('li:not(.init)');
   $("#quick_review").on("click", "li:not(.init)", function() {
       PaymentsOptions.removeClass('selected');
       $(this).addClass('selected');
-      $("#quick_review").children('.init').html($(this).html());
+      $('#quick_review li').first().text($(this).text());
+      $('#selectone').val($('#quick_review li').first().text());
+
       PaymentsOptions.toggle();
   });
 

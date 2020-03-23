@@ -72,7 +72,7 @@ def review(request):
         event=request.POST['event']
         comment=request.POST['comment']
         audit=request.POST.get('remember_me', None)
-        # print(request.POST.getlist('selectone'))
+        print(request.POST['selectone'])
         print(request.POST['lon'])
         print(request.POST['lat'])
         print(locname)
