@@ -126,7 +126,8 @@ def review(request):
 
         ProfileInlineFormset = inlineformset_factory(User, Profile, form=ProfileForm, can_delete=False)
         formset = ProfileInlineFormset(instance=user)
-        data = Topic.objects.filter(starter=request.user)
+
+        data = Topic.objects.filter(starter=request.user).order_by('-id')[:8]
         files = MFile.objects.all()
 
         return render(request, "account_update.html", {
