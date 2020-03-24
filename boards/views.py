@@ -232,22 +232,5 @@ def feedback(request):
 def popular(request):
     if request.method == 'POST':
         print('yes')
-        if request.POST.get('select0') == '33':
-            if request.POST.get('select') == '1':
-                if request.POST.get('select1') == '3':
-                    return redirect('new_topic13', pk = 1)
-                if request.POST.get('select1') == '4':
-                    return redirect('new_topic14', pk = 1)
-                if request.POST.get('select1') == '5':
-                    return redirect('new_topic15', pk = 1)
-                if request.POST.get('select1') == '13':
-                    return redirect('new_topic113', pk = 1)
 
-            if request.POST.get('select') == '2':
-                if request.POST.get('select1') == '3':
-                    return redirect('new_topic23', pk = 1)
-                if request.POST.get('select1') == '4':
-                    return redirect('new_topic24', pk = 1)
-                if request.POST.get('select1') == '5':
-                    return redirect('new_topic25', pk = 1)
     return render(request, 'popular.html')

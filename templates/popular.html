@@ -1,363 +1,424 @@
-{% extends 'base.html' %}
-
+{% extends 'base_pages.html' %}
 {% load static %}
-<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">-->
+{% block title %}Get started{% endblock %}
+
 {% block stylesheet %}
-<style>
-    body {
-      padding: 1rem;
-      color: #797e86;
-    }
+    <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-    h1 {
-      color: #18191b;
-      margin-bottom: 2rem;
-    }
-
-    section {
-      display: flex;
-      flex-flow: row wrap;
-    }
-
-    section > div {
-      flex: 1;
-      padding: 0.5rem;
-    }
-
-    input[type="radio"] {
-      display: none;
-    }
-    input[type="radio"]:not(:disabled) ~ label {
-      cursor: pointer;
-    }
-    input[type="radio"]:disabled ~ label {
-      color: #bcc2bf;
-      border-color: #bcc2bf;
-      box-shadow: none;
-    }
-
-    label {
-      display: block;
-      background: white;
-      border: 1px solid #20df80;
-      border-radius: 2px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      text-align: center;
-      box-shadow: 0px 3px 10px -2px rgba(161, 170, 166, 0.5);
-      position: relative;
-    }
-
-    input[type="radio"]:checked + label {
-      background: #20df80;
-      color: white;
-    }
-    input[type="radio"]:checked + label::after {
-      color: #3d3f43;
-      font-family: FontAwesome;
-      border: 2px solid #1dc973;
-      content: "\f00c";
-      font-size: 24px;
-      position: absolute;
-      top: -25px;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 50px;
-      width: 50px;
-      line-height: 50px;
-      text-align: center;
-      border-radius: 50%;
-      background: white;
-      box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.25);
-    }
-
-    p {
-      font-weight: 900;
-    }
-
-    @media only screen and (max-width: 700px) {
-      section {
-        flex-direction: column;
-      }
-    }
-
-
-    * {
-        box-sizing: border-box;
-    }
-
-    #regForm {
-        background-color: #ffffff;
-        box-shadow: 10px 10px 10px #e1e1e1;
-        margin: 100px auto;
-        border: 2px solid #888888;
-        border-radius: 50px 50px;
-        font-family: Raleway;
-        padding: 40px;
-        width: 70%;
-        min-width: 300px;
-    }
-
-    h1 {
-        text-align: center;
-    }
-
-    input {
-        padding: 10px;
-        width: 100%;
-        font-size: 17px;
-        font-family: Raleway;
-        border: 1px solid #aaaaaa;
-    }
-
-    /* Mark input boxes that gets an error on validation: */
-    input.invalid {
-        background-color: #ffdddd;
-
-    }
-
-    /* Hide all steps by default: */
-    .tab {
-        display: none;
-        text-align: center;
-    }
-
-    button {
-        background-color: #4CAF50;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 17px;
-        font-family: Raleway;
-        cursor: pointer;
-    }
-
-    button:hover {
-        opacity: 0.8;
-    }
-
-    #prevBtn {
-        background-color: #bbbbbb;
-    }
-
-    /* Make circles that indicate the steps of the form: */
-    .step {
-        height: 15px;
-        width: 15px;
-        margin: 0 2px;
-        background-color: #bbbbbb;
-        border: none;
-        border-radius: 50%;
-        display: inline-block;
-        opacity: 0.5;
-    }
-
-    .step.active {
-        opacity: 1;
-    }
-
-    /* Mark the steps that are finished and valid: */
-    .step.finish {
-        background-color: #4CAF50;
-    }
-</style>
+    {% block css %}
+    {% endblock css %}
 {% endblock %}
 
 {% block content %}
+	<!-- Start main body Area -->
+	<div id="popular_section" class="main-body section-gap">
+		<div class="container box_1170">
+			<div class="tabs">
+				<input type="radio" id="tab1" name="tab-control" checked>
+				<input type="radio" id="tab2" name="tab-control">
+				<input type="radio" id="tab3" name="tab-control">
+				<ul class="navigation-bar">
+					<li title="Features">
+						<label for="tab1" role="button">
+							<svg class="bi bi-plus-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v4a.5.5 0 01-.5.5H4a.5.5 0 010-1h3.5V4a.5.5 0 01.5-.5z" clip-rule="evenodd"></path>
+								<path fill-rule="evenodd" d="M7.5 8a.5.5 0 01.5-.5h4a.5.5 0 010 1H8.5V12a.5.5 0 01-1 0V8z" clip-rule="evenodd"></path>
+								<path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"></path>
+							</svg><br><span>Follow</span>
+						</label>
+					</li>
+					<li title="Delivery Contents">
+						<label for="tab2" role="button">
+							<svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"></path>
+								<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"></path>
+							</svg><br><span>Explore</span>
+						</label>
+					</li>
+					<li title="Shipping">
+						<label for="tab3" role="button">
+							<svg viewBox="0 0 24 24">
+								<path d="M3,4A2,2 0 0,0 1,6V17H3A3,3 0 0,0 6,20A3,3 0 0,0 9,17H15A3,3 0 0,0 18,20A3,3 0 0,0 21,17H23V12L20,8H17V4M10,6L14,10L10,14V11H4V9H10M17,9.5H19.5L21.47,12H17M6,15.5A1.5,1.5 0 0,1 7.5,17A1.5,1.5 0 0,1 6,18.5A1.5,1.5 0 0,1 4.5,17A1.5,1.5 0 0,1 6,15.5M18,15.5A1.5,1.5 0 0,1 19.5,17A1.5,1.5 0 0,1 18,18.5A1.5,1.5 0 0,1 16.5,17A1.5,1.5 0 0,1 18,15.5Z" />
+							</svg><br><span>Nearby</span>
+						</label>
+					</li>
+				</ul>
 
-<form id="regForm" method="post">
-    {% csrf_token %}
+				<div class="slider"><div class="indicator"></div></div>
+				<div class="content">
+					<section>
+						<h2>Follow</h2>
+						<div class="single-widget search-widget">
+							<form class="example" action="#" style="margin:auto;max-width:300px">
+								<button type="submit"><i class="fa fa-search"></i></button>
+								<input type="text" placeholder="Search Posts" name="search2">
+							</form>
+						</div>
+						<div class="filter-wrapper">
+							<ul class="d-flex flex-row align-items-center justify-content-between">
+								<li><a href="#" class="genric-btn primary circle filter-btn">Bus</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Bus Stop</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Driver</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Fare</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Operator</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Route</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Safety</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Other</a></li>
+							</ul>
+						</div>
 
-    <!-- One "tab" for each step in the form: -->
-    <div class="tab">Transport Category<br><br>
-        <section>
-            <div>
-                <input type="radio" id="control_33" name="select0" onclick="nextPrev(1)" value="33">
-                <label for="control_33">
-                    <img src="{% static 'images/bus.png' %}" width="100"/>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_34" name="select0" onclick="nextPrev(1)" value="34">
-                <label for="control_34">
-                    <img src="{% static 'images/express-bus-coach.png' %}" width="100"/>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_35" name="select0" onclick="nextPrev(1)" value="35">
-                <label for="control_35">
-                    <img src="{% static 'images/train.png' %}" width="100"/>
-                </label>
-            </div>
-        </section>
-    </div>
-    <div class="tab">What are you feeling now?<br><br>
-        <section>
-            <div>
-                <input type="radio" id="control_01" name="select" onclick="nextPrev(2)" value="1">
-                <label for="control_01">
-                    <img src="{% static 'images/smile.png' %}" width="100"/>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_02" name="select" onclick="nextPrev(2)" value="2">
-                <label for="control_02">
-                    <img src="{% static 'images/angry.png' %}" width=100"/>
-                </label>
-            </div>
+						<div class="filter-header">
+							<select name="sources" id="filter" class="sortby-select-box sources" placeholder="Sort by">
+								<option class="happyfeeling" value="">
+									to
+									<!-- <a href="#">
+										<img src="{% static 'img/happy.png' %}" style="max-height: 15px;">&nbsp;to&nbsp;<img src="{% static 'img/angry.png' %}"  style="max-height: 15px;">
+									</a> -->
+								</option>
+								<option class="happyfeeling" value="">to</option>
+								<option value="">Highest to Lowest reviews</option>
+								<option value="">Lowest to Highest reviews</option>
+							</select>
+							<a href="#" class="popular_createreview">
+								<img src="{% static 'img/create_review.png' %}">
+								<span>Create A Review</span>
+							</a>
+							<select name="sources" id="view" class="viewby-select-box sources" placeholder="View by">
+								<option value="">Map</option>
+								<option value="">Post</option>
+								<option value="">All</option>
+							</select>
+						</div>
 
-        </section>
-    </div>
+						<div class="filter-content">
+							<ul class="row d-flex flex-wrap map-wrapper">
+								<li class="col-12 col-sm-12 col-md-6 col-lg-4 col-xs-4">
+									<div class="single-post-item short">
+										<div class="post-header justify-content-between d-flex flex-row">
+											<div>
+												<label class="nick-name">AL</label>
+												<label>@username</label>
+											</div>
+											<label>2h</label>
+										</div>
+										<figure>
+											<img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
+										</figure>
+										<div class="post-footer">
+											<div class="justify-content-between d-flex flex-row">
+												<div>
+													<img src="{% static 'img/icons-emoji-happy.png' %}" style="max-height: 20px;" />
+													<label><span style="font-weight: bold;">Bus</span> / Driver</label>
+												</div>
+												<label>30 Reviews</label>
+											</div>
+											<div class="justify-content-between d-flex flex-row">
+												<label>Driving Behavior</label>
+												<div>
+													<img src="{% static 'img/icons-likebutton-after.png' %}" style="max-height: 20px;"/>
+													<label>1.3k</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-12 col-sm-12 col-md-6 col-lg-4 col-xs-4">
+									<div class="single-post-item short">
+										<div class="post-header justify-content-between d-flex flex-row">
+											<div>
+												<label class="nick-name">AL</label>
+												<label>@username</label>
+											</div>
+											<label>2h</label>
+										</div>
+										<figure>
+											<img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
+										</figure>
+										<div class="post-footer">
+											<div class="justify-content-between d-flex flex-row">
+												<div>
+													<img src="{% static 'img/icons-emoji-happy.png' %}" style="max-height: 20px;" />
+													<label><span style="font-weight: bold;">Bus</span> / Driver</label>
+												</div>
+												<label>30 Reviews</label>
+											</div>
+											<div class="justify-content-between d-flex flex-row">
+												<label>Driving Behavior</label>
+												<div>
+													<img src="{% static 'img/icons-likebutton-after.png' %}" style="max-height: 20px;"/>
+													<label>1.3k</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-12 col-sm-12 col-md-6 col-lg-4 col-xs-4">
+									<div class="single-post-item short">
+										<div class="post-header justify-content-between d-flex flex-row">
+											<div>
+												<label class="nick-name">AL</label>
+												<label>@username</label>
+											</div>
+											<label>2h</label>
+										</div>
+										<figure>
+											<img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
+										</figure>
+										<div class="post-footer">
+											<div class="justify-content-between d-flex flex-row">
+												<div>
+													<img src="{% static 'img/icons-emoji-happy.png' %}" style="max-height: 20px;" />
+													<label><span style="font-weight: bold;">Bus</span> / Driver</label>
+												</div>
+												<label>30 Reviews</label>
+											</div>
+											<div class="justify-content-between d-flex flex-row">
+												<label>Driving Behavior</label>
+												<div>
+													<img src="{% static 'img/icons-likebutton-after.png' %}" style="max-height: 20px;"/>
+													<label>1.3k</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-12 col-sm-12 col-md-6 col-lg-4 col-xs-4">
+									<div class="single-post-item short">
+										<div class="post-header justify-content-between d-flex flex-row">
+											<div>
+												<label class="nick-name">AL</label>
+												<label>@username</label>
+											</div>
+											<label>2h</label>
+										</div>
+										<figure>
+											<img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
+										</figure>
+										<div class="post-footer">
+											<div class="justify-content-between d-flex flex-row">
+												<div>
+													<img src="{% static 'img/icons-emoji-happy.png' %}" style="max-height: 20px;" />
+													<label><span style="font-weight: bold;">Bus</span> / Driver</label>
+												</div>
+												<label>30 Reviews</label>
+											</div>
+											<div class="justify-content-between d-flex flex-row">
+												<label>Driving Behavior</label>
+												<div>
+													<img src="{% static 'img/icons-likebutton-after.png' %}" style="max-height: 20px;"/>
+													<label>1.3k</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+								<li class="col-12 col-sm-12 col-md-6 col-lg-4 col-xs-4">
+									<div class="single-post-item short">
+										<div class="post-header justify-content-between d-flex flex-row">
+											<div>
+												<label class="nick-name">AL</label>
+												<label>@username</label>
+											</div>
+											<label>2h</label>
+										</div>
+										<figure>
+											<img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
+										</figure>
+										<div class="post-footer">
+											<div class="justify-content-between d-flex flex-row">
+												<div>
+													<img src="{% static 'img/icons-emoji-happy.png' %}" style="max-height: 20px;" />
+													<label><span style="font-weight: bold;">Bus</span> / Driver</label>
+												</div>
+												<label>30 Reviews</label>
+											</div>
+											<div class="justify-content-between d-flex flex-row">
+												<label>Driving Behavior</label>
+												<div>
+													<img src="{% static 'img/icons-likebutton-after.png' %}" style="max-height: 20px;"/>
+													<label>1.3k</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
 
-    <div class="tab">Feedback Category<br><br>
-        <section>
-            <div>
-                <input type="radio" id="control_03" name="select1" onclick="nextPrev(3)" value="3">
-                <label for="control_03">
-                    <h2>Bus</h2>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_04" name="select1" onclick="nextPrev(3)" value="4">
-                <label for="control_04">
-                    <h2>Driver</h2>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_05" name="select1" onclick="nextPrev(3)" value="5">
-                <label for="control_05">
-                    <h2>Bus Stop</h2>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_06" name="select1" onclick="nextPrev(3)" value="6">
-                <label for="control_06">
-                    <h2>Operator</h2>
-                </label>
-            </div>
-        </section>
-        <section>
-            <div>
-                <input type="radio" id="control_13" name="select1" onclick="nextPrev(3)" value="13">
-                <label for="control_13">
-                    <h2>Route</h2>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_14" name="select1" onclick="nextPrev(3)" value="14">
-                <label for="control_14">
-                    <h2>Fare</h2>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_15" name="select1" onclick="nextPrev(3)" value="15">
-                <label for="control_15">
-                    <h2>Safety</h2>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_16" name="select1" onclick="nextPrev(3)" value="16">
-                <label for="control_16">
-                    <h2>New Line</h2>
-                </label>
-            </div>
-        </section>
-        <section>
-            <div>
-                <input type="radio" id="control_23" name="select1" onclick="nextPrev(3)" value="23">
-                <label for="control_23">
-                    <h2>MAAS</h2>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_24" name="select1" onclick="nextPrev(3)" value="24">
-                <label for="control_24">
-                    <h2>Walkability</h2>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_25" name="select1" onclick="nextPrev(3)" value="25">
-                <label for="control_25">
-                    <h2>Technical</h2>
-                </label>
-            </div>
-            <div>
-                <input type="radio" id="control_26" name="select1" onclick="nextPrev(3)" value="26">
-                <label for="control_26">
-                    <h2>Other</h2>
-                </label>
-            </div>
-        </section>
+					</section>
+					<section>
+						<h2>Explore</h2>
+						<div class="single-widget search-widget">
+							<form class="example" action="#" style="margin:auto;max-width:300px">
+								<button type="submit"><i class="fa fa-search"></i></button>
+								<input type="text" placeholder="Search Posts" name="search2">
+							</form>
+						</div>
+						<div class="filter-wrapper">
+							<ul class="d-flex flex-row align-items-center justify-content-between">
+								<li><a href="#" class="genric-btn primary circle filter-btn">Bus</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Bus Stop</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Driver</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Fare</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Operator</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Route</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Safety</a></li>
+								<li><a href="#" class="genric-btn primary circle  filter-btn">Other</a></li>
+							</ul>
+						</div>
 
-    </div>
-    <!-- Circles which indicates the steps of the form: -->
-    <div style="text-align:center;margin-top:40px;">
-        <span class="step"></span>
-        <span class="step"></span>
-        <span class="step"></span>
-    </div>
-</form>
+						<div class="filter-header">
+							<select name="sources" id="filter" class="sortby-select-box sources" placeholder="Sort by">
+								<option value="">Profile</option>
+								<option value="">Word</option>
+								<option value="">Highest to Lowest reviews</option>
+								<option value="">Lowest to Highest reviews</option>
+							</select>
+							<a href="#" class="popular_createreview">
+								<img src="{% static 'img/create_review.png' %}">
+								<span>Create A Review</span>
+							</a>
+							<select name="sources" id="view" class="viewby-select-box sources" placeholder="View by">
+								<option value="">Map</option>
+								<option value="">Post</option>
+								<option value="">All</option>
+							</select>
+						</div>
+
+						<div class="filter-content">
+							<ul class="responsive-table">
+							    <li class="table-header">
+							      <div class="bs-col bs-col-1">Time</div>
+							      <div class="bs-col bs-col-2">Reviews</div>
+							      <div class="bs-col bs-col-3"></div>
+							      <div class="bs-col bs-col-1">Map</div>
+							      <div class="bs-col bs-col-1">Photo/<br/>Video</div>
+							      <div class="bs-col bs-col-1">Info</div>
+							    </li>
+							    <li class="table-row">
+							      <div class="bs-col bs-col-1 bs-fz-18" data-label="Time">2h</div>
+							      <div class="bs-col bs-col-2 bs-fz-14" data-label="Reviews">30 Reviews</div>
+							      <div class="bs-col bs-col-3 feeling-wrapper" data-label="Topic">
+
+							      	 <img src="{% static 'img/happy.png' %}" class="feeling-img">
+							      	 <label class="bs-fz-18"><span class="bs-fz-bold-18">Stage Bus&nbsp;</span>/&nbsp;Driver</label>
+							      	 <label class="bs-fz-18">&nbsp;&nbsp;&nbsp;Driving Behaviour</label>
+
+							      </div>
+							      <div class="bs-col bs-col-1" data-label="Map">
+							      	<img src="{% static 'img/happy.png' %}" class="map-img">
+							      </div>
+							      <div class="bs-col bs-col-1" data-label="Photo/Video">
+							      	<img src="{% static 'img/happy.png' %}" class="photo-img">
+							      </div>
+							      <div class="bs-col bs-col-1 bs-fz-14" data-label="Info">Info</div>
+							    </li>
+							    <li class="table-row">
+							      <div class="bs-col bs-col-1 bs-fz-18" data-label="Time">2h</div>
+							      <div class="bs-col bs-col-2 bs-fz-14" data-label="Reviews">30 Reviews</div>
+							      <div class="bs-col bs-col-3 feeling-wrapper" data-label="Topic">
+
+							      	 <img src="{% static 'img/happy.png' %}" class="feeling-img">
+							      	 <label class="bs-fz-18"><span class="bs-fz-bold-18">Stage Bus&nbsp;</span>/&nbsp;Driver</label>
+							      	 <label class="bs-fz-18">&nbsp;&nbsp;&nbsp;Driving Behaviour</label>
+
+							      </div>
+							      <div class="bs-col bs-col-1" data-label="Map">
+							      	<img src="{% static 'img/happy.png' %}" class="map-img">
+							      </div>
+							      <div class="bs-col bs-col-1" data-label="Photo/Video">
+							      	<img src="{% static 'img/happy.png' %}" class="photo-img">
+							      </div>
+							      <div class="bs-col bs-col-1 bs-fz-14" data-label="Info">Info</div>
+							    </li>
+							    <li class="table-row">
+							      <div class="bs-col bs-col-1 bs-fz-18" data-label="Time">2h</div>
+							      <div class="bs-col bs-col-2 bs-fz-14" data-label="Reviews">30 Reviews</div>
+							      <div class="bs-col bs-col-3 feeling-wrapper" data-label="Topic">
+
+							      	 <img src="{% static 'img/happy.png' %}" class="feeling-img">
+							      	 <label class="bs-fz-18"><span class="bs-fz-bold-18">Stage Bus&nbsp;</span>/&nbsp;Driver</label>
+							      	 <label class="bs-fz-18">&nbsp;&nbsp;&nbsp;Driving Behaviour</label>
+
+							      </div>
+							      <div class="bs-col bs-col-1" data-label="Map">
+							      	<img src="{% static 'img/happy.png' %}" class="map-img">
+							      </div>
+							      <div class="bs-col bs-col-1" data-label="Photo/Video">
+							      	<img src="{% static 'img/happy.png' %}" class="photo-img">
+							      </div>
+							      <div class="bs-col bs-col-1 bs-fz-14" data-label="Info">Info</div>
+							    </li>
+							    <li class="table-row">
+							      <div class="bs-col bs-col-1 bs-fz-18" data-label="Time">2h</div>
+							      <div class="bs-col bs-col-2 bs-fz-14" data-label="Reviews">30 Reviews</div>
+							      <div class="bs-col bs-col-3 feeling-wrapper" data-label="Topic">
+
+							      	 <img src="{% static 'img/happy.png' %}" class="feeling-img">
+							      	 <label class="bs-fz-18"><span class="bs-fz-bold-18">Stage Bus&nbsp;</span>/&nbsp;Driver</label>
+							      	 <label class="bs-fz-18">&nbsp;&nbsp;&nbsp;Driving Behaviour</label>
+
+							      </div>
+							      <div class="bs-col bs-col-1" data-label="Map">
+							      	<img src="{% static 'img/happy.png' %}" class="map-img">
+							      </div>
+							      <div class="bs-col bs-col-1" data-label="Photo/Video">
+							      	<img src="{% static 'img/happy.png' %}" class="photo-img">
+							      </div>
+							      <div class="bs-col bs-col-1 bs-fz-14" data-label="Info">Info</div>
+							    </li>
+							    <li class="table-row">
+							      <div class="bs-col bs-col-1 bs-fz-18" data-label="Time">2h</div>
+							      <div class="bs-col bs-col-2 bs-fz-14" data-label="Reviews">30 Reviews</div>
+							      <div class="bs-col bs-col-3 feeling-wrapper" data-label="Topic">
+
+							      	 <img src="{% static 'img/happy.png' %}" class="feeling-img">
+							      	 <label class="bs-fz-18"><span class="bs-fz-bold-18">Stage Bus&nbsp;</span>/&nbsp;Driver</label>
+							      	 <label class="bs-fz-18">&nbsp;&nbsp;&nbsp;Driving Behaviour</label>
+
+							      </div>
+							      <div class="bs-col bs-col-1" data-label="Map">
+							      	<img src="{% static 'img/happy.png' %}" class="map-img">
+							      </div>
+							      <div class="bs-col bs-col-1" data-label="Photo/Video">
+							      	<img src="{% static 'img/happy.png' %}" class="photo-img">
+							      </div>
+							      <div class="bs-col bs-col-1 bs-fz-14" data-label="Info">Info</div>
+							    </li>
+							  </ul>
+						</div>
+					</section>
+					<section>
+						<h2>Nearby</h2>
+						<div class="single-widget search-widget">
+							<form class="example" action="#" style="margin:auto;max-width:300px">
+								<button type="submit"><i class="fa fa-search"></i></button>
+								<input type="text" placeholder="Search Posts" name="search2">
+							</form>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Start main body Area -->
+
 
 {% endblock %}
 
+
 {% block js %}
-<script>
-    var currentTab = 0; // Current tab is set to be the first tab (0)
-    showTab(currentTab); // Display the crurrent tab
+    <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/superfish.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/jquery.steps.js' %}"></script>
+    <script src="{% static 'js/header-scrolled.js' %}"></script>
+    <script src="{% static 'js/popular.js' %}"></script>
 
-    function showTab(n) {
-        // This function will display the specified tab of the form...
-        var x = document.getElementsByClassName("tab");
-        x[n].style.display = "block";
-        //... and run a function that will display the correct step indicator:
-        fixStepIndicator(n)
-    }
-
-    function nextPrev(n) {
-        // This function will figure out which tab to display
-        var x = document.getElementsByClassName("tab");
-        // Exit the function if any field in the current tab is invalid:
-        // Hide the current tab:
-        if(n==1 || n==2)
-        {
-            setTimeout(() => {
-                x[currentTab].style.display = "none";
-                // Increase or decrease the current tab by 1:
-                currentTab = currentTab + 1;
-                // if you have reached the end of the form...
-                if (currentTab >= x.length) {
-                    // ... the form gets submitted:
-                    document.getElementById("regForm").submit();
-                    return false;
-                }
-                // Otherwise, display the correct tab:
-                showTab(currentTab);
-                }, 300);
-
-        }
-        if(n==3) {
-            // Increase or decrease the current tab by 1:
-            currentTab = currentTab + 1;
-            // if you have reached the end of the form...
-            if (currentTab >= x.length) {
-                // ... the form gets submitted:
-                document.getElementById("regForm").submit();
-                return false;
-            }
-            // Otherwise, display the correct tab:
-            showTab(currentTab);
-        }
-    }
-
-
-    function fixStepIndicator(n) {
-        // This function removes the "active" class of all steps...
-        var i, x = document.getElementsByClassName("step");
-        for (i = 0; i < x.length; i++) {
-            x[i].className = x[i].className.replace(" active", "");
-        }
-        //... and adds the "active" class on the current step:
-        x[n].className += " active";
-    }
-</script>
-{% endblock js%}
+{% endblock js %}

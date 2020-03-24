@@ -95,7 +95,7 @@
                                     </div>
                                     <label>{{ adata.last_updated|naturaltime }}</label>
                                 </div>
-                                <figure>
+                                <figure style="height: 200px;">
                                     {% for file in files %}
                                         {% if file.topic.id == adata.id %}
                                             <img class="post-img img-fluid" src="{{ file.afile.url }}" alt="">
@@ -157,15 +157,16 @@
             <div class="modal-content form-elegant">
                 <!--Header-->
                 <div class="modal-header text-center align-items-center justify-content-center flex-column d-flex">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                     <div>
                         <img src="{% static 'img/submitted.png' %}" class="img-submitted">
                         <h4>Review Submitted</h4>
                         <span class="lbl-1">Thank you for completing the review of this submission.</span>
                         <span class="lbl-2">It helps us get better.</span>
                     </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+
                 </div>
 
                 <div class="modal-body mx-4">

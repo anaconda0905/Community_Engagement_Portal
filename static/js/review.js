@@ -1,14 +1,10 @@
-// $(document).ready(function() {
-;(function ($) {
+$(document).ready(function() {
   "use strict";
-
-
   var form = $("#review-form");
   form.validate({
       errorPlacement: function errorPlacement(error, element) {
            // element.before(error); 
          var input = $('.incident-regarding .input200');
-
          console.log(input.length);
          for(var i=0; i<input.length; i++) {
            if(validate(input[i]) == false){
@@ -57,9 +53,6 @@
           route_name : {
               required: true,
           },
-          locname:{
-              required:true,
-          },
           bus_operator : {
               required: true,
           },
@@ -87,7 +80,6 @@
           // $(element).addClass('valid');
       }
   });
-  var mapContainerFlag = false;
   form.steps({
       headerTag: "h4",
       bodyTag: "section",
@@ -105,13 +97,6 @@
           form.validate().settings.ignore = ":disabled,:hidden";
           return form.valid();
       },
-
-      onStepChanged: function (event, currentIndex, priorIndex){
-          if(currentIndex == 3 && mapContainerFlag == false){
-              mapContainerFlag = true;
-              mapShow();
-          }
-      },
       onFinishing: function (event, currentIndex)
       {
           form.validate().settings.ignore = ":disabled";
@@ -119,8 +104,7 @@
       },
       onFinished: function (event, currentIndex)
       {
-          // $('#reviewSubmitModalForm').modal('show');
-          $("#review-form").submit();
+          $('#reviewSubmitModalForm').modal('show');
       },
       // onInit : function (event, currentIndex) {
       //     event.append('demo');
@@ -184,7 +168,6 @@
       creditcard: "",
       equalTo: "",
       bus_no: "",
-      locname:"",
       incident_date: "",
       incident_time: "",
       route_no: "",
@@ -203,7 +186,7 @@
   });
 
   
-  const labels = document.querySelectorAll('.label');
+const labels = document.querySelectorAll('.label');
   for(var i = 1; i < labels.length-1; i++)
   {
       const chars = labels[i].textContent.split('');
@@ -214,87 +197,32 @@
   }
 
 
+  function initMap() {
+    var mapProp= {
+      center:new google.maps.LatLng(51.508742,-0.120850),
+      zoom:5,
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  }
 
-  $('#quick_review').parent().append('<ul  class="list-item" id="newpayment_type" name="newpayment_type"></ul>');
-  $('#quick_review').parent().append('<input type="hidden" id="selectone" name="selectone" value="">');
+  $('#quick_review').parent().append('<ul  class="list-item" id="newpayment_type" name="quick_review"></ul>');
   $('#quick_review option').each(function(){
       $('#newpayment_type').append('<li value="' + $(this).val() + '' + '" data-symbol="' + '&#xf2f9;' + '">' + $(this).text()+'</li>');
   });
-
   $('#quick_review').remove();
   $('#newpayment_type').attr('id', 'quick_review');
   $('#quick_review li').first().addClass('init');
-
   $("#quick_review").on("click", ".init", function() {
       $(this).closest("#quick_review").children('li:not(.init)').toggle();
-
   });
   
   var PaymentsOptions = $("#quick_review").children('li:not(.init)');
   $("#quick_review").on("click", "li:not(.init)", function() {
       PaymentsOptions.removeClass('selected');
       $(this).addClass('selected');
-      $('#quick_review li').first().text($(this).text());
-      $('#selectone').val($('#quick_review li').first().text());
-
+      $("#quick_review").children('.init').html($(this).html());
       PaymentsOptions.toggle();
   });
-
-function mapShow() {
-
-        var map = L.map('googleMap', {
-            center: L.latLng(3.141916, 101.6867),
-            zoom: 16
-        });
-        map.invalidateSize();
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 30
-        }).addTo(map);
-        L.Control.geocoder().addTo(map);
-        var lc = L.control.locate({
-            position: 'topleft',
-            strings: {
-                title: "Show me where I am, yo!"
-            }
-        }).addTo(map);
-    var rememberLat = document.getElementById('latitude').value;
-    var rememberLong = document.getElementById('longitude').value;
-    if (!rememberLat || !rememberLong) {
-        rememberLat = -3.141916;
-        rememberLong = 174.82082;
-    }
-
-
-
-        var marker = L.marker([rememberLat, rememberLong], {
-            draggable: true
-        }).addTo(map);
-        marker.on('dragend', function (e) {
-            updateLatLng(marker.getLatLng().lat, marker.getLatLng().lng);
-        });
-        map.on('click', function (e) {
-            marker.setLatLng(e.latlng);
-            updateLatLng(marker.getLatLng().lat, marker.getLatLng().lng);
-        });
-
-        function updateLatLng(lat, lng, reverse) {
-            if (reverse) {
-                marker.setLatLng([lat, lng]);
-                map.panTo([lat, lng]);
-            } else {
-                document.getElementById('latitude').value = marker.getLatLng().lat;
-                document.getElementById('longitude').value = marker.getLatLng().lng;
-                $.get('https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=' + marker.getLatLng().lat + '&lon=' + marker.getLatLng().lng, function (data) {
-                    if(data.address.road)
-                        document.getElementById('locname').value = data.address.road;
-                });
-                // marker.bindPopup('I am in Baltimore.<br> Looking for Stop.');
-                // marker.openPopup();
-                map.panTo([lat, lng]);
-            }
-        }
-    }
 
   var imgUpload = document.getElementById('upload_imgs')
     , imgPreview = document.getElementById('img_preview')
@@ -341,7 +269,7 @@ function mapShow() {
         ]
     });
   }
-})(jQuery);
+});
 
 
 
