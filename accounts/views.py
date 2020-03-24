@@ -173,8 +173,8 @@ def edit_user(request):
     ProfileInlineFormset = inlineformset_factory(User, Profile, form=ProfileForm, can_delete = False)
     formset = ProfileInlineFormset(instance=user)
     data = Topic.objects.filter(starter=request.user).order_by('-id')[:8]
-    # print(user_form)
-    # print(formset)
+    files = MFile.objects.all()
+
  
     if request.user.is_authenticated() and request.user.id == user.id:
         if request.method == "POST":
@@ -197,6 +197,7 @@ def edit_user(request):
                         "profile_form": formset,
                         "success": success,
                         "data":data,
+                        "files":files,
                     })
             success = 2
 
@@ -205,6 +206,7 @@ def edit_user(request):
             "profile_form": formset,
             "success":success,
             "data": data,
+            "files": files,
         })
     else:
         raise PermissionDenied

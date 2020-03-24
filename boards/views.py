@@ -108,6 +108,12 @@ def review(request):
                 board=Board.objects.get(id=category),
                 topic=topic,
                 afile=afile)
+        MFile.objects.create(
+            starter=request.user,
+            board=Board.objects.get(id=category),
+            topic=topic,
+            afile='/nomap.png')
+
 
         Post.objects.create(
             message=message,
@@ -121,12 +127,14 @@ def review(request):
         ProfileInlineFormset = inlineformset_factory(User, Profile, form=ProfileForm, can_delete=False)
         formset = ProfileInlineFormset(instance=user)
         data = Topic.objects.filter(starter=request.user)
+        files = MFile.objects.all()
 
         return render(request, "account_update.html", {
                         "user_form": user_form,
                         "profile_form": formset,
                         "success": success,
                         "data":data,
+                        "files":files,
                     })
 
     return render(request, 'review.html')

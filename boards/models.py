@@ -75,7 +75,7 @@ class MFile(models.Model):
     board = models.ForeignKey(Board, related_name='files')
     starter = models.ForeignKey(User, related_name='files')
     topic = models.ForeignKey(Topic, related_name='files')
-    afile = models.FileField(upload_to="files/%Y/%m/%d")
+    afile = models.FileField(upload_to="files/%Y/%m/%d", default="/static/img/map-1.png")
 
 class Post(models.Model):
     message = models.TextField(max_length=4000)

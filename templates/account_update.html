@@ -28,9 +28,9 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-4 col-3">
                             {% if user.profile.image %}
-                                <img id="back_user_img" src="{{ user.profile.image.url }}"/>
+                                <img id="back_user_img" style="width: 100px; !important;" src="{{ user.profile.image.url }}"/>
                             {% else %}
-                                <img id="back_user_img" src="{% static 'img/default.png' %}"/>
+                                <img id="back_user_img" style="width: 100px !important;" src="{% static 'img/default.png' %}"/>
                             {% endif %}
                         </div>
                         <div class="col-lg-9 col-md-9 col-sm-8 col-9">
@@ -45,11 +45,11 @@
                                 </div>
                                 <div>
                                     <h4>Follow</h4>
-                                    <h5>10</h5>
+                                    <h5>0</h5>
                                 </div>
                                 <div>
                                     <h4>Following</h4>
-                                    <h5>10</h5>
+                                    <h5>0</h5>
                                 </div>
 
 
@@ -88,7 +88,6 @@
                                                         {{ name|make_list|first }}
                                                     {% endfor %}
                                                 {% endif %}
-
                                             {% endwith %}
 
                                         </label>
@@ -97,24 +96,39 @@
                                     <label>{{ adata.last_updated|naturaltime }}</label>
                                 </div>
                                 <figure>
-                                    <img class="post-img img-fluid" src="{% static 'img/map-1.png' %}" alt="">
+                                    {% for file in files %}
+                                        {% if file.topic.id == adata.id %}
+                                            <img class="post-img img-fluid" src="{{ file.afile.url }}" alt="">
+                                            {{ "<!--" }}
+                                        {% endif %}
+                                    {% endfor %}
+                                    {{ "-->" }}
+
+
                                 </figure>
                                 <div class="post-footer">
                                     <div class="justify-content-between d-flex flex-row">
                                         <div>
-                                            <img src="{% static 'img/icons-emoji-happy.png' %}"
+                                            {% if adata.feeling == 'happy' %}
+                                                <img src="{% static 'img/icons-emoji-happy.png' %}"
                                                  style="max-height: 20px;"/>
-                                            <label><span style="font-weight: bold;">Bus</span> / Driver</label>
+                                            {% else %}
+                                                <img src="{% static 'img/angry.png' %}"
+                                                 style="max-height: 20px;"/>
+                                            {% endif %}
+                                            <label><span style="font-weight: bold;">
+                                                {{ adata.board }}</span>
+                                            </label>
                                         </div>
-                                        <label>30 Reviews</label>
-                                    </div>
-                                    <div class="justify-content-between d-flex flex-row" style="margin-top: -10px;">
-                                        <label>Driving Behavior</label>
                                         <div>
                                             <img src="{% static 'img/icons-likebutton-after.png' %}"
                                                  style="max-height: 20px;"/>
-                                            <label>1.3k</label>
+                                            <label>0</label>
                                         </div>
+                                    </div>
+                                    <div class="justify-content-between d-flex flex-row" style="margin-top: -10px;">
+                                        <label>{{ adata.subcategory }}</label>
+                                        <label>: {{ adata.quick_review }}</label>
                                     </div>
                                 </div>
                             </div>
